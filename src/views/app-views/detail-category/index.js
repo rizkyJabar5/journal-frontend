@@ -2,12 +2,12 @@ import { Col, Row, message } from 'antd';
 import React, { useState } from "react";
 import { Button, Card, Form, Input } from 'antd';
 import { useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useLocation, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOneCategory, updateCategory, addCategory } from 'redux/features/category';
 
 export const DETAILCATEGORY = () => {
-
+  const history = useHistory()
   const location = useLocation();
   const [form] = Form.useForm();
   const dispatch = useDispatch();
@@ -39,8 +39,8 @@ export const DETAILCATEGORY = () => {
       dispatch(addCategory({
         categoryName: values.nameCategory,
         description: values.description
-      })).unwrap()
-      message.info("Category Added!")
+      }))
+      history.push('/app/categories')
     }
   };
 

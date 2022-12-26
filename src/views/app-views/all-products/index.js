@@ -26,8 +26,8 @@ export const PRODUCTS = (props) => {
 
 	const deleteData = useCallback(async (id) => {
 		try {
-			const resp = await dispatch(deleteProduct(id)).unwrap()
-			message.success(resp.message)
+			await dispatch(deleteProduct(id)).unwrap
+			getData()
 		} catch (error) {
 			console.log(error)
 			message.error(error?.message || 'Failed to delete data')

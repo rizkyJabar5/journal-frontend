@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import URLS from 'redux/urls'
 import request from 'redux/utils/request'
 import { apiRequest } from 'redux/utils/api';
+import { message } from 'antd';
 
 
 export const getProduct = async (params) =>
@@ -40,7 +41,7 @@ export const updateProduct = createAsyncThunk(
 	'Product/updateProduct',
 	async (credentials, { rejectWithValue }) => {
 		try {
-			const response = await request('patch', `${URLS.PRODUCT}/${credentials.id}`, credentials)
+			const response = await request('put', `${URLS.PRODUCT}/${credentials.id}`, credentials)
 			return response
 		} catch (error) {
 			console.log(error)
@@ -67,6 +68,8 @@ export const deleteProduct = createAsyncThunk(
 	async (id, { rejectWithValue }) => {
 		try {
 			const response = await request('delete', `${URLS.PRODUCT}/delete?id=${id}`)
+			console.log(response)
+			message.success(response.message)
 			return response
 		} catch (error) {
 			return rejectWithValue(error)

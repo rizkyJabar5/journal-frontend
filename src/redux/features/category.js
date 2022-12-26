@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { message } from 'antd';
 import URLS from 'redux/urls'
 import { apiRequest } from 'redux/utils/api';
 import request from 'redux/utils/request'
@@ -85,7 +86,9 @@ export const deleteCategory = createAsyncThunk(
 	async (id, { rejectWithValue }) => {
 		return await deleteCategories(id)
 			.then((res) => {
-				return res.data.data
+				const data =  res.data
+				// message.success(data.message)
+				return data
 			})
 			.catch((err) => {
 				return rejectWithValue(err)
@@ -98,7 +101,9 @@ export const addCategory = createAsyncThunk(
 	async (data, { rejectWithValue }) => {
 		return await addOneCategories(data)
 			.then((res) => {
-				return res.data.data
+				const data = res.data
+				message.success(data.message)
+				return data
 			})
 			.catch((err) => {
 				return rejectWithValue(err)

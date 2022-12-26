@@ -73,7 +73,7 @@ export const DETAILPRODUCT = () => {
       formData.append('image', file);
       axios.post("https://journal-florist-staging.herokuapp.com/api/v1/products/add-product", formData, config)
         .then(response => {
-          console.log(response);
+          message.success(response.data.message);
           history.push("/app/products")
         })
         .catch(error => {

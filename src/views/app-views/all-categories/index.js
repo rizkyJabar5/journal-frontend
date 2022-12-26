@@ -5,7 +5,7 @@ import { useHistory, withRouter } from 'react-router-dom';
 import { fetchAllCategory, deleteCategory } from 'redux/features/category';
 
 
-export const PASIEN = (props) => {
+export const CATEGORIES = (props) => {
 	const history = useHistory()
 	const dispatch = useDispatch();
 	const {
@@ -31,6 +31,7 @@ export const PASIEN = (props) => {
 	const deleteData = useCallback(async (id) => {
 		try {
 			await dispatch(deleteCategory(id)).unwrap()
+			getData()
 		} catch (error) {
 			console.log(error)
 			message.error(error?.message || 'Failed to delete data')
@@ -125,4 +126,4 @@ export const PASIEN = (props) => {
 }
 
 
-export default withRouter(PASIEN);
+export default withRouter(CATEGORIES);
