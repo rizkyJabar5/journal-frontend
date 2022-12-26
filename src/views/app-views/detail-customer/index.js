@@ -2,12 +2,12 @@ import { Col, Row, message } from 'antd';
 import React from "react";
 import { Button, Card, Form, Input } from 'antd';
 import { useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useLocation, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOneCustomer, updateCustomer, createCustomer } from "redux/features/customers"
+import { fetchOneCustomer, createCustomer } from "redux/features/customers"
 
 export const DETAILCUSTOMER = () => {
-
+  const history = useHistory();
   const location = useLocation();
   const [form] = Form.useForm();
   const dispatch = useDispatch();
@@ -28,13 +28,13 @@ export const DETAILCUSTOMER = () => {
   }, [dispatch])
 
   const onFinish = async (values) => {
-    if (location.isAddNew) {
-      dispatch(updateCustomer({
-        id: customer.selected._id,
-        answer: values.jawaban
-      })).unwrap()
-      message.success(values.data.message)
-    } else {
+    // if (location.isAddNew) {
+    //   dispatch(updateCustomer({
+    //     id: customer.selected._id,
+    //     answer: values.jawaban
+    //   })).unwrap()
+    //   message.success(values.data.message)
+    // } else {
       dispatch(createCustomer({
         "customerName": values.customerName,
         "customerPhone": values.customerPhone,
@@ -47,12 +47,13 @@ export const DETAILCUSTOMER = () => {
           "zip": values.zip
         }
       })).unwrap().then(doc=>{
-        message.success(doc.data.message)
+        // message.success(doc.message)
+        history.push('/app/customers')
       }).catch(err=>{
         console.log(err)
         message.error(err.error || err.data.message);
       })
-    }
+    // }
   };
 
   const onFinishFailed = (errorInfo) => {

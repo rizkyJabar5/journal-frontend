@@ -25,10 +25,10 @@ export const CUSTOMERS = () => {
 
 	const deleteData = useCallback(async (id) => {
 		try {
-			const resp = await dispatch(deleteCustomer(id)).unwrap()
-			message.success(resp.data.message)
+			await dispatch(deleteCustomer(id)).unwrap()
+			getData()
 		} catch (error) {
-			console.log(error)
+			// console.log(error)
 			message.error(error?.message || 'Failed to delete data')
 		}
 	}, [dispatch])

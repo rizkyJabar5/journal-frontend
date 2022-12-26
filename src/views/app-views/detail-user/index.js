@@ -2,12 +2,12 @@ import { Col, Row, message } from 'antd';
 import React from "react";
 import { Button, Card, Form, Input, Checkbox } from 'antd';
 import { useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useLocation, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from 'redux/features/user';
 
 export const DETAILUSER = () => {
-
+  const history = useHistory();
   const location = useLocation()
   const dispatch = useDispatch();
   const ticket = useSelector(state => state.ticket)
@@ -30,6 +30,7 @@ export const DETAILUSER = () => {
     formData.append('email', values.email)
     formData.append('rolesName', values.rolesName)
     addUser(formData)
+    history.push('/app/users')
     message.info("User Added!")
   };
   const onFinishFailed = (errorInfo) => {

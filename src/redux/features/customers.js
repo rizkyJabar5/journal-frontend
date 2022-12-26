@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import URLS from 'redux/urls'
 import request from 'redux/utils/request'
 import { apiRequest } from 'redux/utils/api';
+import { message } from 'antd';
 
 export const deleteCustomer = createAsyncThunk( 
 	'Customer/delete',
@@ -48,24 +49,25 @@ export const fetchOneCustomer = createAsyncThunk(
 	}
 )
 
-export const updateCustomer = createAsyncThunk(
-	'Customer/updateCustomer',
-	async (credentials, { rejectWithValue }) => {
-		try {
-			const response = await request('patch', `${URLS.CUSTOMER}/${credentials.id}`, credentials)
-			return response.data
-		} catch (error) {
-			console.log(error)
-			return rejectWithValue(error)
-		}
-	}
-)
+// export const updateCustomer = createAsyncThunk(
+// 	'Customer/updateCustomer',
+// 	async (credentials, { rejectWithValue }) => {
+// 		try {
+// 			const response = await request('put', `${URLS.CUSTOMER}/${credentials.id}`, credentials)
+// 			return response.data
+// 		} catch (error) {
+// 			console.log(error)
+// 			return rejectWithValue(error)
+// 		}
+// 	}
+// )
 
 export const createCustomer = createAsyncThunk(
 	'Customer/createCustomer',
 	async (credentials, { rejectWithValue }) => {
 		try {
 			const response = await request('post', `${URLS.CUSTOMER}/add-customer`, credentials)
+			// message(response.message)
 			return response
 		} catch (error) {
 			console.log(error)
@@ -140,14 +142,14 @@ export const CustomerSlice = createSlice({
 				state.loading.query = false
 				state.selected = action.payload
 			})
-		builder
-			.addCase(updateCustomer.pending, startLoadingQuery)
-			.addCase(updateCustomer.rejected, stopLoadingQuery)
-			.addCase(updateCustomer.fulfilled, (state, action) => {
-				state.loading.query = false
-				state.selected = action.payload
-				state.message = "Success"
-			})
+		// builder
+		// 	.addCase(updateCustomer.pending, startLoadingQuery)
+		// 	.addCase(updateCustomer.rejected, stopLoadingQuery)
+		// 	.addCase(updateCustomer.fulfilled, (state, action) => {
+		// 		state.loading.query = false
+		// 		state.selected = action.payload
+		// 		state.message = "Success"
+		// 	})
 
 			builder
 			.addCase(createCustomer.pending, startLoadingQuery)
