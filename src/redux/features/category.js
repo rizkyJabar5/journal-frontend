@@ -87,7 +87,7 @@ export const deleteCategory = createAsyncThunk(
 		return await deleteCategories(id)
 			.then((res) => {
 				const data =  res.data
-				// message.success(data.message)
+				message.success(data.message)
 				return data
 			})
 			.catch((err) => {
