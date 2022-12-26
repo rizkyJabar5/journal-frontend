@@ -67,15 +67,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-### Models
-1. user
-2. transaction
-3. app --> 30rb Resume Only or CV Only / 50rb Resume + CV
-4. domain
-5. education
-6. portfolio
-7. working_experience
-8. skill
-9. publication
-10. biodata
-
