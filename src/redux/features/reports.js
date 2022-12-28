@@ -15,6 +15,12 @@ export const getLedgerSum = async () =>
 		method: "GET",
 	});
 
+export const getExpenseSupplier = async () =>
+	apiRequest({
+		path: `/expenses/suppliers`,
+		method: "GET",
+	});
+
 export const fetchSumStore = createAsyncThunk(
 	'Report/fetchSumStore',
 	async (_, { rejectWithValue }) => {
@@ -42,12 +48,19 @@ export const fetchSumLedger = createAsyncThunk(
 )
 
 
-export const fetchAllReport = createAsyncThunk(
-	'Report/fetchAllReport',
+export const fetchExpenseSuppliers = createAsyncThunk(
+	'Report/fetchExpenseSuppliers',
 	async (_, { rejectWithValue }) => {
 		try {
-			const response = await request('get', URLS.Report)
-			return response.data.Report
+			return await getExpenseSupplier()
+			.then((res) => {
+				console.log(res.data.data)
+				return res.data.data
+			})
+			.catch((err) => {
+				return rejectWithValue(err)
+			})
+			
 		} catch (error) {
 			return rejectWithValue(error)
 		}
@@ -129,12 +142,12 @@ export const ReportSlice = createSlice({
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(fetchAllReport.pending, startLoadingQuery)
-			.addCase(fetchAllReport.fulfilled, (state, action) => {
+			.addCase(fetchExpenseSuppliers.pending, startLoadingQuery)
+			.addCase(fetchExpenseSuppliers.fulfilled, (state, action) => {
 				state.list = action.payload
 				state.loading.query = false
 			})
-			.addCase(fetchAllReport.rejected, stopLoadingQuery)
+			.addCase(fetchExpenseSuppliers.rejected, stopLoadingQuery)
 
 		builder
 			.addCase(fetchSumStore.pending, startLoadingQuery)

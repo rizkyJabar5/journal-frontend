@@ -43,6 +43,7 @@ export const CATEGORIES = (props) => {
 	}, [])
 
 	const tableColumns = [
+
 		{
 			title: 'ID Kategori',
 			dataIndex: 'categoryId',
@@ -52,6 +53,7 @@ export const CATEGORIES = (props) => {
 			title: 'Nama',
 			dataIndex: 'nameCategory',
 			key: 'nameCategory',
+			sorter: (a, b) => a.nameCategory.length - b.nameCategory.length,
 		},
 		{
 			title: 'Deskripsi',

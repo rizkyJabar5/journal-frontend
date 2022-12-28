@@ -103,6 +103,7 @@ export const ORDERS = () => {
 		{
 			title: 'Pengirim',
 			dataIndex: 'customerName',
+			sorter: (a, b) => a.customerName.length - b.customerName.length,
 			render: (_, record) => (
 				<div className="text-left">
 					{record.customerName !== "NaN" ? record.customerName : "Anonim"}
@@ -151,6 +152,25 @@ export const ORDERS = () => {
 			title: 'Status',
 			dataIndex: 'paymentStatus',
 			key: 'paymentStatus',
+			filters: [
+				{
+					text: 'Not Yet Paid',
+					value: 'NOT_YET_PAID',
+				},
+				{
+					text: 'Down Payment',
+					value: 'DOWN_PAYMENT',
+				},
+				{
+					text: 'Paid Off',
+					value: 'PAID_OFF',
+				},
+				{
+					text: 'Credit',
+					value: 'CREDIT',
+				},
+			],
+			onFilter: (value, record) => record.paymentStatus.startsWith(value),
 			render: tag => {
 				const enums = {
 					"NOT_YET_PAID": "red",
@@ -174,6 +194,7 @@ export const ORDERS = () => {
 			title: 'Under Payment',
 			dataIndex: 'underPayment',
 			key: 'underPayment',
+			sorter: (a, b) => a.underPayment - b.underPayment,
 			render: (_, record) => (
 				<div className="text-left">
 					{formatter.format(record.underPayment)}

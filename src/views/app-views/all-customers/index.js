@@ -56,11 +56,13 @@ export const CUSTOMERS = () => {
 			title: 'Nama',
 			dataIndex: 'customerName',
 			key: 'customerName',
+			sorter: (a, b) => a.customerName.length - b.customerName.length,
 		},
 		{
 			title: 'Perusahaan',
 			dataIndex: 'companyName',
 			key: 'companyName',
+			sorter: (a, b) => a.companyName.length - b.companyName.length,
 		},
 		{
 			title: 'No HP',
@@ -71,6 +73,7 @@ export const CUSTOMERS = () => {
 			title: 'Hutang',
 			dataIndex: 'customerDebt',
 			key: 'customerDebt',
+			sorter: (a, b) => a.customerDebt - b.customerDebt,
 			render: (_, record) => (
 				<div className="text-left">
 					{formatter.format(record.customerDebt)}

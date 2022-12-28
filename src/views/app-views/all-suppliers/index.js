@@ -11,7 +11,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 	maximumSignificantDigits: 3
 });
 
-export const PASIEN = () => {
+export const SUPPLIERS = () => {
 	const history = useHistory()
 	const dispatch = useDispatch();
 	const {
@@ -55,10 +55,18 @@ export const PASIEN = () => {
 			title: 'Nama',
 			dataIndex: 'supplierName',
 			key: 'supplierName',
+			sorter: (a, b) => a.supplierName.length - b.supplierName.length,
 		},
 		{
 			title: 'Hutang',
 			dataIndex: 'totalDebt',
+			sorter: (a, b) => a.totalDebt - b.totalDebt,
+			// filters: [
+			// 	{
+			// 		text: 'Lunas',
+            //         value: record.totalDebt
+			// 	}
+			// ],
 			render: (_, record) => (
 				<div className="text-left">
 					{formatter.format(record.totalDebt)}
@@ -66,20 +74,39 @@ export const PASIEN = () => {
 			),
 		},
 		{
-			title: () => <div className="text-center">Detail</div>,
-			key: 'status',
+			title: 'Jumlah Bayar Hutang',
+			dataIndex: 'amountPayDebt',
+			sorter: (a, b) => a.amountPayDebt - b.amountPayDebt,
 			render: (_, record) => (
-				<div className="text-center">
-					<a type="primary" style={{ width: "70%" }} onClick={() => {
-						history.push({
-							pathname: '/app/detail-history',
-							id: record._id,
-							isAddNew:false
-						})
-					}} >Detail</a>
+				<div className="text-left">
+					{formatter.format(record.amountPayDebt)}
 				</div>
 			),
 		},
+		{
+			title: 'Tanggal Bayar Hutang',
+			dataIndex: 'payDebtDate',
+			render: (_, record) => (
+				<div className="text-left">
+					{record.payDebtDate ? record.payDebtDate: "Belum ada pembayaran"}
+				</div>
+			),
+		},
+		// {
+		// 	title: () => <div className="text-center">Detail</div>,
+		// 	key: 'status',
+		// 	render: (_, record) => (
+		// 		<div className="text-center">
+		// 			<a type="primary" style={{ width: "70%" }} onClick={() => {
+		// 				history.push({
+		// 					pathname: '/app/detail-history',
+		// 					id: record._id,
+		// 					isAddNew:false
+		// 				})
+		// 			}} >Detail</a>
+		// 		</div>
+		// 	),
+		// },
 		// {
 		// 	title: () => <div className="text-center">Delete</div>,
 		// 	key: 'status',
@@ -131,4 +158,4 @@ export const PASIEN = () => {
 }
 
 
-export default withRouter(PASIEN);
+export default withRouter(SUPPLIERS);

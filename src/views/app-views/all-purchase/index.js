@@ -119,8 +119,8 @@ export const PEMBELIAN = () => {
 	const tableColumns = [
 		{
 			title: 'Supplier',
-			dataIndex: 'supplierId',
-			key: 'supplierId',
+			dataIndex: 'supplierName',
+			key: 'supplierName',
 			render: (_, record) => (
 				<>{record.suppliers?.supplierName}</>
 			),
@@ -129,11 +129,13 @@ export const PEMBELIAN = () => {
 			title: 'Product Name',
 			dataIndex: 'productName',
 			key: 'productName',
+			sorter: (a, b) => a.productName.length - b.productName.length,
 		},
 		{
 			title: 'Harga',
 			dataIndex: 'price',
 			key: 'price',
+			sorter: (a, b) => a.price - b.price,
 			render: (_, record) => (
 				<div className="text-left">
 					{formatter.format(record.price)}
@@ -149,6 +151,7 @@ export const PEMBELIAN = () => {
 			title: 'Total',
 			dataIndex: 'price',
 			key: 'total',
+			sorter: (a, b) => a.total - b.total,
 			render: (_, record) => (
 				<div className="text-left">
 					{formatter.format(record.total)}

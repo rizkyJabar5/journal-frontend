@@ -3,7 +3,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
-import { fetchSumStore, fetchSumLedger } from 'redux/features/reports';
+import { Area } from '@ant-design/plots';
+import { fetchSumStore, fetchSumLedger, fetchExpenseSuppliers } from 'redux/features/reports';
 
 const formatter = new Intl.NumberFormat('en-US', {
 	style: 'currency',
@@ -12,6 +13,18 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 export const REPORTS = () => {
+
+	const [data, setData] = useState([]);
+
+	//   const expense = useCallback(async (id) => {
+	// 	try {
+	// 		const resp = await dispatch(fetchExpenseSuppliers(id)).unwrap()
+	// 		setData(resp)
+	// 	} catch (error) {
+	// 		console.log(error)
+	// 		message.error(error?.message || 'Failed to delete data')
+	// 	}
+	// }, [dispatch])
 
 	const dispatch = useDispatch();
 	const {
@@ -29,6 +42,8 @@ export const REPORTS = () => {
 		try {
 			await dispatch(fetchSumStore()).unwrap()
 			await dispatch(fetchSumLedger()).unwrap()
+			const resp = await dispatch(fetchExpenseSuppliers()).unwrap()
+			setData(resp)
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
 		}
@@ -36,7 +51,36 @@ export const REPORTS = () => {
 
 	useEffect(() => {
 		getData()
+		// asyncFetch()
 	}, [])
+
+	const config = {
+		data,
+		xField: 'date',
+		yField: 'amount',
+		xAxis: {
+		  range: [0, 1],
+		  tickCount: 30,
+		},
+		areaStyle: () => {
+		  return {
+			fill: 'l(270) 0:#ffffff 0.5:#7ec2f3 1:#1890ff',
+		  };
+		},
+		slider: {
+			start: 0.1,
+			end: 0.9,
+		  },
+		// seriesField: 'date',
+		smooth: true,
+		// isStack: true,
+		// meta:{
+		// 	amount: {
+		// 		min: 0,
+		// 		max: 999
+		// 	}
+		// }
+	  };
 
 	return (
 		<>
@@ -50,57 +94,65 @@ export const REPORTS = () => {
 							</Col>
 						</Row>
 						<Row gutter={24}>
+							<Col xs={24} sm={24} md={24} lg={24} xl={24}>
+								<h2>Info Store</h2>
+							</Col>
 							<Col xs={24} sm={24} md={24} lg={24}>
+								
 								<Row gutter={16}>
-									<Col xs={24} sm={24} md={24} lg={12} xl={12}>
-										<Row gutter={12} justify='center'>
-											<h2>Store Summary</h2>
-										</Row>
+									<Col xs={12} sm={12} md={12} lg={12} xl={12}>
 										<StatisticWidget
-											style={{ textAlign: "center" }}
+											style={{ textAlign: "Left" }}
 											title={'Total Products'}
 											value={store.totalProducts}
 										/>
-										<StatisticWidget
-											style={{ textAlign: "center" }}
-											title={'Gross Sales Today'}
-											value={formatter.format(store.grossSalesToday)}
-										/>
+									</Col>
+									<Col xs={12} sm={12} md={12} lg={12} xl={12}>
 										<StatisticWidget
 											style={{ textAlign: "center" }}
 											title={'Total Customers'}
 											value={store.totalCustomers}
 										/>
-										<StatisticWidget
-											style={{ textAlign: "center" }}
-											title={'Total Products'}
-											value={store.totalProducts}
-										/>
-									</Col>
-									<Col xs={24} sm={24} md={24} lg={12} xl={12}>
-										<Row gutter={12} justify='center'>
-											<h2>Ledger Summary</h2>
-										</Row>
-										<StatisticWidget
-											style={{ textAlign: "center" }}
-											title={'Account Receiveable'}
-											value={formatter.format(ledger.accountReceivable)}
-										/>
-										<StatisticWidget
-											style={{ textAlign: "center" }}
-											title={'Debt Store'}
-											value={formatter.format(ledger.debtStore)}
-										/>
-										<StatisticWidget
+									</Col>								
+								</Row>
+							</Col>
+						</Row>
+						<Row gutter={24}>
+							<Col xs={24} sm={24} md={24} lg={24} xl={24}>
+								<h2>Debts & Receivables</h2>
+							</Col>
+							<Col xs={12} sm={12} md={12} lg={12} xl={12}>
+								<StatisticWidget
+									style={{ textAlign: "center" }}
+									title={'Account Receiveable'}
+									value={formatter.format(ledger.accountReceivable)}
+								/>
+								<StatisticWidget
+									style={{ textAlign: "center" }}
+									title={'Gross Sales Today'}
+									value={formatter.format(store.grossSalesToday)}
+								/>
+							</Col>
+							<Col xs={12} sm={12} md={12} lg={12} xl={12}>
+								<StatisticWidget
+									style={{ textAlign: "center" }}
+									title={'Debt Store'}
+									value={formatter.format(ledger.debtStore)}
+								/>
+								<StatisticWidget
+									style={{ textAlign: "center" }}
+									title={'Total Gross Sales'}
+									value={formatter.format(ledger.totalGrossSales)}
+								/>
+							</Col>
+										
+										
+										{/* <StatisticWidget
 											style={{ textAlign: "center" }}
 											title={'Total Expense'}
 											value={formatter.format(ledger.totalExpense)}
 										/>
-										<StatisticWidget
-											style={{ textAlign: "center" }}
-											title={'Total Gross Sales'}
-											value={formatter.format(ledger.totalGrossSales)}
-										/>
+										
 										<StatisticWidget
 											style={{ textAlign: "center" }}
 											title={'Total Net Sales'}
@@ -110,9 +162,34 @@ export const REPORTS = () => {
 											style={{ textAlign: "center" }}
 											title={'Total Revenue'}
 											value={formatter.format(ledger.totalRevenue)}
+										/> */}
+						</Row>
+						<Row gutter={24}>
+							<Col xs={12} sm={12} md={12} lg={12}>
+								<StatisticWidget
+											style={{ textAlign: "left" }}
+											title={'Net Sales in Month'}
+											value={<Area {...config} />}
 										/>
-									</Col>
-								</Row>
+									
+							</Col>
+							<Col xs={12} sm={12} md={12} lg={12}>
+								<StatisticWidget
+											style={{ textAlign: "left" }}
+											title={'Expense in month'}
+											value={<Area {...config} />}
+										/>
+									
+							</Col>
+						</Row>
+						<Row gutter={24}>
+							<Col xs={24} sm={24} md={24} lg={24}>
+								<StatisticWidget
+											style={{ textAlign: "left" }}
+											title={'Total Revenue'}
+											value={<Area {...config} />}
+										/>
+									
 							</Col>
 						</Row>
 					</>

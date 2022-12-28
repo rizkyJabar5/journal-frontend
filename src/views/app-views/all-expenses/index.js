@@ -125,19 +125,13 @@ export const EXPENSES = () => {
 	const tableColumns = [
 		{
 			title: 'ID',
-			dataIndex: 'id',
-			key: 'id',
+			dataIndex: 'expenseId',
+			key: 'expenseId',
 		},
 		{
-			title: () => <div className="text-center">Tanggal</div>,
-			key: 'createdAt',
-			render: (_, record) => (
-				<div className="text-center">
-					{
-						new Date(record.createdAt).toDateString()
-					}
-				</div>
-			),
+			title: 'Created Date',
+			key: 'createdDate',
+			dataIndex: 'createdDate',
 		},
 		{
 			title: 'Created By',
@@ -148,6 +142,7 @@ export const EXPENSES = () => {
 			title: 'Amount',
 			dataIndex: 'amount',
 			key: 'amount',
+			sorter: (a, b) => a.amount - b.amount,
 			render: (_, record) => (
 				<div className="text-left">
 					{formatter.format(record.amount)}
@@ -155,9 +150,14 @@ export const EXPENSES = () => {
 			),
 		},
 		{
-			title: 'Keterangan',
-			dataIndex: 'additionalInformation',
-			key: 'additionalInformation',
+			title: 'Additional Info',
+			dataIndex: 'additionalInfo',
+			key: 'additionalInfo',
+		},
+		{
+			title: 'Supplier Name',
+			dataIndex: 'supplierName',
+			key: 'supplierName',
 		},
 		{
 			title: 'Pay For',

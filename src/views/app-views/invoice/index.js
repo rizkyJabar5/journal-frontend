@@ -6,6 +6,7 @@ import { fetchOneOrder } from "redux/features/orders"
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { InvoiceNumber } from 'invoice-number'
 
 const { Column } = Table;
 
@@ -22,12 +23,15 @@ export const INVOICE = () => {
 		return total
 	}
 
+	let year = new Date().getFullYear()
+	let month = new Date().getMonth()
+
 	const getData = useCallback(async (id) => {
 		try {
 			await dispatch(fetchOneOrder(id)).unwrap().then(data => {
 				const dataSurat = data.data
-				console.log(dataSurat.detailOfOrderProducts)
 				setOrder({
+					id: dataSurat.id,
 					orderId: dataSurat.orderId,
 					deliveryDate: dataSurat.deliveryDate,
 					deliveryTime: dataSurat.deliveryTime,
@@ -54,7 +58,6 @@ export const INVOICE = () => {
 	const [items, setItems] = useState([])
 
 	useEffect(() => {
-		console.log(location.id)
 		if (location.id) {
 			getData(location.id)
 		}
@@ -78,7 +81,7 @@ export const INVOICE = () => {
 						</address>
 					</div>
 					<div className="mt-3 text-right">
-						<h2 className="mb-1 font-weight-semibold">No Surat {order.orderId}</h2>
+						<h2 className="mb-1 font-weight-semibold">No Surat. Inv/Qs-{year}.{month + 1}.{order.id}</h2>
 						<p>{order.deliveryDate}</p>
 						<address>
 							<p>

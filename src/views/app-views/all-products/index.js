@@ -26,7 +26,7 @@ export const PRODUCTS = (props) => {
 
 	const deleteData = useCallback(async (id) => {
 		try {
-			await dispatch(deleteProduct(id)).unwrap
+			await dispatch(deleteProduct(id)).unwrap()
 			getData()
 		} catch (error) {
 			console.log(error)
@@ -53,11 +53,11 @@ export const PRODUCTS = (props) => {
 	}, [])
 
 	const tableColumns = [
-		{
-			title: 'ID Produk',
-			dataIndex: 'productId',
-			key: 'productId',
-		},
+		// {
+		// 	title: 'ID Produk',
+		// 	dataIndex: 'productId',
+		// 	key: 'productId',
+		// },
 		{
 			title: 'Gambar',
 			key: 'status',
@@ -71,11 +71,13 @@ export const PRODUCTS = (props) => {
 			title: 'Nama',
 			dataIndex: 'productName',
 			key: 'productName',
+			sorter: (a, b) => a.productName.length - b.productName.length,
 		},
 		{
 			title: 'Harga',
 			dataIndex: 'price',
 			key: 'price',
+			sorter: (a, b) => a.price - b.price,
 			render: (_, record) => (
 				<div className="text-left">
 					{formatter.format(record.price)}
@@ -86,6 +88,29 @@ export const PRODUCTS = (props) => {
 			title: 'Category',
 			dataIndex: 'categoryName',
 			key: 'categoryName',
+			filters: [
+				{
+				  text: 'Bouquet',
+				  value: 'Bouquet',
+				},
+				{
+				  text: 'Bunga Papan',
+				  value: 'Bunga Papan',
+				},
+				{
+					text: 'Bunga Meja',
+					value: 'Bunga Meja',
+				},
+				{
+					text: 'Bunga Standing',
+					value: 'Bunga Standing',
+				},
+				{
+					text: 'Dried',
+					value: 'Dried',
+				},
+			  ],
+			  onFilter: (value, record) => record.categoryName.startsWith(value),
 		},
 		{
 			title: () => <div className="text-center">Detail</div>,
