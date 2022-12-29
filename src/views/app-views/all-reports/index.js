@@ -56,7 +56,7 @@ export const REPORTS = () => {
 
 	const config = {
 		data,
-		xField: 'date',
+		xField: 'createdDate',
 		yField: 'amount',
 		xAxis: {
 		  range: [0, 1],
@@ -71,7 +71,7 @@ export const REPORTS = () => {
 			start: 0.1,
 			end: 0.9,
 		  },
-		// seriesField: 'date',
+		seriesField: 'supplierName',
 		smooth: true,
 		// isStack: true,
 		// meta:{
