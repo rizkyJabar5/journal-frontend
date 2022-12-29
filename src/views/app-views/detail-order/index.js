@@ -40,9 +40,8 @@ export const DETAILPRODUCT = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [quantity, setQuantity] = React.useState(0);
   const [allCustomers, setAllCustomers] = useState([])
-  const [date, setDate] = useState()
-  const [time, setTime] = useState()
-  const [address, setAddress] = useState()
+  const [date, setDate] = useState("")
+  const [time, setTime] = useState("")
   const [selectedProduct, setSelectedProduct] = useState({})
   const [penerima, setPenerima] = useState({})
   const [selectedProducts, setSelectedProducts] = useState([])
@@ -156,21 +155,14 @@ export const DETAILPRODUCT = () => {
   };
 
   const createOrder = async () => {
-		const userData = JSON.parse(localStorage.getItem('token'));
 
     const config = {
       headers: {
-        'Authorization': 'Bearer ' + userData.accessToken,
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
         'Access-Control-Allow-Origin': "*",
         'Access-Control-Allow-Methods': "*"
       }
     }
-
-    setAddress({
-      "street": penerima.alamatPenerima,
-      "city": penerima.city,
-      "zip": penerima.zip
-    },)
 
     await axios.post("https://journal-florist-staging.herokuapp.com/api/v1/orders/add-order", {
       "customerId": selectedCustomer,
@@ -178,7 +170,13 @@ export const DETAILPRODUCT = () => {
       "paymentAmount": penerima.paymentAmount,
       "orderStatus": orderStatus,
       "recipientName": penerima.namaPenerima,
-      "address": address,
+      "address": {
+        "street": penerima.alamatPenerima,
+        "city": penerima.city,
+        // "province": penerima.province,
+        // "country": penerima.country,
+        "zip": penerima.zip
+      },
       "dateDelivery": date,
       "timeDelivery": time
     }, config)
@@ -204,7 +202,6 @@ export const DETAILPRODUCT = () => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-
     setPenerima({
       ...penerima,
       [name]: value

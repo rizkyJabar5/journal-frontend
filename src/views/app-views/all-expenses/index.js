@@ -63,11 +63,10 @@ export const EXPENSES = () => {
 	}
 
 	const tambahPengeluaran = async (values) => {
-		const userData = JSON.parse(localStorage.getItem('token'));
 
 		const config = {
 			headers: {
-				'Authorization': 'Bearer ' + userData.accessToken,
+				'Authorization': 'Bearer ' + localStorage.getItem('token'),
 				'Access-Control-Allow-Origin': "*",
 				'Access-Control-Allow-Methods': "*",
 				"Content-Type": "multipart/form-data"

@@ -16,6 +16,16 @@ export const REPORTS = () => {
 
 	const [data, setData] = useState([]);
 
+	//   const expense = useCallback(async (id) => {
+	// 	try {
+	// 		const resp = await dispatch(fetchExpenseSuppliers(id)).unwrap()
+	// 		setData(resp)
+	// 	} catch (error) {
+	// 		console.log(error)
+	// 		message.error(error?.message || 'Failed to delete data')
+	// 	}
+	// }, [dispatch])
+
 	const dispatch = useDispatch();
 	const {
 		store,
@@ -33,7 +43,6 @@ export const REPORTS = () => {
 			await dispatch(fetchSumStore()).unwrap()
 			await dispatch(fetchSumLedger()).unwrap()
 			const resp = await dispatch(fetchExpenseSuppliers()).unwrap()
-			console.log(resp)
 			setData(resp)
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
@@ -47,7 +56,7 @@ export const REPORTS = () => {
 
 	const config = {
 		data,
-		xField: 'createdDate',
+		xField: 'date',
 		yField: 'amount',
 		xAxis: {
 		  range: [0, 1],

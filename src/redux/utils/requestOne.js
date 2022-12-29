@@ -9,9 +9,9 @@ export const service = axios.create({
 })
 
 service.interceptors.request.use((config) => {
-	const userData = JSON.parse(localStorage.getItem('token'));
+	const token = localStorage.getItem('token');
 	config['headers'] = {
-		'Authorization': 'Bearer ' + userData.accessToken,
+		'Authorization': 'Bearer ' + token,
 		'Access-Control-Allow-Origin': "*",
 		'Access-Control-Allow-Methods': "*",
 		'accept': '*/*'

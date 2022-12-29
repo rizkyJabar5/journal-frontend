@@ -38,12 +38,12 @@ export const LoginForm = (props) => {
 			}
 
 			const user = await dispatch(login(credentials)).unwrap()
-			const userData = JSON.stringify(user)
+			const token = user.accessToken
 
-			console.log(userData)
+			console.log(token)
 
-			if(userData){
-				getUserData(userData)
+			if(token){
+				getUserData(token)
 			}else{
 				dispatch(showAuthMessage(user.message))
 			}
