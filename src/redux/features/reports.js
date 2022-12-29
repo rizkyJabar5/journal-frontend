@@ -21,6 +21,12 @@ export const getExpenseSupplier = async () =>
 		method: "GET",
 	});
 
+export const getSales = async () =>
+	apiRequest({
+		path: `${URLS.SALES}?page=1&limit=50`,
+		method: "GET",
+	});
+
 export const fetchSumStore = createAsyncThunk(
 	'Report/fetchSumStore',
 	async (_, { rejectWithValue }) => {
@@ -54,7 +60,6 @@ export const fetchExpenseSuppliers = createAsyncThunk(
 		try {
 			return await getExpenseSupplier()
 			.then((res) => {
-				console.log(res.data.data)
 				return res.data.data
 			})
 			.catch((err) => {
@@ -67,12 +72,18 @@ export const fetchExpenseSuppliers = createAsyncThunk(
 	}
 )
 
-export const fetchOneReport = createAsyncThunk(
+export const fetchSales = createAsyncThunk(
 	'Report/fetchOneReport',
 	async (id, { rejectWithValue }) => {
 		try {
-			const response = await request('get', `${URLS.Report}/${id}`)
-			return response.data
+			return await getSales()
+			.then((res) => {
+				return res.data.data.content
+			})
+			.catch((err) => {
+				return rejectWithValue(err)
+			})
+
 		} catch (error) {
 			return rejectWithValue(error)
 		}
@@ -117,7 +128,9 @@ const initialState = {
 	selected: {},
 	selectedRows: [],
 	store: [],
-	ledger: []
+	ledger: [],
+	expenseSuppliers: [],
+    sales: []
 }
 
 const loadingReducer = (fieldName, status) => (state) => {
@@ -144,7 +157,7 @@ export const ReportSlice = createSlice({
 		builder
 			.addCase(fetchExpenseSuppliers.pending, startLoadingQuery)
 			.addCase(fetchExpenseSuppliers.fulfilled, (state, action) => {
-				state.list = action.payload
+				state.expenseSuppliers = action.payload
 				state.loading.query = false
 			})
 			.addCase(fetchExpenseSuppliers.rejected, stopLoadingQuery)
@@ -166,11 +179,11 @@ export const ReportSlice = createSlice({
 			.addCase(fetchSumLedger.rejected, stopLoadingQuery)
 
 		builder
-			.addCase(fetchOneReport.pending, startLoadingQuery)
-			.addCase(fetchOneReport.rejected, stopLoadingQuery)
-			.addCase(fetchOneReport.fulfilled, (state, action) => {
+			.addCase(fetchSales.pending, startLoadingQuery)
+			.addCase(fetchSales.rejected, stopLoadingQuery)
+			.addCase(fetchSales.fulfilled, (state, action) => {
 				state.loading.query = false
-				state.selected = action.payload
+				state.sales = action.payload
 			})
 		builder
 			.addCase(updateReport.pending, startLoadingQuery)

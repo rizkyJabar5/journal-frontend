@@ -12,7 +12,8 @@ const URLS = Object.freeze({
 	CATEGORY: `/categories`,
 	PURCHASE:`/purchase`,
 	USER: '/users',
-	EXPENSE: '/expenses'
+	EXPENSE: '/expenses',
+	SALES: '/sales'
 })
 
 export default URLS

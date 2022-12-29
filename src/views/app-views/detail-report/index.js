@@ -4,7 +4,7 @@ import { Button, Card, Form, Input } from 'antd';
 import { useEffect,useCallback } from 'react';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOneReport, updateReport } from "redux/features/reports"
+import { fetchSales, updateReport } from "redux/features/reports"
 
 export const DETAILPRODUCT = () => {
 
@@ -14,7 +14,7 @@ export const DETAILPRODUCT = () => {
 
   const getData = useCallback(async (id) => {
       try {
-          await dispatch(fetchOneReport(id)).unwrap()
+          await dispatch(fetchSales(id)).unwrap()
       } catch (error) {
           message.error(error?.message || 'Failed to fetch data')
       }
