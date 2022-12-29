@@ -6,8 +6,7 @@ import { fetchOneOrder } from "redux/features/orders"
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { InvoiceNumber } from 'invoice-number'
-
+	
 const { Column } = Table;
 
 export const INVOICE = () => {
