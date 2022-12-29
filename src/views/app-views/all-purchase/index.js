@@ -65,6 +65,8 @@ export const PEMBELIAN = () => {
 	}
 
 	const tambahPengeluaran = async (event) => {
+		const userData = JSON.parse(localStorage.getItem('token'));
+
 		const dataBayar = {
 			"supplierId":selectedSupplier,
 			"productName": pembelian.productName,
@@ -74,7 +76,7 @@ export const PEMBELIAN = () => {
 
 		const config = {
 			headers: {
-				'Authorization': 'Bearer ' + localStorage.getItem('token'),
+				'Authorization': 'Bearer ' + userData.accessToken,
 				'Access-Control-Allow-Origin': "*",
 				'Access-Control-Allow-Methods': "*"
 			}

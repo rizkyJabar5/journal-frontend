@@ -15,7 +15,7 @@ export const apiRequest = async ({
         : `https://journal-florist-staging.herokuapp.com/api/${apiVersion}`;
     const defaultParams = {};
     const mergedParams = { ...defaultParams, ...params };
-    let token = localStorage.getItem('token');
+    let userData = JSON.parse(localStorage.getItem('token'));
 
     const config = {
         method,
@@ -26,7 +26,7 @@ export const apiRequest = async ({
             "Access-Control-Allow-Headers":
                 "Origin, X-Requested-With, Content-Type, Accept",
             "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
-            Authorization: token ? 'Bearer ' + token : "",
+            Authorization: userData ? 'Bearer ' + userData.accessToken : "",
         },
     };
 

@@ -16,13 +16,13 @@ const PUBLIC_REQUEST_KEY = 'public-request'
 
 // API Request interceptor
 service.interceptors.request.use(config => {
-	const jwtToken = localStorage.getItem(AUTH_TOKEN)
+	const userData = JSON.parse(localStorage.getItem(AUTH_TOKEN))
 	
-  if (jwtToken) {
-    config.headers[TOKEN_PAYLOAD_KEY] = jwtToken
+  if (userData) {
+    config.headers[TOKEN_PAYLOAD_KEY] = userData
   }
 
-  if (!jwtToken && !config.headers[PUBLIC_REQUEST_KEY]) {
+  if (!userData && !config.headers[PUBLIC_REQUEST_KEY]) {
 		history.push(ENTRY_ROUTE)
 		window.location.reload();
   }

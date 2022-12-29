@@ -73,7 +73,7 @@ const initialState = {
   message: '',
   showMessage: false,
   redirect: '',
-  token: localStorage.getItem(AUTH_TOKEN),
+  token: JSON.parse(localStorage.getItem(AUTH_TOKEN)),
   user: {}
 }
 
@@ -91,7 +91,7 @@ export const authSlice = createSlice({
 		authenticated: (state, action) => {
 			state.loading = false;
 			state.redirect = '/';
-			state.token = action.payload.token;
+			state.token = action.payload.token.accessToken;
 			state.user = action.payload.user;
 		},
 		showAuthMessage: (state, action) => {

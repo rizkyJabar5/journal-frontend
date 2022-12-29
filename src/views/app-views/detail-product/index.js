@@ -55,10 +55,12 @@ export const DETAILPRODUCT = () => {
   };
 
   const onFinish = (event) => {
+		const userData = JSON.parse(localStorage.getItem('token'));
+
     const config = {
       headers: {
         'content-type': 'multipart/form-data',
-        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+        'Authorization': 'Bearer ' + userData.accessToken,
         'Access-Control-Allow-Origin': "*",
         'Access-Control-Allow-Methods': "*"
       }

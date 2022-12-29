@@ -41,9 +41,11 @@ export const ORDERS = () => {
 			"paymentAmount": amountCredit
 		}
 
+		const userData = JSON.parse(localStorage.getItem('token'))
+
 		const config = {
 			headers: {
-				'Authorization': 'Bearer ' + localStorage.getItem('token'),
+				'Authorization': 'Bearer ' + userData.accessToken,
 				'Access-Control-Allow-Origin': "*",
 				'Access-Control-Allow-Methods': "*"
 			}

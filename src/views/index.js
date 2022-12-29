@@ -21,8 +21,8 @@ export const Views = () => {
     try {
       if (localStorage.getItem('token')) {
         // Set auth token header auth
-        const token = localStorage.getItem('token');
-        const decoded = jwt_decode(token);
+	      const userData = JSON.parse(localStorage.getItem('token'));
+        const decoded = jwt_decode(userData.accessToken);
         const currentTime = Date.now() / 1000; // to get in milliseconds
         // dispatch(getUserProfile(decoded._id))
         //   .unwrap()
