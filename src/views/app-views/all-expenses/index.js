@@ -158,6 +158,41 @@ export const EXPENSES = () => {
 			title: 'Supplier Name',
 			dataIndex: 'supplierName',
 			key: 'supplierName',
+			filters: [
+				{
+					text: 'Pak Miskan',
+					value: 'Pak Miskan',
+				},
+				{
+					text: 'Freesia Florist',
+					value: 'Freesia Florist',
+				},
+				{
+					text: 'Pak Umar',
+					value: 'Pak Umar',
+				},
+				{
+					text: 'Omni Florist',
+					value: 'Omni Florist',
+				},
+				{
+					text: 'WKF Wahana Maxima Flora',
+					value: 'WKF Wahana Maxima Flora',
+				},
+				{
+					text: 'Pak Paat',
+					value: 'Pak Paat',
+				},
+				{
+					text: 'Mantab',
+					value: 'Mantab',
+				},
+				{
+					text: 'Pak Narno',
+					value: 'Pak Narno',
+				},
+			],
+			onFilter: (value, record) => record.supplierName.startsWith(value),
 		},
 		{
 			title: 'Pay For',

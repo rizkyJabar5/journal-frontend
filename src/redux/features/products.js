@@ -37,6 +37,18 @@ export const fetchOneProduct = createAsyncThunk(
 	}
 )
 
+export const searchProduct = createAsyncThunk(
+	'Product/searchProduct',
+	async (q, { rejectWithValue }) => {
+		try {
+			const response = await request('get', `${URLS.PRODUCT}/product?name=${q}`)
+			return response
+		} catch (error) {
+			return rejectWithValue(error)
+		}
+	}
+)
+
 export const updateProduct = createAsyncThunk(
 	'Product/updateProduct',
 	async (credentials, { rejectWithValue }) => {
@@ -124,6 +136,13 @@ export const ProductSlice = createSlice({
 			.addCase(fetchOneProduct.pending, startLoadingQuery)
 			.addCase(fetchOneProduct.rejected, stopLoadingQuery)
 			.addCase(fetchOneProduct.fulfilled, (state, action) => {
+				state.loading.query = false
+				state.selected = action.payload
+			})
+		builder
+			.addCase(searchProduct.pending, startLoadingQuery)
+			.addCase(searchProduct.rejected, stopLoadingQuery)
+			.addCase(searchProduct.fulfilled, (state, action) => {
 				state.loading.query = false
 				state.selected = action.payload
 			})

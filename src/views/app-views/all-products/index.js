@@ -1,9 +1,11 @@
-import { Button, Card, Col, Row, Table, message, } from 'antd';
-import React, { useEffect, useState, useCallback } from "react";
+import { Button, Card, Col, Row, Table, message, Input, Space } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import AvatarStatus from 'components/shared-components/AvatarStatus';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import { fetchAllProduct, deleteProduct } from 'redux/features/products';
+import Highlighter from 'react-highlight-words';
 
 const formatter = new Intl.NumberFormat('en-US', {
 	style: 'currency',
@@ -12,6 +14,10 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 export const PRODUCTS = (props) => {
+	const [searchText, setSearchText] = useState('');
+	const [searchedColumn, setSearchedColumn] = useState('');
+	const searchInput = useRef(null);
+  
 	const history = useHistory()
 	const dispatch = useDispatch();
 	const {
@@ -23,6 +29,17 @@ export const PRODUCTS = (props) => {
 			mutation: loadingMutation
 		}
 	} = useSelector(state => state.products)
+
+	const handleSearch = (selectedKeys, confirm, dataIndex) => {
+		confirm();
+		setSearchText(selectedKeys[0]);
+		setSearchedColumn(dataIndex);
+	  };
+
+	const handleReset = (clearFilters) => {
+		clearFilters();
+		setSearchText('');
+	};
 
 	const deleteData = useCallback(async (id) => {
 		try {
@@ -39,6 +56,8 @@ export const PRODUCTS = (props) => {
 		limit: 30
 	}
 
+	
+
 	const getData = useCallback(async () => {
 		try {
 			await dispatch(fetchAllProduct(params)).unwrap()
@@ -51,6 +70,101 @@ export const PRODUCTS = (props) => {
 	useEffect(() => {
 		getData()
 	}, [])
+
+	const getColumnSearchProps = (dataIndex) => ({
+		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+		  <div
+			style={{
+			  padding: 8,
+			}}
+			onKeyDown={(e) => e.stopPropagation()}
+		  >
+			<Input
+			  ref={searchInput}
+			  placeholder={`Search ${dataIndex}`}
+			  value={selectedKeys[0]}
+			  onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+			  onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+			  style={{
+				marginBottom: 8,
+				display: 'block',
+			  }}
+			/>
+			<Space>
+			  <Button
+				type="primary"
+				onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+				icon={<SearchOutlined />}
+				size="small"
+				style={{
+				  width: 90,
+				}}
+			  >
+				Search
+			  </Button>
+			  <Button
+				onClick={() => clearFilters && handleReset(clearFilters)}
+				size="small"
+				style={{
+				  width: 90,
+				}}
+			  >
+				Reset
+			  </Button>
+			  <Button
+				type="link"
+				size="small"
+				onClick={() => {
+				  confirm({
+					closeDropdown: false,
+				  });
+				  setSearchText(selectedKeys[0]);
+				  setSearchedColumn(dataIndex);
+				}}
+			  >
+				Filter
+			  </Button>
+			  <Button
+				type="link"
+				size="small"
+				onClick={() => {
+				  close();
+				}}
+			  >
+				close
+			  </Button>
+			</Space>
+		  </div>
+		),
+		filterIcon: (filtered) => (
+		  <SearchOutlined
+			style={{
+			  color: filtered ? '#1890ff' : undefined,
+			}}
+		  />
+		),
+		onFilter: (value, record) =>
+		  record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+		onFilterDropdownOpenChange: (visible) => {
+		  if (visible) {
+			setTimeout(() => searchInput.current?.select(), 100);
+		  }
+		},
+		render: (text) =>
+		  searchedColumn === dataIndex ? (
+			<Highlighter
+			  highlightStyle={{
+				backgroundColor: '#ffc069',
+				padding: 0,
+			  }}
+			  searchWords={[searchText]}
+			  autoEscape
+			  textToHighlight={text ? text.toString() : ''}
+			/>
+		  ) : (
+			text
+		  ),
+	  });
 
 	const tableColumns = [
 		// {
@@ -72,6 +186,8 @@ export const PRODUCTS = (props) => {
 			dataIndex: 'productName',
 			key: 'productName',
 			sorter: (a, b) => a.productName.length - b.productName.length,
+    		width: '40%',
+			...getColumnSearchProps('productName'),
 		},
 		{
 			title: 'Harga',
@@ -146,10 +262,24 @@ export const PRODUCTS = (props) => {
 				{props.noTitle ? (
 					<div></div>
 				) : (
-					(<Col xs={24} sm={24} md={24} lg={24}>
+					(
+					<Col xs={24} sm={24} md={24} lg={24}>
 						<h2>Daftar Produk</h2>
-						<p>Daftar semua data yang tersedia.</p>
-					</Col>)
+						<Row gutter={24}>
+							<Col xs={12} sm={12} md={12} lg={12}>
+								<p>Daftar semua data yang tersedia.</p>
+							</Col>
+							{/* <Col xs={12} sm={12} md={12} lg={12}>
+								<Search
+            						placeholder="Search Product"
+            						// onChange={getSearchValue}
+           							onSearch={search}
+            						enterButton
+         							 />
+							</Col> */}
+						</Row>
+					</Col>
+					)
 				)}
 			</Row>
 			<Row gutter={24}>

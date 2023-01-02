@@ -19,7 +19,7 @@
     "@reduxjs/toolkit": "^1.8.0",
     "@vx/pattern": "0.0.195",
     "ajv": "^6.8.1",
-    "antd": "~4.6.0",
+    "antd": "~4.17.0",
     "apexcharts": "^3.33.0",
     "axios": "^0.21.4",
     "chart.js": "^2.9.3",
