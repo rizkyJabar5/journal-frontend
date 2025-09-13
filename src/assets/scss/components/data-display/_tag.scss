@@ -1,21 +1,27 @@
+@use "sass:color";
+@use "sass:list";
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-tag {
     margin-right: 0.625rem;
     display: inline-block;
-    line-height: $tag-line-height;
-    height: $tag-height;
-    padding: 0 $tag-spacer;
-    border-radius: $border-radius-sm;
-    border: 1px solid $border-color;
-    background: $tag-bg;
-    font-size: $tag-font-size;
-    color : $body-color;
+    line-height: variables.$tag-line-height;
+    height: variables.$tag-height;
+    padding: 0 variables.$tag-spacer;
+    border-radius: variables.$border-radius-sm;
+    border: 1px solid variables.$border-color;
+    background: variables.$tag-bg;
+    font-size: variables.$tag-font-size;
+    color : variables.$body-color;
 
     .anticon-cross {
         display: inline-block;
         cursor: pointer;
         margin-left: 3px;
         transition: all .3s;
-        color: rgba($body-color,.45);
+        color: rgba(variables.$body-color,.45);
         font-weight: 700;
     }
 }
@@ -25,20 +31,20 @@
     border-color: transparent;
     
     &:active {
-        background-color: darken($tag-theme-color, 10%);
+        background-color: color.adjust(variables.$tag-theme-color, $lightness: -10%);
         color: $white;
     }
     
     &:not(.ant-tag-checkable-checked){
 
         &:hover { 
-            color: $tag-theme-color;
+            color: variables.$tag-theme-color;
         }
     }
 }
 
 .ant-tag-checkable-checked {
-    background-color: $tag-theme-color;
+    background-color: variables.$tag-theme-color;
     color: $white
 }
 
@@ -55,11 +61,11 @@
     }
 }    
 
-@each $tone in $tone-loop {
+@each $tone in theme.$tone-loop {
 
-    .ant-tag-#{nth($tone, 1)} {
-        color: #{nth($tone, 2)};
-        background: #{nth($tone, 3)};
+    .ant-tag-#{list.nth($tone, 1)} {
+        color: #{list.nth($tone, 2)};
+        background: #{list.nth($tone, 3)};
         border-color: transparent;
         font-weight: 500;
     }
@@ -68,14 +74,14 @@
 .m-b-0 {
 
     .ant-tag {
-        margin-bottom: 0px;
+        margin-bottom: 0;
     }    
 }
 
 .m-r-0 {
 
     .ant-tag {
-        margin-right: 0px;
+        margin-right: 0;
     }    
 }
 

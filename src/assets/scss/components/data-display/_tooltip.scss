@@ -1,19 +1,22 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 
 .ant-tooltip {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
-    z-index: $zindex-tooltip;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
+    z-index: variables.$zindex-tooltip;
 }
 
 .ant-tooltip-inner {
-    max-width: $tooltip-max-width;
-    padding: $tooltip-spacer-y $tooltip-spacer-x;
+    max-width: variables.$tooltip-max-width;
+    padding: variables.$tooltip-spacer-y variables.$tooltip-spacer-x;
     color: $white;
     text-align: left;
     text-decoration: none;
-    background-color: $tooltip-bg;
-    border-radius: $border-radius;
+    background-color: variables.$tooltip-bg;
+    border-radius: variables.$border-radius;
     box-shadow: 0 2px 8px rgba($gray-dark, 0.15);
     min-height: auto;
 }
@@ -26,51 +29,51 @@
 .ant-tooltip-placement-left,
 .ant-tooltip-placement-leftBottom,
 .ant-tooltip-placement-leftTop {
-    padding-right: $tooltip-placement-gutter;
+    padding-right: variables.$tooltip-placement-gutter;
     
     .ant-tooltip-arrow {
-        right: $tooltip-arrow-position;
+        right: variables.$tooltip-arrow-position;
         border-width: 5px 0 5px 5px;
-        border-left-color: $tooltip-bg;
+        border-left-color: variables.$tooltip-bg;
     }
 }
 
 .ant-tooltip-placement-bottom, 
 .ant-tooltip-placement-bottomLeft, 
 .ant-tooltip-placement-bottomRight {
-    padding-top: $tooltip-placement-gutter;
+    padding-top: variables.$tooltip-placement-gutter;
 
     .ant-tooltip-arrow {
-        top: $tooltip-arrow-position;
+        top: variables.$tooltip-arrow-position;
         border-width: 0 5px 5px;
-        border-bottom-color: $tooltip-bg;
+        border-bottom-color: variables.$tooltip-bg;
     }
 }
 
 .ant-tooltip-placement-right,
 .ant-tooltip-placement-rightBottom,
 .ant-tooltip-placement-rightTop {
-    padding-left: $tooltip-placement-gutter;
+    padding-left: variables.$tooltip-placement-gutter;
 
     .ant-tooltip-arrow {
-        left: $tooltip-arrow-position;
+        left: variables.$tooltip-arrow-position;
         border-width: 5px 5px 5px 0;
-        border-right-color: $tooltip-bg;
+        border-right-color: variables.$tooltip-bg;
     }
 }
 
 .ant-tooltip-placement-top,
 .ant-tooltip-placement-topLeft, 
 .ant-tooltip-placement-topRight {
-    padding-bottom: $tooltip-placement-gutter;
+    padding-bottom: variables.$tooltip-placement-gutter;
 
     .ant-tooltip-arrow {
-        bottom: $tooltip-arrow-position;
+        bottom: variables.$tooltip-arrow-position;
         border-width: 5px 5px 0;
-        border-top-color: $tooltip-bg;
+        border-top-color: variables.$tooltip-bg;
     }
 }
 
 .ant-tooltip-arrow::before {
-    background-color: $tooltip-bg;
+    background-color: variables.$tooltip-bg;
 }

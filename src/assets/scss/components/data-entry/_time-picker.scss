@@ -1,7 +1,10 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-picker-dropdown {
-    color: $body-color;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    color: variables.$body-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
     position: absolute;
 }
 
@@ -11,7 +14,7 @@
         &.ant-picker-time-panel-cell {
 
             .ant-picker-time-panel-cell-inner {
-                color: $body-color;
+                color: variables.$body-color;
 
                 &:hover {
                     background: $gray-lightest;
@@ -22,18 +25,18 @@
         &.ant-picker-time-panel-cell-selected {
 
             .ant-picker-time-panel-cell-inner {
-                color: $picker-calendar-theme-color;
-                background: rgba($picker-calendar-theme-color, 0.1);
-                font-weight: $font-weight-semibold;
+                color: variables.$picker-calendar-theme-color;
+                background: rgba(variables.$picker-calendar-theme-color, 0.1);
+                font-weight: variables.$font-weight-semibold;
 
                 &:hover {
-                    background: rgba($picker-calendar-theme-color, 0.1);
+                    background: rgba(variables.$picker-calendar-theme-color, 0.1);
                 }
             }
         }
     }
 
     &:not(:first-child) {
-        border-left: 1px solid $border-color;
+        border-left: 1px solid variables.$border-color;
     }
 }

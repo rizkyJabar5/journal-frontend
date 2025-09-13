@@ -1,11 +1,13 @@
+@use "../../variables/variables";
+
 .ant-spin {
-    font-size: $font-size-base;
-    color: $spin-color;
+    font-size: variables.$font-size-base;
+    color: variables.$spin-color;
 }   
 
 .ant-spin-dot {
     i {
-        background-color: $spin-color;
+        background-color: variables.$spin-color;
     }
 }
 

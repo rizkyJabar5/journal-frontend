@@ -1,26 +1,29 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-switch {
-    font-size: $font-size-base;
-    color: $body-color;
-    line-height: $line-height-base;
-    height: $switch-height;
-    min-width: $switch-min-width;
+    font-size: variables.$font-size-base;
+    color: variables.$body-color;
+    line-height: variables.$line-height-base;
+    height: variables.$switch-height;
+    min-width: variables.$switch-min-width;
 
     &:after {
-        width: $switch-size;
-        height: $switch-size;
-        border-radius: $switch-size;
+        width: variables.$switch-size;
+        height: variables.$switch-size;
+        border-radius: variables.$switch-size;
         background-color: $white;
     }
 
     &:before {
-        width: $switch-size;
-        height: $switch-size;
-        font-size: $switch-loading-size;
+        width: variables.$switch-size;
+        height: variables.$switch-size;
+        font-size: variables.$switch-loading-size;
     }
 }
 
 .ant-switch-checked {
-    background-color: $switch-theme-color;
+    background-color: variables.$switch-theme-color;
     
     &:after,
     &:before {
@@ -28,32 +31,32 @@
     }
 
     &:before {
-        margin-left: -$switch-size - 1px;
+        margin-left: -(variables.$switch-size) - 1px;
     }    
 }
 
 .ant-switch-small {
-    height: $switch-height-sm;
-    min-width: $switch-min-width-sm;
-    line-height: $line-height-base;
+    height: variables.$switch-height-sm;
+    min-width: variables.$switch-min-width-sm;
+    line-height: variables.$line-height-base;
    
     &:after {
-        width: $switch-size-sm;
-        height: $switch-size-sm;
-        border-radius: $switch-size-sm;
+        width: variables.$switch-size-sm;
+        height: variables.$switch-size-sm;
+        border-radius: variables.$switch-size-sm;
     }
 
     &:before {
-        width: $switch-size-sm;
-        height: $switch-size-sm;
-        font-size: $switch-loading-size-sm;
+        width: variables.$switch-size-sm;
+        height: variables.$switch-size-sm;
+        font-size: variables.$switch-loading-size-sm;
     }
 
     &.ant-switch-checked {
         &:after,
         &:before {
             left: 100%;
-            margin-right: -$switch-size-sm - 1px;
+            margin-right: -(variables.$switch-size-sm) - 1px;
         } 
     }
 
@@ -64,15 +67,15 @@
 
 .ant-switch-inner {
     color: $white;
-    font-size: $switch-font-size;
-    margin-left: $switch-size + 6px;
+    font-size: variables.$switch-font-size;
+    margin-left: variables.$switch-size + 6px;
     margin-right: 6px;
-    line-height: $switch-size;
+    line-height: variables.$switch-size;
 }
 
 .ant-switch-checked .ant-switch-inner {
     margin-left: 6px;
-    margin-right: $switch-size + 6px;
+    margin-right: variables.$switch-size + 6px;
 }
 
 .ant-switch-handle {

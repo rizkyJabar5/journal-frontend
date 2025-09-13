@@ -1,9 +1,11 @@
+@use "../variables/variables";
+
 //border
-.border         { border: $border-width solid $border-color !important; }
-.border-top     { border-top: $border-width solid $border-color !important; }
-.border-right   { border-right: $border-width solid $border-color !important; }
-.border-bottom  { border-bottom: $border-width solid $border-color !important; }
-.border-left    { border-left: $border-width solid $border-color !important; }
+.border         { border: variables.$border-width solid variables.$border-color !important; }
+.border-top     { border-top: variables.$border-width solid variables.$border-color !important; }
+.border-right   { border-right: variables.$border-width solid variables.$border-color !important; }
+.border-bottom  { border-bottom: variables.$border-width solid variables.$border-color !important; }
+.border-left    { border-left: variables.$border-width solid variables.$border-color !important; }
 
 .border-0        { border: 0 !important; }
 .border-top-0    { border-top: 0 !important; }
@@ -12,23 +14,23 @@
 .border-left-0   { border-left: 0 !important; }
 
 .rounded {
-  border-radius: $border-radius !important;
+  border-radius: variables.$border-radius !important;
 }
 .rounded-top {
-  border-top-left-radius: $border-radius !important;
-  border-top-right-radius: $border-radius !important;
+  border-top-left-radius: variables.$border-radius !important;
+  border-top-right-radius: variables.$border-radius !important;
 }
 .rounded-right {
-  border-top-right-radius: $border-radius !important;
-  border-bottom-right-radius: $border-radius !important;
+  border-top-right-radius: variables.$border-radius !important;
+  border-bottom-right-radius: variables.$border-radius !important;
 }
 .rounded-bottom {
-  border-bottom-right-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
+  border-bottom-right-radius: variables.$border-radius !important;
+  border-bottom-left-radius: variables.$border-radius !important;
 }
 .rounded-left {
-  border-top-left-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
+  border-top-left-radius: variables.$border-radius !important;
+  border-bottom-left-radius: variables.$border-radius !important;
 }
 
 .rounded-circle {

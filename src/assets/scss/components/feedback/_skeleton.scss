@@ -1,14 +1,16 @@
+@use "../../variables/variables";
+
 .ant-skeleton-content {
 
     .ant-skeleton-title {
-        background: $skeleton-color;
-        border-radius: $skeleton-radius;
+        background: variables.$skeleton-color;
+        border-radius: variables.$skeleton-radius;
     }
 
     .ant-skeleton-paragraph {
         > li {
-            background: $skeleton-color;
-            border-radius: $skeleton-radius;
+            background: variables.$skeleton-color;
+            border-radius: variables.$skeleton-radius;
         }
     }
 }
@@ -16,7 +18,7 @@
 .ant-skeleton-header {
 
     .ant-skeleton-avatar {
-        background: $skeleton-color;
+        background: variables.$skeleton-color;
     }
 }
 
@@ -24,71 +26,71 @@
 .ant-skeleton-element  {
 
     .ant-skeleton-button {
-        background: $skeleton-color;
-        border-radius: $btn-border-radius;
+        background: variables.$skeleton-color;
+        border-radius: variables.$btn-border-radius;
         width: 5.5rem;
-        height: $btn-size;
-        line-height: $btn-size;
+        height: variables.$btn-size;
+        line-height: variables.$btn-size;
 
         &.ant-skeleton-button-circle {
-            width: $btn-size;
+            width: variables.$btn-size;
         }
     }
 
     .ant-skeleton-button-sm {
         width: 4.75rem;
-        height: $btn-size-sm;
-        line-height: $btn-size-sm;
+        height: variables.$btn-size-sm;
+        line-height: variables.$btn-size-sm;
 
         &.ant-skeleton-button-circle {
-            width: $btn-size-sm;
+            width: variables.$btn-size-sm;
         }
     }
 
     .ant-skeleton-button-lg {
         width: 6.25rem;
-        height: $btn-size-lg;
-        line-height: $btn-size-lg;
+        height: variables.$btn-size-lg;
+        line-height: variables.$btn-size-lg;
 
         &.ant-skeleton-button-circle {
-            width: $btn-size-lg;
+            width: variables.$btn-size-lg;
         }
     }
 
     .ant-skeleton-avatar {
-        background: $skeleton-color;
-        width: $avatar-size;
-        height: $avatar-size;
-        line-height: $avatar-size;
+        background: variables.$skeleton-color;
+        width: variables.$avatar-size;
+        height: variables.$avatar-size;
+        line-height: variables.$avatar-size;
     }
 
     .ant-skeleton-avatar-sm {
-        width: $avatar-size-sm;
-        height: $avatar-size-sm;
-        line-height: $avatar-size-sm;
+        width: variables.$avatar-size-sm;
+        height: variables.$avatar-size-sm;
+        line-height: variables.$avatar-size-sm;
     }
 
     .ant-skeleton-avatar-lg {
-        width: $avatar-size-lg;
-        height: $avatar-size-lg;
-        line-height: $avatar-size-lg;
+        width: variables.$avatar-size-lg;
+        height: variables.$avatar-size-lg;
+        line-height: variables.$avatar-size-lg;
     }
 
     .ant-skeleton-input {
-        background: $skeleton-color;
-        height: $input-height;
-        line-height: $input-height;
-        border-radius: $border-radius;
+        background: variables.$skeleton-color;
+        height: variables.$input-height;
+        line-height: variables.$input-height;
+        border-radius: variables.$border-radius;
     }
 
     .ant-skeleton-input-sm {
-        height: $input-height-sm;
-        line-height: $input-height-sm;
+        height: variables.$input-height-sm;
+        line-height: variables.$input-height-sm;
     }
 
 
     .ant-skeleton-input-lg {
-        height: $input-height-lg;
-        line-height: $input-height-lg;
+        height: variables.$input-height-lg;
+        line-height: variables.$input-height-lg;
     }
 }

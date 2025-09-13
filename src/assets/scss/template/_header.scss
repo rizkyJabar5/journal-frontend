@@ -1,17 +1,22 @@
+@use "../mixins/responsive";
+@use "../variables/theme";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
+
 .app-header {
     position: fixed;
     width: 100%;
     left: 0;
-    z-index: $zindex-fixed;
+    z-index: variables.$zindex-fixed;
     display: flex;
-    box-shadow: $header-box-shadow;
+    box-shadow: variables.$header-box-shadow;
 
     .app-header-wrapper {
         display: flex;
         width: 100%;
 
         &.layout-top-nav {
-            max-width: $content-max-width;
+            max-width: variables.$content-max-width;
             margin: auto
         }
     }
@@ -21,10 +26,10 @@
     }
 
     &.ant-layout-header {
-        height: $header-height;
-        line-height: $header-height;
+        height: variables.$header-height;
+        line-height: variables.$header-height;
         padding: 0;
-        background-color: $primary
+        background-color: theme.$primary
     }
 
     .nav {
@@ -51,14 +56,14 @@
             .ant-menu-item {
                 padding: 0px 1rem;
                 margin: 0;
-                line-height: $header-height;
+                line-height: variables.$header-height;
             }
         }
     }
 
     ul {
         &.ant-menu {
-            line-height: $header-height;
+            line-height: variables.$header-height;
             border-bottom: 0;
             background: transparent;
         }
@@ -73,19 +78,19 @@
         > .ant-menu-submenu-open, 
         > .ant-menu-submenu-selected {
             border-bottom: 0;
-            color: $primary;
+            color: theme.$primary;
 
             .ant-badge {
-                color: $primary;
+                color: theme.$primary;
             }
         }
 
         > .ant-menu-item-selected {
-            color: $menu-text;
+            color: variables.$menu-text;
             border-bottom: 0;
 
             .ant-badge {
-                color: $menu-text;
+                color: variables.$menu-text;
             }
         }
     }
@@ -140,14 +145,14 @@
         }
     }
 
-    @include print {
+    @include responsive.print {
         display: none;
     } 
 }
 
 .nav-dropdown {
     background-color: $white;
-    box-shadow: $dropdown-shadow;
-    border-radius: $border-radius;
+    box-shadow: variables.$dropdown-shadow;
+    border-radius: variables.$border-radius;
 }
 

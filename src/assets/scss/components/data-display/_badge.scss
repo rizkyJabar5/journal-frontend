@@ -1,28 +1,32 @@
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-badge {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
     position: relative;
 }
 
 .ant-badge-count {
-    height: $badge-count-height;
-    background: $badge-count-bg;
+    height: variables.$badge-count-height;
+    background: variables.$badge-count-bg;
     color: $white;
-    line-height: $badge-count-height;
+    line-height: variables.$badge-count-height;
     padding: 0 5px;
-    font-size: $badge-count-font-size;
-    font-weight: $font-weight-normal;
+    font-size: variables.$badge-count-font-size;
+    font-weight: variables.$font-weight-normal;
 
     p {
         color: $white;
-        line-height: $badge-count-height;
+        line-height: variables.$badge-count-height;
     }
 }    
 
 .ant-badge-status-text {
-    color: $body-color;
-    font-size: $font-size-base;
+    color: variables.$body-color;
+    font-size: variables.$font-size-base;
     margin-left: 8px; 
 }
 
@@ -34,9 +38,9 @@
 }
 
 .ant-badge-status-dot {
-    width: $badge-dot-size;
-    height: $badge-dot-size;
-    border-radius: $border-radius-circle;
+    width: variables.$badge-dot-size;
+    height: variables.$badge-dot-size;
+    border-radius: variables.$border-radius-circle;
     top: -1px;
 }
 
@@ -45,22 +49,22 @@
 }
 
 .ant-badge-status-error {
-    background-color: $danger;
+    background-color: theme.$danger;
 }
 
 .ant-badge-status-success {
-    background-color: $success;
+    background-color: theme.$success;
 }
 
 .ant-badge-status-warning {
-    background-color: $warning;
+    background-color: theme.$warning;
 }
 
 .ant-badge-status-processing {
-    background-color: $badge-dot-processing-bg;
+    background-color: variables.$badge-dot-processing-bg;
 
     &:after {
-        border: 1px solid $badge-dot-processing-bg;
+        border: 1px solid variables.$badge-dot-processing-bg;
     }
 }
 

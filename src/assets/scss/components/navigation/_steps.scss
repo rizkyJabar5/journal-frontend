@@ -1,17 +1,21 @@
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-steps {
-  font-family: $font-family-base;
-  line-height: $line-height-base;
+  font-family: variables.$font-family-base;
+  line-height: variables.$line-height-base;
 }
 
 .ant-steps-item-icon {
-  border: $step-line-width solid $border-color;
-  width: $step-icon-size;
-  height: $step-icon-size;
-  line-height: $step-icon-size;
+  border: variables.$step-line-width solid variables.$border-color;
+  width: variables.$step-icon-size;
+  height: variables.$step-icon-size;
+  line-height: variables.$step-icon-size;
   text-align: center;
-  border-radius: $step-icon-size;
+  border-radius: variables.$step-icon-size;
   font-size: 16px;
-  font-family: $font-family-base;
+  font-family: variables.$font-family-base;
 
   > .ant-steps-icon {
     top: -1px;
@@ -20,7 +24,7 @@
 
 .ant-steps-item-wait {
   .ant-steps-item-icon {
-    border-color: $border-color;
+    border-color: variables.$border-color;
 
     > .ant-steps-icon {
       color: $gray-light;
@@ -40,11 +44,11 @@
 
 .ant-steps-item-process {
   .ant-steps-item-icon {
-    background: $step-theme-colors;
+    background: variables.$step-theme-colors;
 
     > .ant-steps-icon {
       .ant-steps-icon-dot {
-        background: $step-theme-colors;
+        background: variables.$step-theme-colors;
       }
     }
   }
@@ -54,13 +58,13 @@
       color: $gray-dark;
 
       &:after {
-        background-color: $border-color;
+        background-color: variables.$border-color;
       }
     }
 
     > .ant-steps-item-tail {
       &:after {
-        background-color: $border-color;
+        background-color: variables.$border-color;
       }
     }
 
@@ -72,15 +76,15 @@
 
 .ant-steps-item-finish {
   .ant-steps-item-icon {
-    border-color: $step-theme-colors;
-    border-color: $step-theme-colors;
+    border-color: variables.$step-theme-colors;
+    border-color: variables.$step-theme-colors;
     background-color: transparent;
 
     > .ant-steps-icon {
-      color: $step-theme-colors;
+      color: variables.$step-theme-colors;
 
       .ant-steps-icon-dot {
-        background: $step-theme-colors;
+        background: variables.$step-theme-colors;
       }
     }
   }
@@ -91,7 +95,7 @@
         color: $gray-dark;
 
         &:after {
-          background-color: $step-theme-colors;
+          background-color: variables.$step-theme-colors;
         }
       }
     }
@@ -99,25 +103,25 @@
 
   > .ant-steps-item-tail {
     &:after {
-      background-color: $step-theme-colors;
+      background-color: variables.$step-theme-colors;
     }
   }
 }
 
 .ant-steps-item-error {
   .ant-steps-item-icon {
-    border-color: $danger;
+    border-color: theme.$danger;
     background-color: transparent;
 
     > .ant-steps-icon {
-      color: $danger;
+      color: theme.$danger;
     }
   }
 
   > .ant-steps-item-content {
     > .ant-steps-item-description,
     > .ant-steps-item-title {
-      color: $danger;
+      color: theme.$danger;
     }
   }
 }
@@ -126,7 +130,7 @@
   &.ant-steps-next-error {
     .ant-steps-item-title {
       &:after {
-        background: $danger;
+        background: theme.$danger;
       }
     }
   }
@@ -135,17 +139,17 @@
 .ant-steps-item-tail,
 .ant-steps-item-title {
   &::after {
-    height: $step-line-width;
+    height: variables.$step-line-width;
   }
 }
 
 .ant-steps-small {
   .ant-steps-item-icon {
-    width: $step-icon-size-sm;
-    height: $step-icon-size-sm;
-    line-height: $step-icon-size-sm;
+    width: variables.$step-icon-size-sm;
+    height: variables.$step-icon-size-sm;
+    line-height: variables.$step-icon-size-sm;
     text-align: center;
-    border-radius: $step-icon-size-sm;
+    border-radius: variables.$step-icon-size-sm;
     font-size: 12px;
   }
 }
@@ -154,7 +158,7 @@
   > .ant-steps-item {
     > .ant-steps-item-tail {
       &:after {
-        width: $step-line-width;
+        width: variables.$step-line-width;
       }
     }
   }
@@ -170,7 +174,7 @@
   &.ant-steps-item-process {
     .ant-steps-item-icon {
       > .ant-steps-icon {
-        color: $step-theme-colors;
+        color: variables.$step-theme-colors;
       }
     }
   }

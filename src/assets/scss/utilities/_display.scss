@@ -1,6 +1,10 @@
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@use "sass:map";
+@use "../mixins/breakpoint";
+@use "../variables/variables";
+
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoint.media-breakpoint-up($breakpoint) {
+    $infix: breakpoint.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
 
     .d#{$infix}-none {
       display: none !important;

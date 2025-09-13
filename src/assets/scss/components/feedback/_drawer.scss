@@ -1,21 +1,24 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-drawer {
-    z-index: $zindex-modal;
+    z-index: variables.$zindex-modal;
 }
 
 .ant-drawer-header {
-    padding: $modal-header-padding;
+    padding: variables.$modal-header-padding;
     border-radius: 4px 4px 0 0;
     background: $white;
-    color: $body-color;
-    border-bottom: 1px solid $border-color;
+    color: variables.$body-color;
+    border-bottom: 1px solid variables.$border-color;
 }
 
 .ant-drawer-footer {
     position: absolute;
     bottom: 0px;
     width: 100%;
-    border-top: 1px solid $border-color;
-    padding: $modal-footer-padding;
+    border-top: 1px solid variables.$border-color;
+    padding: variables.$modal-footer-padding;
     left: 0px;
     background: $white;
 }

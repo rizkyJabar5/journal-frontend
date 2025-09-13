@@ -1,19 +1,22 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-collapse {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
-    background-color: $collapse-bg;
-    border-radius: $border-radius;
-    border: 1px solid $collapse-border;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
+    background-color: variables.$collapse-bg;
+    border-radius: variables.$border-radius;
+    border: 1px solid variables.$collapse-border;
     border-bottom: 0;
 
     > .ant-collapse-item {
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid variables.$border-color;
         
         > .ant-collapse-header {
-            line-height: $line-height-base;
-            padding: $collapse-header-spacing;
-            color: $collapse-header-color;
+            line-height: variables.$line-height-base;
+            padding: variables.$collapse-header-spacing;
+            color: variables.$collapse-header-color;
             position: relative;
         }
     }
@@ -22,23 +25,23 @@
 
         > .ant-collapse-header {
             cursor: not-allowed;
-            color: rgba($collapse-header-color, 0.25);
+            color: rgba(variables.$collapse-header-color, 0.25);
 
             >.arrow {
                 cursor: not-allowed;
-                color: rgba($collapse-header-color, 0.25);
+                color: rgba(variables.$collapse-header-color, 0.25);
             }
         }
     }
 }    
 
 .ant-collapse-content {
-    color: $body-color;
+    color: variables.$body-color;
     background-color: $white;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid variables.$border-color;
 
     > .ant-collapse-content-box {
-        padding: $collapse-content-spacing;
+        padding: variables.$collapse-content-spacing;
     }
 }
 
@@ -48,7 +51,7 @@
 
     > .ant-collapse-item {
         > .ant-collapse-header {
-            font-size: $collapse-header-size;
+            font-size: variables.$collapse-header-size;
         }
         
         > .ant-collapse-content {

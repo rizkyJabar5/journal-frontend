@@ -1,68 +1,73 @@
+@use "sass:list";
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-avatar {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
     text-align: center;
-    background: $avatar-bg;
+    background: variables.$avatar-bg;
     color: $white;
     white-space: nowrap;
     position: relative;
     overflow: hidden;
     vertical-align: middle; 
-    width: $avatar-size;
-    height: $avatar-size;
-    line-height: $avatar-size;
-    border-radius: $border-radius-circle; 
+    width: variables.$avatar-size;
+    height: variables.$avatar-size;
+    line-height: variables.$avatar-size;
+    border-radius: variables.$border-radius-circle; 
 
     &.ant-avatar-icon {
-        font-size: $avatar-icon;
+        font-size: variables.$avatar-icon;
     }
 }
 
 .ant-avatar-lg {
-    width: $avatar-size-lg;
-    height: $avatar-size-lg;
-    line-height: $avatar-size-lg;
+    width: variables.$avatar-size-lg;
+    height: variables.$avatar-size-lg;
+    line-height: variables.$avatar-size-lg;
 
     > * {
-        line-height: $avatar-size-lg;
+        line-height: variables.$avatar-size-lg;
     }    
 
     &.ant-avatar-icon {
-        font-size: $avatar-icon-lg;
+        font-size: variables.$avatar-icon-lg;
     }
 }
 
 .ant-avatar-sm {
-    width: $avatar-size-sm;
-    height: $avatar-size-sm;
-    line-height: $avatar-size-sm;
+    width: variables.$avatar-size-sm;
+    height: variables.$avatar-size-sm;
+    line-height: variables.$avatar-size-sm;
 
     > * {
-        line-height: $avatar-size-sm;
+        line-height: variables.$avatar-size-sm;
     }    
 
     &.ant-avatar-icon {
-        font-size: $avatar-icon-sm;
+        font-size: variables.$avatar-icon-sm;
     }
 }
 
 .ant-avatar-square {
-    border-radius: $border-radius;
+    border-radius: variables.$border-radius;
 }
 
-@each $tone in $tone-loop {
+@each $tone in theme.$tone-loop {
 
-    .ant-avatar-#{nth($tone, 1)} {
-        color: #{nth($tone, 2)};
-        background: #{nth($tone, 3)};
+    .ant-avatar-#{list.nth($tone, 1)} {
+        color: #{list.nth($tone, 2)};
+        background: #{list.nth($tone, 3)};
     }
 }    
 
-@each $state in $state-color-loop {
-    .ant-avatar-#{nth($state, 1)} {
-        color: #{nth($state, 2)};
-        background: rgba(nth($state, 2), 0.1);
+@each $state in theme.$state-color-loop {
+    .ant-avatar-#{list.nth($state, 1)} {
+        color: #{list.nth($state, 2)};
+        background: rgba(list.nth($state, 2), 0.1);
     }
 }
 
@@ -76,13 +81,13 @@
 
 .avatar-status-name {
     color: $gray-dark;
-    font-weight: $font-weight-semibold;
+    font-weight: variables.$font-weight-semibold;
 
     &.clickable {
         cursor: pointer;
 
         &:hover {
-            color: $primary;
+            color: theme.$primary;
         }
     }
 }

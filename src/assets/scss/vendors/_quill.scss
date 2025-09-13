@@ -1,3 +1,7 @@
+@use "../variables/theme";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
+
 /*!
  * Quill Editor v1.3.6
  * https://quilljs.com/
@@ -331,7 +335,7 @@
     background-color: #008a00;
   }
   .ql-editor .ql-bg-blue {
-    background-color: $primary;
+    background-color: theme.$primary;
   }
   .ql-editor .ql-bg-purple {
     background-color: #93f;
@@ -352,7 +356,7 @@
     color: #008a00;
   }
   .ql-editor .ql-color-blue {
-    color: $primary;
+    color: theme.$primary;
   }
   .ql-editor .ql-color-purple {
     color: #93f;
@@ -386,7 +390,7 @@
     text-align: right;
   }
   .ql-editor.ql-blank::before {
-    color: $input-color-placeholder;
+    color: variables.$input-color-placeholder;
     content: attr(data-placeholder);
     font-style: italic;
     left: 15px;
@@ -435,14 +439,14 @@
   .ql-snow .ql-toolbar .ql-picker-item:hover,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-    color: $primary;
-    background-color: rgba($primary, 0.15);
+    color: theme.$primary;
+    background-color: rgba(theme.$primary, 0.15);
   }
   .ql-snow.ql-toolbar button.ql-active,
   .ql-snow .ql-toolbar button.ql-active,
   .ql-snow.ql-toolbar .ql-picker-label.ql-active,
   .ql-snow .ql-toolbar .ql-picker-label.ql-active{
-    color: $primary;
+    color: theme.$primary;
   }
   .ql-snow.ql-toolbar button:hover .ql-fill,
   .ql-snow .ql-toolbar button:hover .ql-fill,
@@ -472,7 +476,7 @@
   .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
-    fill: $primary;
+    fill: theme.$primary;
   }
   .ql-snow.ql-toolbar button:hover .ql-stroke,
   .ql-snow .ql-toolbar button:hover .ql-stroke,
@@ -502,7 +506,7 @@
   .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
-    stroke: $primary;
+    stroke: theme.$primary;
   }
   @media (pointer: coarse) {
     .ql-snow.ql-toolbar button:hover:not(.ql-active),
@@ -848,7 +852,7 @@
     background-color: #000;
   }
   .ql-toolbar.ql-snow {
-    border: 1px solid $border-color;
+    border: 1px solid variables.$border-color;
     box-sizing: border-box;
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
     padding: 8px;
@@ -864,10 +868,10 @@
     box-shadow: rgba(0,0,0,0.2) 0 2px 8px;
   }
   .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
-    border-color: $border-color;
+    border-color: variables.$border-color;
   }
   .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
-    border-color: $border-color;
+    border-color: variables.$border-color;
   }
   .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected,
   .ql-toolbar.ql-snow .ql-color-picker .ql-picker-item:hover {
@@ -878,7 +882,7 @@
   }
   .ql-snow .ql-tooltip {
     background-color: #fff;
-    border: 1px solid $border-color;
+    border: 1px solid variables.$border-color;
     box-shadow: 0px 0px 5px #ddd;
     color: $gray;
     padding: 5px 12px;
@@ -891,7 +895,7 @@
   }
   .ql-snow .ql-tooltip input[type=text] {
     display: none;
-    border: 1px solid $border-color;
+    border: 1px solid variables.$border-color;
     font-size: 13px;
     height: 26px;
     margin: 0px;
@@ -906,7 +910,7 @@
     vertical-align: top;
   }
   .ql-snow .ql-tooltip a.ql-action::after {
-    border-right: 1px solid $border-color;
+    border-right: 1px solid variables.$border-color;
     content: 'Edit';
     margin-left: 16px;
     padding-right: 8px;
@@ -940,9 +944,9 @@
     content: "Enter video:";
   }
   .ql-snow a {
-    color: $primary;
+    color: theme.$primary;
   }
   .ql-container.ql-snow {
-    border: 1px solid $border-color;
+    border: 1px solid variables.$border-color;
   }
   

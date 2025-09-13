@@ -1,11 +1,15 @@
+@use "sass:map";
+@use "../mixins/responsive";
+@use "../variables/variables";
+
 .app-page-header {
-    @include screen-mobile-above {
+    @include responsive.screen-mobile-above {
         display: flex;
     }
     align-items: center;
-    margin-bottom: map-get($spacers, 3);
+    margin-bottom: map.get(variables.$spacers, 3);
 
-    @include print {
+    @include responsive.print {
         display: none;
     } 
 }

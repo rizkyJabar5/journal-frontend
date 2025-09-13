@@ -1,28 +1,31 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-comment-content-author {
 
     > a,
     > span {
-        font-size: $font-size-md;
+        font-size: variables.$font-size-md;
     }
 }
 
 .ant-comment-content-author-time {
     color: rgba($gray-dark, 0.6);
     > * {
-        font-size: $font-size-sm;
+        font-size: variables.$font-size-sm;
     }
 }
 
 .ant-comment-content-author-name{
     color: $gray-dark;
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-md;
+    font-weight: variables.$font-weight-semibold;
+    font-size: variables.$font-size-md;
 
     > * {
         color: $gray-dark;
 
         &:hover {
-            color: $link-color;
+            color: variables.$link-color;
         }
     }
 
@@ -34,7 +37,7 @@
 
         >span {
             color: $gray;
-            font-size: $font-size-base;
+            font-size: variables.$font-size-base;
             padding-right: 15px;
         }
     }
@@ -44,8 +47,8 @@
 .ant-comment-avatar {
 
     img {
-        width: $avatar-size;
-        height: $avatar-size;
+        width: variables.$avatar-size;
+        height: variables.$avatar-size;
         border-radius: 50%;
     }
 }

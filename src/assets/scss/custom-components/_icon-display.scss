@@ -1,3 +1,7 @@
+@use "../mixins/responsive";
+@use "../variables/theme";
+@use "../variables/default-palette" as *;
+
 ul.anticons-list {
   margin: 10px 0;
   overflow: hidden;
@@ -18,7 +22,7 @@ ul.anticons-list {
     cursor: pointer;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
-    @include screen-mobile {
+    @include responsive.screen-mobile {
       width: 33%;
     }
 
@@ -41,7 +45,7 @@ ul.anticons-list {
 
     &:hover {
       color: $white;
-      background-color: $primary;
+      background-color: theme.$primary;
       .anticon {
         transform: scale(1.4);
       }

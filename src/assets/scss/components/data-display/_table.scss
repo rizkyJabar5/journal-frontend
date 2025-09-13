@@ -1,27 +1,33 @@
+@use "sass:color";
+@use "../../mixins/responsive";
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-table {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $table-color;
-    border-radius: $table-border-radius; 
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$table-color;
+    border-radius: variables.$table-border-radius; 
 
     table {
-        border-radius: $table-border-radius $table-border-radius 0 0;
+        border-radius: variables.$table-border-radius variables.$table-border-radius 0 0;
     }
 
     &.ant-table-bordered {
 
         .ant-table-title {
-            border: 1px solid $table-border;
+            border: 1px solid variables.$table-border;
             border-bottom: 0;
         }
         .ant-table-footer {
-            border: 1px solid $table-border;
+            border: 1px solid variables.$table-border;
             margin-top: -2px;
             border-top: 0;
         }
 
         .ant-table-container {
-            border: 1px solid $border-color;
+            border: 1px solid variables.$border-color;
             border-right: 0;
             border-bottom: 0;
         }
@@ -30,13 +36,13 @@
         tbody > tr > td, 
         tfoot > tr > th, 
         tfoot > tr > td {
-            border-right: 1px solid $border-color;
+            border-right: 1px solid variables.$border-color;
         }
 
     } 
 
     .ant-table-content {
-        @include screen-mobile {
+        @include responsive.screen-mobile {
             overflow-x: auto;
         }
     }
@@ -47,20 +53,20 @@
     > tr {
 
         > th {
-            background: $table-head-bg;
+            background: variables.$table-head-bg;
             text-align: left;
-            color: $table-head-color;
-            font-weight: $font-weight-bold;
-            border-bottom: 1px solid $table-border;
-            padding: $table-spacing;
+            color: variables.$table-head-color;
+            font-weight: variables.$font-weight-bold;
+            border-bottom: 1px solid variables.$table-border;
+            padding: variables.$table-spacing;
 
             .ant-table-filter-icon,
             .anticon-filter {
-                color: $table-color;
+                color: variables.$table-color;
             }
 
             &.ant-table-column-sort {
-                background: $table-has-action-hover-bg;
+                background: variables.$table-has-action-hover-bg;
             }
 
             
@@ -68,14 +74,14 @@
                 &.ant-table-column-has-sorters {
 
                     &:hover {
-                        background: $table-has-action-hover-bg;
+                        background: variables.$table-has-action-hover-bg;
 
                         .anticon-filter,
                         .ant-table-filter-icon {
-                            background: $table-has-action-hover-bg;
+                            background: variables.$table-has-action-hover-bg;
 
                             &:hover {
-                                background: darken($table-has-action-hover-bg, 5%);
+                                background: color.adjust(variables.$table-has-action-hover-bg, $lightness: -5%);
                             }
                         }
                     }
@@ -87,7 +93,7 @@
 
                     &:hover {
                         &:before {
-                            background: $table-head-bg;
+                            background: variables.$table-head-bg;
                         }
                     }
                 }
@@ -97,11 +103,11 @@
         &:first-child {
             >th{
                 &:first-child {
-                    border-top-left-radius: $table-border-radius; 
+                    border-top-left-radius: variables.$table-border-radius; 
                 }
 
                 &:last-child {
-                    border-top-right-radius: $table-border-radius; 
+                    border-top-right-radius: variables.$table-border-radius; 
                 }
             }
         }
@@ -113,15 +119,15 @@
     > tr {
 
         > td {
-            padding: $table-spacing;
-            border-bottom: 1px solid $table-border;
+            padding: variables.$table-spacing;
+            border-bottom: 1px solid variables.$table-border;
 
-            @include screen-mobile {
+            @include responsive.screen-mobile {
                 white-space: nowrap;
             }
 
             &.ant-table-column-sort {
-                background: $table-column-sort-bg;
+                background: variables.$table-column-sort-bg;
             }
         }
 
@@ -129,14 +135,14 @@
 
             &:hover {
                 > td {
-                    background: $table-hover; 
+                    background: variables.$table-hover; 
                 }
             }
         }
 
         &.ant-table-row-selected  {
             > td {
-                background: $table-selected !important; 
+                background: variables.$table-selected !important; 
             }
         }
     }
@@ -161,20 +167,20 @@ tbody > tr.ant-table-placeholder:hover > td {
 
 .ant-table-column-sorter-up.active,
 .ant-table-column-sorter-down.active {
-    color: $primary;
+    color: theme.$primary;
 }
 
 .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
 .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
 .ant-table-thead > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
 .ant-table-tbody > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td {
-    background: $table-hover;
+    background: variables.$table-hover;
 }
 
 .ant-table-column-sorter {
     margin-left: 10px;
-    font-weight: $font-weight-base;
-    color: $table-color;
+    font-weight: variables.$font-weight-base;
+    color: variables.$table-color;
 }
 
 
@@ -184,9 +190,7 @@ tbody > tr.ant-table-placeholder:hover > td {
     .ant-table-header {
 
         >table {
-            border: 0px;
-            border-bottom: 0px;
-            border-right: 0px;
+          border-width: 0;
         }
     }
 
@@ -194,7 +198,7 @@ tbody > tr.ant-table-placeholder:hover > td {
 
         > tr {
             > td {
-                border-right: 1px solid $table-border;
+                border-right: 1px solid variables.$table-border;
             }
         }
     }
@@ -203,7 +207,7 @@ tbody > tr.ant-table-placeholder:hover > td {
 
         > tr {
             > th {
-                border-right: 1px solid $table-border;
+                border-right: 1px solid variables.$table-border;
             }
         }
     }
@@ -212,32 +216,30 @@ tbody > tr.ant-table-placeholder:hover > td {
     .ant-table-fixed-right {
 
         table {
-            border: 0px;
-            border-bottom: 0px;
-            border-right: 0px;
+          border-width: 0;
         }
     }
 }
 
 .ant-table-title {
-    padding: $table-spacing;
+    padding: variables.$table-spacing;
     border-top-left-radius: 0;
     border-top-right-radius: 0; 
 }
 
 .ant-table-footer {
-    padding: $table-spacing;
-    background: $table-foot-bg;
+    padding: variables.$table-spacing;
+    background: variables.$table-foot-bg;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; 
     border-top: 0;
 }
 
 .ant-table-row-expand-icon {
-    width: $table-row-expand-icon-size;
-    height: $table-row-expand-icon-size;
-    line-height: $table-row-expand-icon-size - 0.1875rem;
-    border: 1px solid $table-border;
+    width: variables.$table-row-expand-icon-size;
+    height: variables.$table-row-expand-icon-size;
+    line-height: variables.$table-row-expand-icon-size - 0.1875rem;
+    border: 1px solid variables.$table-border;
     background: $white;
 }
 
@@ -245,7 +247,7 @@ tr.ant-table-expanded-row {
     background-color: transparent;
 
     &:hover {
-        background-color: $table-hover;
+        background-color: variables.$table-hover;
     }
 }
 
@@ -300,7 +302,7 @@ tr.ant-table-expanded-row {
 
 .editable-cell-icon:hover,
 .editable-cell-icon-check:hover {
-    color: $primary;
+    color: theme.$primary;
 }
 
 .no-border-last {
@@ -311,7 +313,7 @@ tr.ant-table-expanded-row {
 
                 &:last-child {
                     > td {
-                        border-bottom: 0px;
+                        border-bottom: 0;
                     }
                 }
             }

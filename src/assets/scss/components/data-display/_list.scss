@@ -1,31 +1,35 @@
+@use "../../mixins/transform";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-list {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
     position: relative;
 }    
 
 .ant-list-bordered {
-    border-radius: $border-radius;
-    border: 1px solid $border-color;
+    border-radius: variables.$border-radius;
+    border: 1px solid variables.$border-color;
 
     .ant-list-footer,
     .ant-list-header,
     .ant-list-item {
-        padding-left: $list-spacer-x;
-        padding-right: $list-spacer-x;
+        padding-left: variables.$list-spacer-x;
+        padding-right: variables.$list-spacer-x;
     }
 
     .ant-list-header {
-        padding-top: $list-spacer-y;
-        padding-bottom: $list-spacer-y;
+        padding-top: variables.$list-spacer-y;
+        padding-bottom: variables.$list-spacer-y;
     } 
     
     &.ant-list-sm {
 
         .ant-list-footer,
         .ant-list-header {
-            padding: $list-spacer-y-sm $list-spacer-x-sm;
+            padding: variables.$list-spacer-y-sm variables.$list-spacer-x-sm;
         }
     }
 
@@ -33,22 +37,22 @@
 
         .ant-list-footer,
         .ant-list-header {
-            padding: $list-spacer-y-lg $list-spacer-x-lg;
+            padding: variables.$list-spacer-y-lg variables.$list-spacer-x-lg;
         }
     }
 }
 
 .ant-list-sm {
     .ant-list-item {
-        padding-top: $list-spacer-y-sm;
-        padding-bottom: $list-spacer-y-sm;
+        padding-top: variables.$list-spacer-y-sm;
+        padding-bottom: variables.$list-spacer-y-sm;
     }
 }
 
 .ant-list-lg {
     .ant-list-item {
-        padding-top: $list-spacer-y-lg;
-        padding-bottom: $list-spacer-y-lg;
+        padding-top: variables.$list-spacer-y-lg;
+        padding-bottom: variables.$list-spacer-y-lg;
     }
 }
 
@@ -59,7 +63,7 @@
         .ant-list-item {
 
             &:last-child {
-                border-bottom: 1px solid $border-color;
+                border-bottom: 1px solid variables.$border-color;
             }
         }
     }
@@ -68,17 +72,17 @@
 .ant-list-split {
 
     .ant-list-header {
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid variables.$border-color;
     }
 
     .ant-list-item {
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid variables.$border-color;
     }
 
     a {
         > .ant-list-item {
             &:last-child{
-                border-bottom: 1px solid $border-color;
+                border-bottom: 1px solid variables.$border-color;
             }
         }
 
@@ -93,8 +97,8 @@
 .ant-list-item {
     align-items: center;
     display: flex;
-    padding-top: $list-spacer-y;
-    padding-bottom: $list-spacer-y;
+    padding-top: variables.$list-spacer-y;
+    padding-bottom: variables.$list-spacer-y;
 
     &.list-clickable {
         cursor: pointer;
@@ -112,13 +116,13 @@
 
         > a {
             display: block;
-            color: $body-color;
-            padding: $list-spacer-y $list-spacer-x;
+            color: variables.$body-color;
+            padding: variables.$list-spacer-y variables.$list-spacer-x;
             width: 100%;
 
             &:hover,
             &:focus {
-                background-color: $list-item-hover;
+                background-color: variables.$list-item-hover;
             }
         }
     }    
@@ -127,13 +131,13 @@
 
 .ant-list-item-meta-title {
     margin-bottom: 2px;
-    color: $list-item-title-color;
+    color: variables.$list-item-title-color;
 
     > a {
-        color: $list-item-title-color;
+        color: variables.$list-item-title-color;
 
         &:hover {
-            color: $list-item-title-hover;
+            color: variables.$list-item-title-hover;
         }
     }
 }
@@ -152,14 +156,14 @@
 .ant-list-item-meta-description {
     color: $gray-light;
     font-size: 13px;
-    line-height: $line-height-base;
+    line-height: variables.$line-height-base;
 }    
 
 .ant-list-item-action > li {
-    color: $body-color;
+    color: variables.$body-color;
     padding: 0 10px;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
 }
 
 .list-styled {
@@ -181,6 +185,6 @@
         position: absolute;
         bottom: -40px;
         left: 50%;
-        @include transform(translateX(-50%));
+        @include transform.transform(translateX(-50%));
     }
 }

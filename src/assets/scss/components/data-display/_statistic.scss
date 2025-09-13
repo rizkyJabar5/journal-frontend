@@ -1,14 +1,17 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-statistic {
     color: $gray-dark;
-    line-height: $line-height-base;
+    line-height: variables.$line-height-base;
 }
 
 .ant-statistic-title {
     margin-bottom: 5px;
-    font-size: $font-size-base;
-    color: $text-muted;
+    font-size: variables.$font-size-base;
+    color: variables.$text-muted;
 }
 
 .ant-statistic-content {
-    font-family: $font-family-base;
+    font-family: variables.$font-family-base;
 }

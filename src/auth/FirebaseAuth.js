@@ -1,11 +1,11 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import firebaseConfig from 'configs/FirebaseConfig';
+import firebaseConfig from '@/config/FirebaseConfig';
 
 firebase.initializeApp(firebaseConfig);
 
-// firebase utils
+// firebase util
 const db = firebase.firestore()
 const auth = firebase.auth();
 const currentUser = auth.currentUser

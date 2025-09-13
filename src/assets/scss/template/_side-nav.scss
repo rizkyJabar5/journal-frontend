@@ -1,12 +1,16 @@
-.side-nav {
-    height: calc(100vh - #{$header-height}); 
-    position: fixed;
-    top: $header-height;
-    box-shadow: $side-nav-box-shadow;
-    background-color: $white;
-    z-index: $zindex-navbar;
+@use "../mixins/responsive";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
 
-    @include print {
+.side-nav {
+    height: calc(100vh - #{variables.$header-height}); 
+    position: fixed;
+    top: variables.$header-height;
+    box-shadow: variables.$side-nav-box-shadow;
+    background-color: $white;
+    z-index: variables.$zindex-navbar;
+
+    @include responsive.print {
         display: none;
     } 
 
@@ -23,7 +27,7 @@
     }
 
     &.side-nav-dark {
-        background-color: $menu-dark-bg;
+        background-color: variables.$menu-dark-bg;
     }
 
     .hide-group-title {
@@ -34,5 +38,5 @@
 }
 
 .mobile-nav-menu {
-    height: calc(100vh - #{$header-height} - 10px);
+    height: calc(100vh - #{variables.$header-height} - 10px);
 }

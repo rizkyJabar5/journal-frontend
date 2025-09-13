@@ -1,16 +1,19 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-tree {
-    line-height: $line-height-base;
-    color: $body-color;
-    font-size: $font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
+    font-size: variables.$font-size-base;
 
     .ant-tree-node-content-wrapper {
         &:hover {
-            background-color: $tree-hover-color;
+            background-color: variables.$tree-hover-color;
         }
 
         &.ant-tree-node-selected {
-            background-color: rgba($tree-theme-color, 0.1);
-            color: $tree-theme-color;
+            background-color: rgba(variables.$tree-theme-color, 0.1);
+            color: variables.$tree-theme-color;
         }
     }
 
@@ -25,8 +28,8 @@
 
 .ant-tree-checkbox,
 .ant-tree-checkbox-wrapper {
-    font-size: $font-size-base;
-    color: $body-color;
+    font-size: variables.$font-size-base;
+    color: variables.$body-color;
 }
 
 .ant-tree-checkbox-inner {
@@ -34,31 +37,31 @@
     top: 0;
     left: 0;
     display: block;
-    width: $checkbox-width-height;
-    height: $checkbox-width-height;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
+    width: variables.$checkbox-width-height;
+    height: variables.$checkbox-width-height;
+    border: 1px solid variables.$border-color;
+    border-radius: variables.$border-radius;
     background-color:$white;
 
     &:after {
-        left: $checkbox-position-left;
-        top: $checkbox-position-top;
+        left: variables.$checkbox-position-left;
+        top: variables.$checkbox-position-top;
     }
 }
 
 .ant-tree-checkbox-wrapper:hover .ant-tree-checkbox-inner, 
 .ant-tree-checkbox:hover .ant-tree-checkbox-inner, 
 .ant-tree-checkbox-input:focus + .ant-tree-checkbox-inner {
-    border-color: $tree-theme-color;
+    border-color: variables.$tree-theme-color;
 }
 
 .ant-tree-checkbox-indeterminate {
     .ant-tree-checkbox-inner {
         background-color: $white;
-        border-color: $border-color;
+        border-color: variables.$border-color;
         
         &:after {
-            background-color: $checkbox-theme-color;
+            background-color: variables.$checkbox-theme-color;
         }
     }
 }
@@ -67,8 +70,8 @@
 .ant-tree-checkbox-checked  {
 
     .ant-tree-checkbox-inner {
-        background-color: $checkbox-theme-color;
-        border-color: $checkbox-theme-color;
+        background-color: variables.$checkbox-theme-color;
+        border-color: variables.$checkbox-theme-color;
     }
 }
 
@@ -76,8 +79,8 @@
     cursor: not-allowed;
 
     .ant-tree-checkbox-inner {
-        border-color: $border-color !important;
-        background-color: $checkbox-disable-bg;
+        border-color: variables.$border-color !important;
+        background-color: variables.$checkbox-disable-bg;
     }
 
     .ant-tree-checkbox-input {
@@ -88,11 +91,11 @@
 li.ant-tree-treenode-disabled {
 
     >.ant-tree-node-content-wrapper {
-        color: rgba($body-color,.25);
+        color: rgba(variables.$body-color,.25);
         cursor: not-allowed;
 
         span {
-            color: rgba($body-color,.25);
+            color: rgba(variables.$body-color,.25);
             cursor: not-allowed;
         }
 
@@ -102,7 +105,7 @@ li.ant-tree-treenode-disabled {
     }
 
     >span:not(.ant-tree-switcher) {
-        color: rgba($body-color,.25);
+        color: rgba(variables.$body-color,.25);
         cursor: not-allowed;
     }    
 }
@@ -123,7 +126,7 @@ li.ant-tree-treenode-disabled {
 .file-desc, .folder-desc {
     padding: 0 8px;
     display: inline-block;
-    background: rgba($tree-theme-color, 0.5);
+    background: rgba(variables.$tree-theme-color, 0.5);
     color: $white;
     position: relative;
     left: 12px;

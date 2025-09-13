@@ -1,5 +1,7 @@
+@use "../variables/variables";
+
 .logo {
-    height: $header-height;
+    height: variables.$header-height;
     display: flex;
     align-items: center;
     padding: 0 1rem;

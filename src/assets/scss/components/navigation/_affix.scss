@@ -1,4 +1,6 @@
+@use "../../variables/variables";
+
 .ant-affix {
-    z-index: $zindex-sticky;
-    top: $header-height !important;
+    z-index: variables.$zindex-sticky;
+    top: variables.$header-height !important;
 }

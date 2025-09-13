@@ -1,110 +1,115 @@
+@use "sass:color";
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-btn {
-  font-size: $font-size-base;
-  padding: $btn-padding-y $btn-padding-x;
-  line-height: $btn-line-height;
-  border-color: $border-color;
-  color: $body-color;
-  height: $btn-size;
-  border-radius: $border-radius;
+  font-size: variables.$font-size-base;
+  padding: variables.$btn-padding-y variables.$btn-padding-x;
+  line-height: variables.$btn-line-height;
+  border-color: variables.$border-color;
+  color: variables.$body-color;
+  height: variables.$btn-size;
+  border-radius: variables.$border-radius;
 
   &:hover,
   &:focus {
     background-color: $gray-lighter;
     border-color: $gray-lighter;
-    color: $body-color;
+    color: variables.$body-color;
   }
 
   &.ant-btn-clicked {
     &:after {
-      border-color: $border-color;
+      border-color: variables.$border-color;
     }
   }
 
   &.disabled,
   &[disabled] {
-    color: rgba($body-color, 0.25);
-    background-color: $btn-disabled-color;
-    border-color: $border-color;
+    color: rgba(variables.$body-color, 0.25);
+    background-color: variables.$btn-disabled-color;
+    border-color: variables.$border-color;
 
     &.active,
     &:active,
     &:focus,
     &:hover {
-      color: rgba($body-color, 0.25);
+      color: rgba(variables.$body-color, 0.25);
       background-color: $gray-lightest;
-      border-color: $border-color;
+      border-color: variables.$border-color;
     }
   }
 }
 
 .ant-btn-sm {
-  height: $btn-size-sm;
-  padding: $btn-padding-y-sm $btn-padding-x-sm;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-semibold;
-  border-radius: $border-radius;
+  height: variables.$btn-size-sm;
+  padding: variables.$btn-padding-y-sm variables.$btn-padding-x-sm;
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-semibold;
+  border-radius: variables.$border-radius;
 }
 
 .ant-btn-lg {
-  height: $btn-size-lg;
-  padding: $btn-padding-y-lg $btn-padding-x-lg;
-  font-size: $font-size-md;
-  border-radius: $border-radius;
+  height: variables.$btn-size-lg;
+  padding: variables.$btn-padding-y-lg variables.$btn-padding-x-lg;
+  font-size: variables.$font-size-md;
+  border-radius: variables.$border-radius;
 }
 
 a {
   &.ant-btn {
-    padding-top: $btn-padding-y;
+    padding-top: variables.$btn-padding-y;
     // line-height: $btn-line-height;
 
     &.ant-btn-sm {
-      padding-top: $btn-padding-y-sm;
+      padding-top: variables.$btn-padding-y-sm;
     }
 
     &.ant-btn-lg {
-      padding-top: $btn-padding-y-lg;
+      padding-top: variables.$btn-padding-y-lg;
     }
   }
 }
 
 .ant-btn-link {
-  color: $primary;
+  color: theme.$primary;
   background-color: transparent;
   border: 0px;
 
   &:hover,
   &:focus {
     background-color: transparent;
-    color: $primary;
+    color: theme.$primary;
   }
 
   &:hover {
-    background-color: rgba($primary, 0.1);
+    background-color: rgba(theme.$primary, 0.1);
   }
 
   &:active {
-    background-color: rgba($primary, 0.2);
+    background-color: rgba(theme.$primary, 0.2);
   }
 }
 
 .ant-btn-icon-only {
-  width: $btn-size;
-  height: $btn-size;
-  font-size: $font-size-md;
-  border-radius: $border-radius;
+  width: variables.$btn-size;
+  height: variables.$btn-size;
+  font-size: variables.$font-size-md;
+  border-radius: variables.$border-radius;
   padding: 0;
   
   &.ant-btn-lg {
-    width: $btn-size-lg;
-    height: $btn-size-lg;
-    font-size: $font-size-lg;
-    border-radius: $border-radius;
+    width: variables.$btn-size-lg;
+    height: variables.$btn-size-lg;
+    font-size: variables.$font-size-lg;
+    border-radius: variables.$border-radius;
   }
 
   &.ant-btn-sm {
-    width: $btn-size-sm;
-    height: $btn-size-sm;
-    font-size: $font-size-sm;
+    width: variables.$btn-size-sm;
+    height: variables.$btn-size-sm;
+    font-size: variables.$font-size-sm;
     border-radius: 0.3rem;
   }
 }
@@ -112,45 +117,45 @@ a {
 .ant-btn-circle,
 .ant-btn-circle-outline {
   padding: 0;
-  min-width: $btn-size;
-  border-radius: $border-radius-circle;
+  min-width: variables.$btn-size;
+  border-radius: variables.$border-radius-circle;
 
   &.ant-btn-lg {
-    min-width: $btn-size-lg;
+    min-width: variables.$btn-size-lg;
     padding: 0;
-    border-radius: $border-radius-circle;
+    border-radius: variables.$border-radius-circle;
   }
 
   &.ant-btn-sm {
-    min-width: $btn-size-sm;
+    min-width: variables.$btn-size-sm;
     padding: 0;
-    border-radius: $border-radius-circle;
+    border-radius: variables.$border-radius-circle;
   }
 }
 
 .ant-btn-round {
-  height: $btn-size;
-  border-radius: $btn-size;
-  padding: 0px $btn-padding-x;
+  height: variables.$btn-size;
+  border-radius: variables.$btn-size;
+  padding: 0px variables.$btn-padding-x;
 
   &.ant-btn-lg {
-    height: $btn-size-lg;
-    border-radius: $btn-size-lg;
-    border-top-left-radius: $btn-size-lg;
-    border-top-right-radius: $btn-size-lg;
-    border-bottom-right-radius: $btn-size-lg;
-    border-bottom-left-radius: $btn-size-lg;
-    padding: 0px $btn-padding-x-lg;
+    height: variables.$btn-size-lg;
+    border-radius: variables.$btn-size-lg;
+    border-top-left-radius: variables.$btn-size-lg;
+    border-top-right-radius: variables.$btn-size-lg;
+    border-bottom-right-radius: variables.$btn-size-lg;
+    border-bottom-left-radius: variables.$btn-size-lg;
+    padding: 0px variables.$btn-padding-x-lg;
   }
 
   &.ant-btn-sm {
-    height: $btn-size-sm;
-    border-radius: $btn-size-sm;
-    border-top-left-radius: $btn-size-sm;
-    border-top-right-radius: $btn-size-sm;
-    border-bottom-right-radius: $btn-size-sm;
-    border-bottom-left-radius: $btn-size-sm;
-    padding: 0px $btn-padding-x-sm;
+    height: variables.$btn-size-sm;
+    border-radius: variables.$btn-size-sm;
+    border-top-left-radius: variables.$btn-size-sm;
+    border-top-right-radius: variables.$btn-size-sm;
+    border-bottom-right-radius: variables.$btn-size-sm;
+    border-bottom-left-radius: variables.$btn-size-sm;
+    padding: 0px variables.$btn-padding-x-sm;
   }
 }
 
@@ -164,8 +169,8 @@ a {
  
   &:hover,
   &:focus {
-    border-color: $primary;
-    color: $primary;
+    border-color: theme.$primary;
+    color: theme.$primary;
   }
   
   &.ant-btn-link {
@@ -173,42 +178,42 @@ a {
 
     &:hover,
     &:focus {
-      color: $primary;
+      color: theme.$primary;
     }
 
     &:active{
-      color: darken($primary, 5%);
+      color: color.adjust(theme.$primary, $lightness: -5%);
     }
   }
 }
 
 .ant-btn-primary {
-  background-color: $primary;
-  border-color: $primary;
+  background-color: theme.$primary;
+  border-color: theme.$primary;
   color: $white;
 
   &:hover,
   &:focus {
     color: $white;
-    background-color: lighten($primary, 5%);
-    border-color: lighten($primary, 5%);
+    background-color: color.adjust(theme.$primary, $lightness: 5%);
+    border-color: color.adjust(theme.$primary, $lightness: 5%);
   }
 
   &:active {
     color: $white;
-    background-color: darken($primary, 5%);
-    border-color: darken($primary, 5%);
+    background-color: color.adjust(theme.$primary, $lightness: -5%);
+    border-color: color.adjust(theme.$primary, $lightness: -5%);
   }
 
   &.active {
     color: $white;
-    background-color: darken($primary, 5%);
-    border-color: darken($primary, 5%);
+    background-color: color.adjust(theme.$primary, $lightness: -5%);
+    border-color: color.adjust(theme.$primary, $lightness: -5%);
 
     &:hover,
     &:focus {
-      background-color: darken($primary, 5%);
-      border-color: darken($primary, 5%);
+      background-color: color.adjust(theme.$primary, $lightness: -5%);
+      border-color: color.adjust(theme.$primary, $lightness: -5%);
     }
   }
 
@@ -221,98 +226,98 @@ a {
 
   &.ant-btn-background-ghost {
     background-color: transparent;
-    border-color: $primary;
-    color: $primary;
+    border-color: theme.$primary;
+    color: theme.$primary;
 
     &:hover,
     &:focus,
     &:active {
-      border-color: lighten($primary, 5%);
-      color: lighten($primary, 5%);
+      border-color: color.adjust(theme.$primary, $lightness: 5%);
+      color: color.adjust(theme.$primary, $lightness: 5%);
     }
   }
 
   &.disabled,
   &[disabled] {
-    color: rgba($body-color, 0.25);
+    color: rgba(variables.$body-color, 0.25);
     background-color: $gray-lightest;
-    border-color: $border-color;
+    border-color: variables.$border-color;
 
     &.active,
     &:active,
     &:hover,
     &:focus {
-      color: rgba($body-color, 0.25);
+      color: rgba(variables.$body-color, 0.25);
       background-color: $gray-lightest;
-      border-color: $border-color;
+      border-color: variables.$border-color;
     }
   }
 
   &.ant-btn-clicked {
     &:after {
-      border-color: $primary;
+      border-color: theme.$primary;
     }
   }
 }
 
 .ant-btn-dangerous {
-  color: $danger;
-  border-color: $danger;
+  color: theme.$danger;
+  border-color: theme.$danger;
 
   &:hover,
   &:focus {
     background-color: transparent;
-    color: lighten($danger, 5%);
-    border-color: lighten($danger, 5%);
+    color: color.adjust(theme.$danger, $lightness: 5%);
+    border-color: color.adjust(theme.$danger, $lightness: 5%);
   }
 
   &:active {
     background-color: transparent;
-    color: darken($danger, 5%);
-    border-color: darken($danger, 5%);
+    color: color.adjust(theme.$danger, $lightness: -5%);
+    border-color: color.adjust(theme.$danger, $lightness: -5%);
   }
 
   &.ant-btn-primary {
-    background-color: $danger;
-    border-color: $danger;
+    background-color: theme.$danger;
+    border-color: theme.$danger;
     color: $white;
   
     &:hover,
     &:focus {
       color: $white;
-      background-color: lighten($danger, 5%);
-      border-color: lighten($danger, 5%);
+      background-color: color.adjust(theme.$danger, $lightness: 5%);
+      border-color: color.adjust(theme.$danger, $lightness: 5%);
     }
 
     &:active {
-      color: darken($danger, 5%);
-      border-color: darken($danger, 5%);
+      color: color.adjust(theme.$danger, $lightness: -5%);
+      border-color: color.adjust(theme.$danger, $lightness: -5%);
     }
   }
 
   &.ant-btn-link {
-    color: $danger;
+    color: theme.$danger;
 
     &:hover,
     &:focus {
       background-color: transparent;
-      color: $danger;
+      color: theme.$danger;
     }
 
     &:hover {
-      background-color: rgba($danger, 0.1);
+      background-color: rgba(theme.$danger, 0.1);
     }
 
     &:active {
-      background-color: rgba($danger, 0.2);
+      background-color: rgba(theme.$danger, 0.2);
     }
   }
 }
 
 .ant-btn-dashed {
-  color: $body-color;
+  color: variables.$body-color;
   background-color: transparent;
-  border-color: $border-color;
+  border-color: variables.$border-color;
   border-style: dashed;
   border-width: 0.2rem;
 }
@@ -321,15 +326,15 @@ a {
 
   > .ant-btn:first-child {
     &:not(:last-child) {
-      border-top-left-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
+      border-top-left-radius: variables.$border-radius;
+      border-bottom-left-radius: variables.$border-radius;
     }
   }
 
   > .ant-btn:last-child {
     &:not(:first-child) {
-      border-top-right-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
+      border-top-right-radius: variables.$border-radius;
+      border-bottom-right-radius: variables.$border-radius;
     }
   }
 
@@ -337,8 +342,8 @@ a {
     &:first-child {
       &:not(:last-child) {
         > .ant-btn {
-          border-top-left-radius: $border-radius;
-          border-bottom-left-radius: $border-radius;
+          border-top-left-radius: variables.$border-radius;
+          border-bottom-left-radius: variables.$border-radius;
         }
       }
     }
@@ -348,8 +353,8 @@ a {
     &:last-child {
       &:not(:first-child) {
         > .ant-btn {
-          border-top-right-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
+          border-top-right-radius: variables.$border-radius;
+        border-bottom-right-radius: variables.$border-radius;
         }
       }
     }

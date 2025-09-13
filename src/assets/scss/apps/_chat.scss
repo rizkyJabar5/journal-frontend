@@ -1,16 +1,21 @@
+@use "../mixins/transition";
+@use "../variables/theme";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
+
 $chat-header-height: 3.75rem;
 $chat-footer-height: 4.75rem;
 
 .chat {
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
+    border: 1px solid variables.$border-color;
+    border-radius: variables.$border-radius;
     
     .chat-content {
         height: 100%;
         
         .chat-content-header{
             height: $chat-header-height;
-            border-bottom: 1px solid $border-color;
+            border-bottom: 1px solid variables.$border-color;
             padding: 0 0.9375rem;
             display: flex;
             align-items: center;
@@ -18,7 +23,7 @@ $chat-footer-height: 4.75rem;
         }
 
         .chat-content-body {
-            height: calc(100vh - #{$chat-header-height} - #{$chat-footer-height} - #{$layout-content-gutter} - #{$header-height} - #{$footer-height} - #{1.875rem});
+            height: calc(100vh - #{$chat-header-height} - #{$chat-footer-height} - #{variables.$layout-content-gutter} - #{variables.$header-height} - #{variables.$footer-height} - #{1.875rem});
             padding: 0.9375rem;
             overflow-y: auto;
 
@@ -32,7 +37,7 @@ $chat-footer-height: 4.75rem;
 
                     .bubble-wrapper {
                         padding: 0.625rem 0.9375rem;
-                        border-radius: $border-radius;
+                        border-radius: variables.$border-radius;
                         overflow: hidden;
                         border-radius: 0.625rem;
                         margin-bottom: 0.625rem;
@@ -43,11 +48,11 @@ $chat-footer-height: 4.75rem;
                     padding: 0.9375rem 0;
                     margin-bottom: 0px;
                     font-size: 0.68rem;
-                    font-weight: $font-weight-semibold;
+                    font-weight: variables.$font-weight-semibold;
                     justify-content: center;
 
                     .ant-divider-inner-text {
-                        font-size: $font-size-sm;
+                        font-size: variables.$font-size-sm;
                     }
                 }
                 
@@ -81,7 +86,7 @@ $chat-footer-height: 4.75rem;
 
                         .bubble-wrapper {
                             
-                            background-color: $primary;
+                            background-color: theme.$primary;
                             color: $white;
                         }
                     }
@@ -117,7 +122,7 @@ $chat-footer-height: 4.75rem;
     }
 
     .chat-menu-toolbar {
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid variables.$border-color;
         padding: 0;
         display: flex;
         align-items: center;
@@ -128,7 +133,7 @@ $chat-footer-height: 4.75rem;
             .ant-input-prefix {
                 display: flex;
                 align-items: center;
-                color: $input-color-placeholder
+                color: variables.$input-color-placeholder
             }
 
             &.ant-input-affix-wrapper-focused {
@@ -136,7 +141,7 @@ $chat-footer-height: 4.75rem;
             }
             
             .ant-input {
-                font-size: $font-size-lg;
+                font-size: variables.$font-size-lg;
 
                 &:focus, 
                 .ant-input-focused {
@@ -147,12 +152,12 @@ $chat-footer-height: 4.75rem;
     }
 
     .chat-menu-list {
-        height: calc(100vh - #{$chat-header-height} - #{$chat-footer-height} - #{$layout-content-gutter} - #{$header-height} - #{1.875rem});
+        height: calc(100vh - #{$chat-header-height} - #{$chat-footer-height} - #{variables.$layout-content-gutter} - #{variables.$header-height} - #{1.875rem});
         overflow: auto;
         position: relative;
         
         .chat-menu-list-item {
-            @include transition(all 0.3s ease-in-out); 
+            @include transition.transition(all 0.3s ease-in-out); 
             padding: 0.815rem 1.25rem;
             display: flex;
             justify-content: space-between;
@@ -160,21 +165,21 @@ $chat-footer-height: 4.75rem;
             cursor: pointer;
 
             .chat-menu-list-item-time {
-                font-size: $font-size-sm;
-                color: $text-muted;
-                font-weight: $font-weight-semibold;
+                font-size: variables.$font-size-sm;
+                color: variables.$text-muted;
+                font-weight: variables.$font-weight-semibold;
             }
 
             &:not(.last) {
-                border-bottom: 1px solid $border-color;
+                border-bottom: 1px solid variables.$border-color;
             }
 
             &:hover {
-                background-color: $select-item-hover;
+                background-color: variables.$select-item-hover;
             }
 
             &.selected {
-                background-color: $select-item-selected;
+                background-color: variables.$select-item-selected;
             }
 
             .avatar-status {

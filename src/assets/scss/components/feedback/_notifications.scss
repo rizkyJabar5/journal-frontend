@@ -1,21 +1,25 @@
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-notification {
-    font-family: $font-family-base;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
+    font-family: variables.$font-family-base;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
     margin: 0 24px 0 0;
     padding: 0;
     list-style: none;
     position: fixed;
-    z-index: $zindex-popover;
-    width: $notification-width;
+    z-index: variables.$zindex-popover;
+    width: variables.$notification-width;
     max-width: calc(100vw - 32px);
 }    
 
 .ant-notification-notice-message {
     font-size: 18px;
     color: $gray-dark;
-    font-weight: $font-weight-semibold;
+    font-weight: variables.$font-weight-semibold;
 }
 
 .ant-notification-notice-with-icon {
@@ -26,21 +30,21 @@
 }
     
 .ant-notification-notice-description {
-    color: rgba($body-color, 0.8);
+    color: rgba(variables.$body-color, 0.8);
 }
 
 .ant-notification-notice-icon-success {
-    color: $state-success-text;
+    color: variables.$state-success-text;
 }
 
 .ant-notification-notice-icon-error {
-    color: $state-danger-text;
+    color: variables.$state-danger-text;
 }
 
 .ant-notification-notice-icon-warning {
-    color: $state-warning-text;
+    color: variables.$state-warning-text;
 }
 
 .ant-notification-notice-icon-info {
-    color: $info;
+    color: theme.$info;
 }

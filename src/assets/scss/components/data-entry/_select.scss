@@ -1,7 +1,10 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-select {
     color: $white;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
 
     &:not(.ant-select-disabled) {
         &:hover {
@@ -19,13 +22,13 @@
     &:not(.ant-select-customize-input) {
         .ant-select-selector {
             background-color: $brand-primary;
-            border: 1px solid $input-border-color;
-            border-radius: $input-border-radius;
-            height: $select-height + 0.125rem;
+            border: 1px solid variables.$input-border-color;
+            border-radius: variables.$input-border-radius;
+            height: variables.$select-height + 0.125rem;
             padding: 0 11px;
 
             .ant-select-selection-search-input {
-                height: $select-height;
+                height: variables.$select-height;
             }
         }
     }
@@ -43,19 +46,19 @@
 
         .ant-select-selection-item,
         .ant-select-selection-placeholder {
-            line-height: $select-height;
+            line-height: variables.$select-height;
         }
     }
 
     &.ant-select-sm {
         &:not(.ant-select-customize-input) {
             .ant-select-selector {
-                height: $select-height-sm + 0.125rem;
+                height: variables.$select-height-sm + 0.125rem;
             }
 
             &:not(.ant-select-customize-input) {
                 .ant-select-selection-search-input {
-                    height: $select-height-sm;
+                    height: variables.$select-height-sm;
                 }
             }
 
@@ -63,7 +66,7 @@
 
                 .ant-select-selection-item,
                 .ant-select-selection-placeholder {
-                    line-height: $select-height-sm;
+                    line-height: variables.$select-height-sm;
                 }
             }
         }
@@ -72,12 +75,12 @@
     &.ant-select-lg {
         &:not(.ant-select-customize-input) {
             .ant-select-selector {
-                height: $select-height-lg + 0.125rem;
+                height: variables.$select-height-lg + 0.125rem;
             }
 
             &:not(.ant-select-customize-input) {
                 .ant-select-selection-search-input {
-                    height: $select-height-lg;
+                    height: variables.$select-height-lg;
                 }
             }
 
@@ -85,7 +88,7 @@
 
                 .ant-select-selection-item,
                 .ant-select-selection-placeholder {
-                    line-height: $select-height-lg;
+                    line-height: variables.$select-height-lg;
                 }
             }
         }
@@ -95,46 +98,46 @@
 .ant-select-multiple {
     .ant-select-selector {
         background-color: $white;
-        border: 1px solid $input-border-color;
-        border-radius: $input-border-radius;
-        padding: 1px $select-tag-margin-y;
-        min-height: $select-height + 0.125rem;
+        border: 1px solid variables.$input-border-color;
+        border-radius: variables.$input-border-radius;
+        padding: 1px variables.$select-tag-margin-y;
+        min-height: variables.$select-height + 0.125rem;
     }
 
     .ant-select-selection-item {
-        height: $select-tag-height;
-        line-height: $select-tag-height - 0.125rem;
-        margin-top: $select-tag-margin-y;
-        margin-right: $select-tag-margin-x;
-        margin-bottom: $select-tag-margin-y;
+        height: variables.$select-tag-height;
+        line-height: variables.$select-tag-height - 0.125rem;
+        margin-top: variables.$select-tag-margin-y;
+        margin-right: variables.$select-tag-margin-x;
+        margin-bottom: variables.$select-tag-margin-y;
         padding: 0 4px 0 8px;
         
-        background: $select-tag-color;
+        background: variables.$select-tag-color;
         border: 1px solid #f0f0f0;
-        border-radius: $border-radius;
+        border-radius: variables.$border-radius;
     }
 
     &.ant-select-sm {
 
         .ant-select-selector {
-            min-height: $select-height-sm + 0.125rem;
+            min-height: variables.$select-height-sm + 0.125rem;
         }
 
         .ant-select-selection-item {
-            height: $select-tag-height-sm;
-            line-height: $select-tag-height-sm - 0.125rem;
+            height: variables.$select-tag-height-sm;
+            line-height: variables.$select-tag-height-sm - 0.125rem;
         }
     }
 
     &.ant-select-lg {
 
         .ant-select-selector {
-            min-height: $select-height-lg + 0.125rem;
+            min-height: variables.$select-height-lg + 0.125rem;
         }
         
         .ant-select-selection-item {
-            height: $select-tag-height-lg;
-            line-height: $select-tag-height-lg - 0.125rem;
+            height: variables.$select-tag-height-lg;
+            line-height: variables.$select-tag-height-lg - 0.125rem;
         }
     }
 }
@@ -154,16 +157,16 @@
         &:not(.ant-select-customize-input) {
 
             .ant-select-selector {
-                border-color: $input-theme-color;
-                box-shadow: 0 0 0 2px rgba($input-theme-color, 0.2);
+                border-color: variables.$input-theme-color;
+                box-shadow: 0 0 0 2px rgba(variables.$input-theme-color, 0.2);
             }
         }
     }
 
     &.ant-select-multiple {
         .ant-select-selector {
-            border-color: $input-theme-color;
-            box-shadow: 0 0 0 2px rgba($input-theme-color, 0.2);
+            border-color: variables.$input-theme-color;
+            box-shadow: 0 0 0 2px rgba(variables.$input-theme-color, 0.2);
         }
     }
 }
@@ -171,12 +174,12 @@
 
 
 .ant-select-item {
-    min-height: $select-item-min-height;
-    padding: $select-item-spacer-x $select-item-spacer-y;
-    color: $body-color;
-    font-weight: $font-weight-normal;
-    font-size: $font-size-base;
-    line-height: $select-item-line-height;
+    min-height: variables.$select-item-min-height;
+    padding: variables.$select-item-spacer-x variables.$select-item-spacer-y;
+    color: variables.$body-color;
+    font-weight: variables.$font-weight-normal;
+    font-size: variables.$font-size-base;
+    line-height: variables.$select-item-line-height;
 }
 
 .ant-select-item-option {
@@ -184,13 +187,13 @@
 }
 
 .ant-select-item-option-disabled {
-    color: rgba($body-color, 0.4)
+    color: rgba(variables.$body-color, 0.4)
 }
 
 .ant-select-item-option-selected {
     &:not(.ant-select-item-option-disabled) {
         color: $gruu-primary;
-        font-weight: $font-weight-semibold;
+        font-weight: variables.$font-weight-semibold;
         background-color: transparent;
 
         .ant-select-item-option-state {

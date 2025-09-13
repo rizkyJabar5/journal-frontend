@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../variables/theme";
+@use "../variables/default-palette" as *;
+
 @mixin bg-variant($parent, $color) {
   #{$parent} {
     background-color: $color !important;
@@ -5,7 +9,7 @@
   a#{$parent} {
     &:hover,
     &:focus {
-      background-color: darken($color, 10%) !important;
+      background-color: color.adjust($color, $lightness: -10%) !important;
     }
   }
 }
@@ -18,17 +22,17 @@
   background-color: transparent !important;
 }
 
-@include bg-variant(".bg-primary", $primary);
+@include bg-variant(".bg-primary", theme.$primary);
 
-@include bg-variant(".bg-secondary", $secondary);
+@include bg-variant(".bg-secondary", theme.$secondary);
 
-@include bg-variant(".bg-success", $success);
+@include bg-variant(".bg-success", theme.$success);
 
-@include bg-variant(".bg-info", $info);
+@include bg-variant(".bg-info", theme.$info);
 
-@include bg-variant(".bg-warning", $warning);
+@include bg-variant(".bg-warning", theme.$warning);
 
-@include bg-variant(".bg-danger", $danger);
+@include bg-variant(".bg-danger", theme.$danger);
 
 @include bg-variant(".bg-dark", $gray-dark);
 

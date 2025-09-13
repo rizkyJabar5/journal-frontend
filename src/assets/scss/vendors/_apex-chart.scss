@@ -1,5 +1,7 @@
+@use "../variables/variables";
+
 .apexcharts-tooltip {
-    box-shadow: rgb(174, 174, 174) 0px 0px 10px !important;
+    box-shadow: rgb(174, 174, 174) 0 0 10px !important;
 
     &.apexcharts-theme-light {
         border: 0 !important;
@@ -17,12 +19,12 @@
 }
 
 .apexcharts-gridline {
-    stroke: $border-color;
+    stroke: variables.$border-color;
 }
 
 .apexcharts-text {
     tspan { 
-        fill: $body-color;
+        fill: variables.$body-color;
     }
 } 
 
@@ -58,8 +60,8 @@
 }
 
 .apexcharts-legend-text {
-    color: $body-color !important;
-    font-size: $font-size-base !important;
-    font-weight: $font-weight-normal !important;
-    font-family: $font-family-base !important;
+    color: variables.$body-color !important;
+    font-size: variables.$font-size-base !important;
+    font-weight: variables.$font-weight-normal !important;
+    font-family: variables.$font-family-base !important;
 }

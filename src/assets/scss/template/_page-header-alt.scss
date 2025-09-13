@@ -1,13 +1,17 @@
+@use "../mixins/responsive";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
+
 .page-header-alt {
     background-color: $white;
-    padding: $layout-content-gutter;
-    margin-top: -$layout-content-gutter;
-    margin-left: -$layout-content-gutter;
-    margin-right: -$layout-content-gutter;
+    padding: variables.$layout-content-gutter;
+    margin-top: -(variables.$layout-content-gutter);
+    margin-left: -(variables.$layout-content-gutter);
+    margin-right: -(variables.$layout-content-gutter);
 
-    @include screen-mobile {
-        margin-left: -$layout-content-gutter-sm;
-        margin-right: -$layout-content-gutter-sm;
+    @include responsive.screen-mobile {
+        margin-left: -(variables.$layout-content-gutter-sm);
+        margin-right: -(variables.$layout-content-gutter-sm);
     }
 
     &.overlap {

@@ -1,7 +1,11 @@
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-anchor {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
     margin: 0;
     padding: 0 0 0 2px;
 
@@ -13,19 +17,19 @@
 .ant-anchor-link-title {
     display: block;
     position: relative;
-    color: $body-color;
+    color: variables.$body-color;
     margin-bottom: 10px;
 }    
 
 .ant-anchor-link {
     padding: 8px 0 8px 15px;
-    line-height: $line-height-base;
+    line-height: variables.$line-height-base;
 }
 
 .ant-anchor-link-active{
 
     > .ant-anchor-link-title {
-        color: $primary;
+        color: theme.$primary;
     }
 }
 
@@ -36,7 +40,7 @@
         width: 2px;
         height: 100%;
         display: block;
-        background-color: $border-color;
+        background-color: variables.$border-color;
         margin: 0 auto;
     }
 }
@@ -44,7 +48,7 @@
 .ant-anchor-ink-ball {
     width: 10px;
     height: 10px;
-    border-radius: $border-radius-circle;
-    border: 2px solid $primary;
+    border-radius: variables.$border-radius-circle;
+    border: 2px solid theme.$primary;
     background-color: $white;
 }

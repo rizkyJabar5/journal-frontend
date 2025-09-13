@@ -1,45 +1,48 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-mentions {
-    border: 1px solid $input-border-color;
-    line-height: $input-line-height;
+    border: 1px solid variables.$input-border-color;
+    line-height: variables.$input-line-height;
 
     > textarea {
-        padding: $input-padding-y $input-padding-x;
+        padding: variables.$input-padding-y variables.$input-padding-x;
     }
 }
 
 .ant-mentions-measure {
-    padding: $input-padding-y $input-padding-x;
+    padding: variables.$input-padding-y variables.$input-padding-x;
 }
 
 .ant-mention-dropdown {
-    line-height: $line-height-base;
-    color: $dropdown-item-text;
-    margin: $dropdown-margin 0 0;
+    line-height: variables.$line-height-base;
+    color: variables.$dropdown-item-text;
+    margin: variables.$dropdown-margin 0 0;
     padding: 0;
     list-style: none;
-    max-height: $dropdown-max-height;
-    min-width: $dropdown-min-width;
-    background-color: $dropdown-bg;
-    border-radius: $border-radius;
-    z-index: $zindex-dropdown;
+    max-height: variables.$dropdown-max-height;
+    min-width: variables.$dropdown-min-width;
+    background-color: variables.$dropdown-bg;
+    border-radius: variables.$border-radius;
+    z-index: variables.$zindex-dropdown;
 }
 
 .ant-mentions-dropdown-menu-item {
     position: relative;
     display: block;
-    padding: $dropdown-padding-y $dropdown-padding-x;
-    line-height: $line-height-base;
-    font-weight: $font-weight-normal;
-    color: $dropdown-item-text;
+    padding: variables.$dropdown-padding-y variables.$dropdown-padding-x;
+    line-height: variables.$line-height-base;
+    font-weight: variables.$font-weight-normal;
+    color: variables.$dropdown-item-text;
 }
 
 .ant-mentions-dropdown-menu-item-active,
 .ant-mentions-dropdown-menu-item.focus,
 .ant-mentions-dropdown-menu-item:hover {
-    background-color: $dropdown-bg-hover;
+    background-color: variables.$dropdown-bg-hover;
 }
 
 .ant-mention-dropdown,
 .ant-menu {
-    font-family: $font-family-sans-serif;
+    font-family: variables.$font-family-sans-serif;
 }

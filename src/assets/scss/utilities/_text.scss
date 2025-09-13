@@ -1,5 +1,12 @@
+@use "sass:map";
+@use "../mixins/breakpoint";
+@use "../mixins/text";
+@use "../variables/theme";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
+
 .text-monospace {
-  font-family: $font-family-monospace !important;
+  font-family: variables.$font-family-monospace !important;
 }
 
 // Alignment
@@ -21,9 +28,9 @@
 
 // Responsive alignment
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  @include breakpoint.media-breakpoint-up($breakpoint) {
+    $infix: breakpoint.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
 
     .text#{$infix}-left {
       text-align: left !important;
@@ -52,22 +59,22 @@
 // Weight and italics
 
 .font-weight-light {
-  font-weight: $font-weight-light !important;
+  font-weight: variables.$font-weight-light !important;
 }
 .font-weight-lighter {
-  font-weight: $font-weight-lighter !important;
+  font-weight: variables.$font-weight-lighter !important;
 }
 .font-weight-normal {
-  font-weight: $font-weight-normal !important;
+  font-weight: variables.$font-weight-normal !important;
 }
 .font-weight-semibold {
-  font-weight: $font-weight-semibold !important;
+  font-weight: variables.$font-weight-semibold !important;
 }
 .font-weight-bold {
-  font-weight: $font-weight-bold !important;
+  font-weight: variables.$font-weight-bold !important;
 }
 .font-weight-bolder {
-  font-weight: $font-weight-bolder !important;
+  font-weight: variables.$font-weight-bolder !important;
 }
 .font-italic {
   font-style: italic !important;
@@ -76,31 +83,31 @@
 // Font sizes
 
 .font-size-xxl {
-  font-size: $font-size-xxl !important;
+  font-size: variables.$font-size-xxl !important;
 }
 
 .font-size-xl {
-  font-size: $font-size-xl !important;
+  font-size: variables.$font-size-xl !important;
 }
 
 .font-size-lg {
-  font-size: $font-size-lg !important;
+  font-size: variables.$font-size-lg !important;
 }
 
 .font-size-md {
-  font-size: $font-size-md !important;
+  font-size: variables.$font-size-md !important;
 }
 
 .font-size-base {
-  font-size: $font-size-base !important;
+  font-size: variables.$font-size-base !important;
 }
 
 .font-size-sm {
-  font-size: $font-size-sm !important;
+  font-size: variables.$font-size-sm !important;
 }
 
 .font-size-xs {
-  font-size: $font-size-xs !important;
+  font-size: variables.$font-size-xs !important;
 }
 
 // Contextual colors
@@ -109,20 +116,20 @@
   color: $white !important;
 }
 
-@each $color, $value in $theme-colors {
-  @include text-variant(".text-#{$color}", $value);
+@each $color, $value in theme.$theme-colors {
+  @include text.text-variant(".text-#{$color}", $value);
 }
 
 .text-body {
-  color: $body-color !important;
+  color: variables.$body-color !important;
 }
 
 .text-muted {
-  color: $text-muted !important;
+  color: variables.$text-muted !important;
 }
 
 .text-placeholder {
-  color: $input-color-placeholder !important;
+  color: variables.$input-color-placeholder !important;
 }
 
 .text-black-50 {

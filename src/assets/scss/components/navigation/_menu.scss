@@ -1,12 +1,16 @@
+@use "../../mixins/background-opacity";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-menu {
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  font-weight: $font-weight-semibold;
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-base;
+  font-weight: variables.$font-weight-semibold;
   color: $brand-secondary;
 
   &:not(.ant-menu-horizontal) {
     .ant-menu-item-selected {
-      @include background-opacity($brand-accent, 1);
+      @include background-opacity.background-opacity($brand-accent, 1);
 
       a {
         color: $gruu-primary;
@@ -16,7 +20,7 @@
 
   &:not(.ant-menu-dark) {
     a {
-      color: $menu-text;
+      color: variables.$menu-text;
 
       &:hover,
       &:focus {
@@ -30,7 +34,7 @@
   }
 
   &.ant-menu-dark {
-    background: $menu-dark-bg;
+    background: variables.$menu-dark-bg;
 
     .ant-menu-item-selected {
       background-color: transparent;
@@ -40,12 +44,12 @@
 }
 
 .ant-menu-sub {
-  font-weight: $font-weight-normal;
+  font-weight: variables.$font-weight-normal;
 }
 
 .ant-menu-horizontal {
   line-height: 2.8125rem;
-  border-bottom-color: $border-color;
+  border-bottom-color: variables.$border-color;
 
   > .ant-menu-item-active,
   > .ant-menu-item-open,
@@ -85,7 +89,7 @@
 .ant-menu-inline,
 .ant-menu-vertical,
 .ant-menu-vertical-left {
-  border-right-color: $border-color;
+  border-right-color: variables.$border-color;
 }
 
 .ant-menu-inline > .ant-menu-item,
@@ -96,12 +100,12 @@
 .ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title,
 .ant-menu-vertical > .ant-menu-item,
 .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title {
-  line-height: $menu-spacing-y;
-  height: $menu-spacing-y;
+  line-height: variables.$menu-spacing-y;
+  height: variables.$menu-spacing-y;
 }
 
 .ant-menu-submenu > .ant-menu {
-  border-radius: $border-radius;
+  border-radius: variables.$border-radius;
 }
 
 .ant-menu-vertical .ant-menu-item, 
@@ -112,17 +116,17 @@
 .ant-menu-vertical-left .ant-menu-submenu-title, 
 .ant-menu-vertical-right .ant-menu-submenu-title, 
 .ant-menu-inline .ant-menu-submenu-title {
-  line-height: $menu-spacing-y;
-  height: $menu-spacing-y;
+  line-height: variables.$menu-spacing-y;
+  height: variables.$menu-spacing-y;
 }
 
 .ant-menu-item {
   > a {
-    color: $menu-text-gruu;
+    color: variables.$menu-text-gruu;
     font-weight: bold;
   }
   > span {
-    font-size: $font-size-sm;
+    font-size: variables.$font-size-sm;
   }
 }
 
@@ -136,10 +140,10 @@
 
 .ant-menu-item-group-title {
   padding: 0.75rem 40px;
-  color: rgba($menu-text, 0.4);
-  font-size: $font-size-sm;
-  line-height: $line-height-base;
-  font-weight: $font-weight-bold;
+  color: rgba(variables.$menu-text, 0.4);
+  font-size: variables.$font-size-sm;
+  line-height: variables.$line-height-base;
+  font-weight: variables.$font-weight-bold;
   margin-top: 0.9375rem;
 }
 
@@ -147,11 +151,11 @@
 .ant-menu-submenu-title {
   &:active {
     color: $gruu-primary;
-    @include background-opacity($gruu-primary, 0.1);
+    @include background-opacity.background-opacity($gruu-primary, 0.1);
   }
 
   .anticon {
-    font-size: $font-size-md;
+    font-size: variables.$font-size-md;
   }
 }
 
@@ -188,7 +192,7 @@
         content: "";
         position: absolute;
         background: transparent;
-        background-image: linear-gradient(to right, $menu-text, $menu-text);
+        background-image: linear-gradient(to right, variables.$menu-text, variables.$menu-text);
         border-radius: 2px;
       }
     }
@@ -214,8 +218,8 @@
 }
 
 .ant-menu-dark {
-  background-color: $menu-dark-bg;
-  color: $menu-dark-text;
+  background-color: variables.$menu-dark-bg;
+  color: variables.$menu-dark-text;
 
   &.ant-menu-dark {
     &:not(.ant-menu-horizontal) {
@@ -236,7 +240,7 @@
   }
 
   a {
-    color: $menu-dark-text;
+    color: variables.$menu-dark-text;
   }
 
   &:not(.ant-menu-horizontal) {
@@ -251,15 +255,15 @@
 
   .ant-menu-item,
   .ant-menu-item-group-title {
-    color: $menu-dark-text;
+    color: variables.$menu-dark-text;
     > a {
-      color: $menu-dark-text;
+      color: variables.$menu-dark-text;
     }
   }
 
   .ant-menu-sub {
-    background: $menu-dark-bg;
-    color: $menu-dark-text;
+    background: variables.$menu-dark-bg;
+    color: variables.$menu-dark-text;
 
     .ant-menu-submenu-title {
       .ant-menu-submenu-arrow {
@@ -282,7 +286,7 @@
 
   .ant-menu-inline {
     &.ant-menu-sub {
-      background-color: $menu-dark-bg;
+      background-color: variables.$menu-dark-bg;
       box-shadow: none;
     }
   }

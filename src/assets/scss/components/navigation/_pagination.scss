@@ -1,6 +1,9 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-pagination {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
     color: $gray-light;
     
     .ant-select {
@@ -9,11 +12,11 @@
     
     .ant-select-selection--single,
     .ant-select-selection--multiple {
-        height: $pagination-size;
+        height: variables.$pagination-size;
     }
 
     .ant-select-selection__rendered {
-        line-height: $pagination-size;
+        line-height: variables.$pagination-size;
     }
 
     .ant-select-selection-selected-value {
@@ -23,21 +26,21 @@
     .ant-select-sm {
         .ant-select-selection--single,
         .ant-select-selection--multiple {
-            height: $pagination-size-sm;
+            height: variables.$pagination-size-sm;
         }
 
         .ant-select-selection__rendered {
-            line-height: $pagination-size-sm;
+            line-height: variables.$pagination-size-sm;
         }
     }
 }
 
 .ant-pagination-item {
     background-color: transparent;
-    min-width: $pagination-size;
-    height: $pagination-size;
+    min-width: variables.$pagination-size;
+    height: variables.$pagination-size;
     border: 1px solid transparent;
-    border-radius: $border-radius-circle;
+    border-radius: variables.$border-radius-circle;
 
     a {
         color: $gray-light;
@@ -48,15 +51,15 @@
         border-color: transparent;
 
         a {
-            color: $pagination-theme-color; 
+            color: variables.$pagination-theme-color; 
         }
     }
 }
 
 .ant-pagination-item-active {
-    border-color: $pagination-theme-color;
-    font-weight: $font-weight-normal;
-    background-color: $pagination-theme-color;
+    border-color: variables.$pagination-theme-color;
+    font-weight: variables.$font-weight-normal;
+    background-color: variables.$pagination-theme-color;
 
     a {
         color: $white;
@@ -76,8 +79,8 @@
     color: $gray-light;
 
     .ant-pagination-item-link {
-        border-color: $border-color; 
-        border-radius: $border-radius-circle;
+        border-color: variables.$border-color; 
+        border-radius: variables.$border-radius-circle;
     }
 
     a {
@@ -88,22 +91,22 @@
     &:hover {
 
         .ant-pagination-item-link {
-            border-color: $pagination-theme-color;
-            color: $pagination-theme-color;
+            border-color: variables.$pagination-theme-color;
+            color: variables.$pagination-theme-color;
         }
     }
 }
 
 .ant-pagination-disabled {
     .ant-pagination-item-link {
-        border-color: $border-color;
+        border-color: variables.$border-color;
         color: $gray;
         cursor: not-allowed;
         opacity: 0.5;
     }
 
     a {
-        border-color: $border-color;
+        border-color: variables.$border-color;
         color: $gray;
         cursor: not-allowed;
         opacity: 0.5;
@@ -114,7 +117,7 @@
 
         a,
         .ant-pagination-item-link {
-            border-color: $border-color;
+            border-color: variables.$border-color;
             color: $gray;
             cursor: not-allowed;
             opacity: 0.5;
@@ -126,25 +129,25 @@
 
     input {
         padding: 4px 11px;
-        height: $pagination-size;
-        font-size: $font-size-base;
+        height: variables.$pagination-size;
+        font-size: variables.$font-size-base;
         line-height: 1.5;
         color: $gray-dark;
         background-color: $white;
         background-image: none;
-        border: 1px solid $border-color;
-        border-radius: $border-radius;
+        border: 1px solid variables.$border-color;
+        border-radius: variables.$border-radius;
         margin: 0 10px;
         width: 50px;
 
         &:hover,
         &:focus {
-            border-color: $pagination-theme-color;
+            border-color: variables.$pagination-theme-color;
         }
 
         &:focus {
             outline: 0;
-            box-shadow: 0 0 0 2px rgba($pagination-theme-color, .2);
+            box-shadow: 0 0 0 2px rgba(variables.$pagination-theme-color, .2);
         }
     }
 }
@@ -153,24 +156,24 @@
 
 
     .ant-pagination-options-quick-jumper {
-        height: $pagination-size-sm;
-        line-height: $pagination-size-sm;
+        height: variables.$pagination-size-sm;
+        line-height: variables.$pagination-size-sm;
 
         input {
             position: relative;
             display: inline-block;
             padding: 4px 11px;
-            height: $pagination-size-sm;
+            height: variables.$pagination-size-sm;
             font-size: 13px;
             line-height: 1.5;
             color: $gray-dark;
             background-color: $white;
-            border: 1px solid $border-color;
-            border-radius: $border-radius;
+            border: 1px solid variables.$border-color;
+            border-radius: variables.$border-radius;
 
             &:hover,
             &:focus {
-                border-color: $pagination-theme-color;
+                border-color: variables.$pagination-theme-color;
             }
         }
     }
@@ -183,15 +186,15 @@
         input {
             margin-right: 8px;
             background-color: $white;
-            border-radius: $border-radius;
-            border: 1px solid $border-color;
+            border-radius: variables.$border-radius;
+            border: 1px solid variables.$border-color;
             padding: 0 6px;
             text-align: center;
             color: $gray-dark;
 
             &:hover,
             &:focus {
-                border-color: $pagination-theme-color;
+                border-color: variables.$pagination-theme-color;
             }
         }
     }

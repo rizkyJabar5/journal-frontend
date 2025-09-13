@@ -1,26 +1,30 @@
+@use "../../mixins/placeholder";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-input {
-    padding: $input-padding-y $input-padding-x;
-    line-height: $input-line-height;
-    color: $input-color;
+    padding: variables.$input-padding-y variables.$input-padding-x;
+    line-height: variables.$input-line-height;
+    color: variables.$input-color;
     height: auto;
-    border: 1px solid $input-border-color;
-    border-radius: $input-border-radius;
-    background-color: $input-bg;
+    border: 1px solid variables.$input-border-color;
+    border-radius: variables.$input-border-radius;
+    background-color: variables.$input-bg;
 
     &.ant-input:hover {
-        border-color: $input-theme-color;
+        border-color: variables.$input-theme-color;
     }
 
     &:focus,
     .ant-input-focused {
-        border-color: $input-theme-color;
-        box-shadow: 0 0 0 2px rgba($input-theme-color,.2)
+        border-color: variables.$input-theme-color;
+        box-shadow: 0 0 0 2px rgba(variables.$input-theme-color,.2)
     }
 
     &.ant-input-disabled {
         &:hover,
         &:focus { 
-            border-color: $input-border-color;
+            border-color: variables.$input-border-color;
         }         
     }
 
@@ -30,22 +34,22 @@
         &:not(.anticon) {
 
             .ant-input-search-button {
-                height: $select-height;
+                height: variables.$select-height;
             }
         }
     }
 
     &:disabled {
-        background-color: $input-bg-disabled;
+        background-color: variables.$input-bg-disabled;
         cursor: not-allowed;
 
         &:hover {
-            border-color: $input-border-color;
+            border-color: variables.$input-border-color;
         }  
     }
 
-    @include placeholder {
-        color: $input-color-placeholder;
+    @include placeholder.placeholder {
+        color: variables.$input-color-placeholder;
     }
 }
 
@@ -54,7 +58,7 @@
 }
 
 .ant-input-sm {
-    padding: $input-padding-y-sm $input-padding-x-sm;
+    padding: variables.$input-padding-y-sm variables.$input-padding-x-sm;
     height: auto;
 
     &~.ant-input-prefix,
@@ -63,16 +67,16 @@
         &:not(.anticon) {
 
             .ant-input-search-button {
-                height: $select-height-sm;
+                height: variables.$select-height-sm;
             }
         }
     }
 }    
 
 .ant-input-lg {
-    padding: $input-padding-y-lg $input-padding-x-lg;
+    padding: variables.$input-padding-y-lg variables.$input-padding-x-lg;
     height: auto;
-    font-size: $input-font-size-lg;
+    font-size: variables.$input-font-size-lg;
 
     &~.ant-input-prefix,
     &~.ant-input-suffix {
@@ -80,20 +84,20 @@
         &:not(.anticon) {
 
             .ant-input-search-button {
-                height: $select-height-lg;
+                height: variables.$select-height-lg;
             }
         }
     }
 }   
 
 .ant-input-affix-wrapper {
-    padding: $input-padding-y $input-padding-x;
-    color: $input-color;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    padding: variables.$input-padding-y variables.$input-padding-x;
+    color: variables.$input-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
     background-color: $white;
-    border: 1px solid $border-color;
-    border-radius: $input-border-radius;
+    border: 1px solid variables.$border-color;
+    border-radius: variables.$input-border-radius;
     max-height: none;
 
     >input{
@@ -106,44 +110,44 @@
     }
 
     &:hover {
-        border-color: $input-theme-color;
+        border-color: variables.$input-theme-color;
     }
 
     &:focus, 
     &.ant-input-affix-wrapper-focused {
-        border-color: $input-theme-color;
-        box-shadow: 0 0 0 2px rgba($input-theme-color, 0.2);
+        border-color: variables.$input-theme-color;
+        box-shadow: 0 0 0 2px rgba(variables.$input-theme-color, 0.2);
     }
 }
 
 .ant-input-affix-wrapper-sm {
-    padding: $input-padding-y-sm $input-padding-x-sm;
+    padding: variables.$input-padding-y-sm variables.$input-padding-x-sm;
     max-height: none;
 }
 
 .ant-input-affix-wrapper-lg {
-    padding: $input-padding-y-lg $input-padding-x-lg;
+    padding: variables.$input-padding-y-lg variables.$input-padding-x-lg;
     max-height: none;
     
     .ant-input-prefix,
     .ant-input-suffix {
-        font-size: $input-font-size-lg;
+        font-size: variables.$input-font-size-lg;
     }
 }
 
 .ant-input-group-addon {
-    border: 1px solid $input-border-color;
+    border: 1px solid variables.$input-border-color;
     background-color: $gray-lightest;
-    color: $body-color;
-    font-size: $font-size-base;
+    color: variables.$body-color;
+    font-size: variables.$font-size-base;
     padding: 0 0.625rem;
-    border-radius: $border-radius;
+    border-radius: variables.$border-radius;
 }
 
 
 textarea {
     &.ant-input {
-        min-height: $textarea-min-height;
+        min-height: variables.$textarea-min-height;
     }
 }
 
@@ -153,30 +157,30 @@ textarea {
 }
 
 .ant-input-disabled {
-    background-color: $input-bg-disabled;
+    background-color: variables.$input-bg-disabled;
     cursor: not-allowed;
 
     &:hover {
-        border-color: $input-border-color;
+        border-color: variables.$input-border-color;
     }
 } 
 
 .ant-input-affix-wrapper-disabled {
-    background-color: $input-bg-disabled;
-    color: rgba($input-color, 0.6);
+    background-color: variables.$input-bg-disabled;
+    color: rgba(variables.$input-color, 0.6);
     &:hover {
-        border-color: $input-border-color;
+        border-color: variables.$input-border-color;
     }
 } 
 
 .ant-form-item-required {
     &:before {
-        color: $input-error-color;
+        color: variables.$input-error-color;
     }
 }
 
 .ant-input-search-icon {
     &:before {
-        border-left: 1px solid $border-color;
+        border-left: 1px solid variables.$border-color;
     }
 }

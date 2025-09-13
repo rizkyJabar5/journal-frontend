@@ -1,16 +1,20 @@
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-cascader,
 .ant-cascader-picker {
-    font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $body-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
 }
 
 .ant-cascader-picker {
 
     &:focus {
         .ant-cascader-input {
-            border-color: $input-theme-color;
-            box-shadow: 0 0 0 2px rgba($input-theme-color,.2)
+            border-color: variables.$input-theme-color;
+            box-shadow: 0 0 0 2px rgba(variables.$input-theme-color,.2)
         }
     }
 }
@@ -19,58 +23,58 @@
 
     &:hover {
         + .ant-cascader-input {
-            border-color: $input-theme-color
+            border-color: variables.$input-theme-color
         }
     }
 }
 
 .ant-cascader-menu {
-    min-width: $cascader-menu-min-width;
-    height: $cascader-menu-height;
-    border-right: 1px solid $input-border-color;
+    min-width: variables.$cascader-menu-min-width;
+    height: variables.$cascader-menu-height;
+    border-right: 1px solid variables.$input-border-color;
 }
 
 .ant-cascader-menus {
-    font-size: $font-size-base;
+    font-size: variables.$font-size-base;
     background: $white;
-    z-index: $zindex-dropdown;
+    z-index: variables.$zindex-dropdown;
     box-shadow: 0 2px 8px rgba(0,0,0,.15);
     white-space: nowrap;
 }
 
 .ant-cascader-menu-item {
-    padding: $cascader-menu-item-spacing-y $cascader-menu-item-spacing-x;
-    line-height: $cascader-menu-item-line-height;
+    padding: variables.$cascader-menu-item-spacing-y variables.$cascader-menu-item-spacing-x;
+    line-height: variables.$cascader-menu-item-line-height;
     cursor: pointer;
 
     &:hover {
-        background: $select-item-hover;
+        background: variables.$select-item-hover;
     }
 
     .ant-cascader-menu-item-keyword {
-        color: $danger;
+        color: theme.$danger;
     }
 }
 
 .ant-cascader-menu-item-expand {
-    padding-right: $cascader-menu-item-spacing-x *2 ;
+    padding-right: variables.$cascader-menu-item-spacing-x *2 ;
 
     &:after {
         display: inline-block;
-        color: $body-color;
+        color: variables.$body-color;
         position: absolute;
-        right: $cascader-menu-item-spacing-x;
+        right: variables.$cascader-menu-item-spacing-x;
     } 
 }
 
 .ant-cascader-menu-item-active {
 
     &:not(.ant-cascader-menu-item-disabled) {
-        background: $select-item-selected;
+        background: variables.$select-item-selected;
         font-weight: 500;
 
         &:hover {
-            background: $select-item-selected;
+            background: variables.$select-item-selected;
             font-weight: 500;
         }
     }

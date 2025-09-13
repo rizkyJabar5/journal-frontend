@@ -1,7 +1,11 @@
+@use "../../mixins/responsive";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-picker-calendar {
-    color: $body-color;
-    font-size: $font-size-base;
-    line-height: $line-height-base;
+    color: variables.$body-color;
+    font-size: variables.$font-size-base;
+    line-height: variables.$line-height-base;
     background: $white;
 
     .ant-picker-panel {
@@ -13,15 +17,15 @@
         .ant-picker-content {
 
             tbody {
-                border-left: 1px solid $picker-calendar-border-color;
-                border-bottom: 1px solid $picker-calendar-border-color;
+                border-left: 1px solid variables.$picker-calendar-border-color;
+                border-bottom: 1px solid variables.$picker-calendar-border-color;
             }
         }
     }
 
     &.ant-picker-calendar-mini {
         .ant-picker-panel {
-            border-top: 1px solid $picker-calendar-border-color;
+            border-top: 1px solid variables.$picker-calendar-border-color;
 
             .ant-picker-content {
                 tbody {
@@ -40,10 +44,10 @@
         .ant-picker-calendar-date { 
             margin: 0px;
             padding: 4px 8px 0;
-            border-top: 1px solid $picker-calendar-border-color;
-            border-right: 1px solid $picker-calendar-border-color;
+            border-top: 1px solid variables.$picker-calendar-border-color;
+            border-right: 1px solid variables.$picker-calendar-border-color;
 
-            @include screen-mobile {
+            @include responsive.screen-mobile {
                 padding-left: 4px;
                 padding-right: 4px;
             }
@@ -53,17 +57,17 @@
             display: inline-block;
             line-height: 2;
 
-            @include screen-mobile {
+            @include responsive.screen-mobile {
                 line-height: 1.5;
             }
         }
 
         .ant-picker-calendar-date-content {
             height: 86px;
-            color: $body-color;
-            line-height: $line-height-base;
+            color: variables.$body-color;
+            line-height: variables.$line-height-base;
 
-            @include screen-laptop-only {
+            @include responsive.screen-laptop-only {
                 height: 70px;
 
                 .calendar-event {
@@ -74,20 +78,20 @@
                     }
                     
                     .ant-badge-status-dot {
-                        min-width: $badge-dot-size;
+                        min-width: variables.$badge-dot-size;
                     }
 
                     .ant-badge-status-text {
-                        font-size: $font-size-sm;
+                        font-size: variables.$font-size-sm;
                     }
                 }
             }
 
-            @include screen-mobile {
+            @include responsive.screen-mobile {
                 height: 30px;
             }
 
-            @include screen-tablet {
+            @include responsive.screen-tablet {
                 height: 40px
             }
         }
@@ -95,12 +99,12 @@
         .ant-picker-cell {
             &:hover {
                 .ant-picker-calendar-date {
-                    background: $picker-calendar-hover-bg;
+                    background: variables.$picker-calendar-hover-bg;
                 }
             }
 
             .ant-picker-cell-inner {
-                @include screen-mobile {
+                @include responsive.screen-mobile {
                     line-height: 1;
                     font-size: 12px;
                 }
@@ -111,21 +115,21 @@
 
             .ant-picker-calendar-date,
             .ant-picker-calendar-date-today {
-                background: $picker-calendar-selected-bg;
+                background: variables.$picker-calendar-selected-bg;
 
                 .ant-picker-calendar-date-value {
-                    color: $picker-calendar-theme-color;
-                    font-weight: $font-weight-semibold;
+                    color: variables.$picker-calendar-theme-color;
+                    font-weight: variables.$font-weight-semibold;
                 }
             }
 
             &:hover {
                 .ant-picker-calendar-date,
                 .ant-picker-calendar-date-today {
-                    background: $picker-calendar-selected-bg;
+                    background: variables.$picker-calendar-selected-bg;
 
                     .ant-picker-calendar-date-value {
-                        color: $picker-calendar-theme-color;
+                        color: variables.$picker-calendar-theme-color;
                     }
                 }
             }
@@ -133,13 +137,13 @@
 
         .ant-picker-calendar-date-today {
             .ant-picker-calendar-date-value {
-                background-color: $picker-calendar-theme-color;
+                background-color: variables.$picker-calendar-theme-color;
                 color: $white !important;
-                font-weight: $font-weight-base !important;
-                border-radius: $border-radius-lg;
+                font-weight: variables.$font-weight-base !important;
+                border-radius: variables.$border-radius-lg;
                 padding: 0rem 0.408rem;
 
-                @include screen-mobile { 
+                @include responsive.screen-mobile { 
                     padding: 0rem 0.2rem;
                 }
             }

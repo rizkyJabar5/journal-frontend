@@ -1,5 +1,9 @@
+@use "../mixins/placeholder";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
+
 .nav-search {
-    height: $header-height;
+    height: variables.$header-height;
     padding: 0 1.5rem;
     position: absolute;
     width: 100%;
@@ -7,8 +11,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: $font-size-md;
-    top: -$header-height;
+    font-size: variables.$font-size-md;
+    top: -(variables.$header-height);
     transition: all 0.3s ease;
 
     &.nav-search-active {
@@ -48,13 +52,13 @@
 }
 
 .nav-search-dropdown {
-    border-radius: $border-radius;
+    border-radius: variables.$border-radius;
     
     .ant-select-item {
         min-height: 3rem;
         padding: 0;
         a {
-            color: $body-color
+            color: variables.$body-color
         }
     }
 
@@ -76,7 +80,7 @@
         width: 100%;
 
         .ant-input-affix-wrapper {
-            background-color: $body-bg;
+            background-color: variables.$body-bg;
 
             .ant-input {
                 background-color: transparent;
@@ -105,7 +109,7 @@
             .ant-input {
                 color: $white;
 
-                @include placeholder {
+                @include placeholder.placeholder {
                     color: rgba($white, 0.75);
                 }
             }
@@ -120,10 +124,10 @@
                 }
 
                 .ant-input {
-                    color: $input-color;
+                    color: variables.$input-color;
 
-                    @include placeholder {
-                        color: $input-color-placeholder;
+                    @include placeholder.placeholder {
+                        color: variables.$input-color-placeholder;
                     }
                 }
             }

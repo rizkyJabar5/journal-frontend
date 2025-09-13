@@ -1,14 +1,19 @@
+@use "sass:map";
+@use "../mixins/responsive";
+@use "../variables/variables";
+@use "../variables/default-palette" as *;
+
 .app-content {
-    padding: $layout-content-gutter;
-    margin-top: $header-height;
-    min-height: calc(100vh - #{$content-height-offset});
+    padding: variables.$layout-content-gutter;
+    margin-top: variables.$header-height;
+    min-height: calc(100vh - #{variables.$content-height-offset});
     position: relative;
 
     .app-breadcrumb {
         margin-bottom: 15px;
     }
 
-    @include print {
+    @include responsive.print {
         padding: 0px ;
         margin-top: 0px;
     } 
@@ -22,31 +27,31 @@
     }
 
     &.layout-top-nav {
-        max-width: $content-max-width;
+        max-width: variables.$content-max-width;
         margin-left: auto;
         margin-right: auto;
         width: 100%;
-        @include screen-tablet-above { 
-            margin-top: $header-height + $top-nav-height;
-            min-height: calc(100vh - #{$content-height-offset} - #{$top-nav-height});
+        @include responsive.screen-tablet-above { 
+            margin-top: variables.$header-height + variables.$top-nav-height;
+            min-height: calc(100vh - #{variables.$content-height-offset} - #{variables.$top-nav-height});
         }
     }
 
-    @include screen-mobile {
-        padding: $layout-content-gutter-sm;
+    @include responsive.screen-mobile {
+        padding: variables.$layout-content-gutter-sm;
     }
 }
 
 .inner-app-layout {
     background-color: $white;   
     display: flex;
-    border-radius: $border-radius;
+    border-radius: variables.$border-radius;
 
     > .side-content {
         display: flex;
 
         &.with-border {
-            border-right: 1px solid $border-color;
+            border-right: 1px solid variables.$border-color;
 
             .ant-menu-inline {
                 border-right-color: transparent;
@@ -56,7 +61,7 @@
 
 
     > .main-content {
-        min-height: calc(100vh - #{$content-height-offset} - #{$layout-content-gutter} * 2  - 2px);
+        min-height: calc(100vh - #{variables.$content-height-offset} - #{variables.$layout-content-gutter} * 2  - 2px);
         width: 100%;
         
         &.has-page-header {
@@ -64,7 +69,7 @@
         } 
 
         &.gutter {
-            padding: map-get($spacers, 4);
+            padding: map.get(variables.$spacers, 4);
         }
 
         &.no-gutter {
@@ -75,7 +80,7 @@
 
 .app-layout {
 
-    @include print {
+    @include responsive.print {
         padding-left: 0px !important;
     } 
 }
@@ -88,7 +93,7 @@
     .anticon {
         padding: 0.625rem;
         cursor: pointer;
-        border-radius: $border-radius-circle;
+        border-radius: variables.$border-radius-circle;
         transition: all 0.3s ease;
 
         &:hover {

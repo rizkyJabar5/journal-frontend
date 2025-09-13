@@ -1,6 +1,9 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-rate {
-    font-size: $rate-font-size;
-    color: $rate-color;
+    font-size: variables.$rate-font-size;
+    color: variables.$rate-color;
 }
 
 .ant-rate-star-first,

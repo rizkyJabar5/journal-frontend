@@ -1,2 +1,4 @@
-@import 'assets/scss/global';
-@import 'assets/scss/utilities/utilities';
+@use 'assets/scss/global';
+@use 'assets/scss/utilities/utilities';
+
+@import "antd/dist/reset.css";

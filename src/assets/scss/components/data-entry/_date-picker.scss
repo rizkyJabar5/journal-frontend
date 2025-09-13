@@ -1,65 +1,69 @@
+@use "../../mixins/placeholder";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-picker {
-    color: $input-color;
-    font-size: $input-font-size;
-    line-height: $input-line-height;
+    color: variables.$input-color;
+    font-size: variables.$input-font-size;
+    line-height: variables.$input-line-height;
     padding: 4px 11px 4px;
     background: $white;
-    border: 1px solid $input-border-color;
-    border-radius: $input-border-radius;
-    height: $date-picker-height;
+    border: 1px solid variables.$input-border-color;
+    border-radius: variables.$input-border-radius;
+    height: variables.$date-picker-height;
 
     &:hover, 
     .ant-picker-focused {
-        border-color: $input-theme-color;
+        border-color: variables.$input-theme-color;
     }
 
     .ant-picker-input {
         > input {
-            @include placeholder {
-                color: $input-color-placeholder;
+            @include placeholder.placeholder {
+                color: variables.$input-color-placeholder;
             }
         }
     }
 
     &.ant-picker-disabled {
-        background: $input-bg-disabled;
-        border-color: $border-color;
+        background: variables.$input-bg-disabled;
+        border-color: variables.$border-color;
     }
 }
 
 .ant-picker-large {
-    padding: $input-padding-y-lg $input-padding-x-lg $input-padding-y-lg;
-    height: $date-picker-height-lg;
+    padding: variables.$input-padding-y-lg variables.$input-padding-x-lg variables.$input-padding-y-lg;
+    height: variables.$date-picker-height-lg;
 
     .ant-picker-input {
         > input {
-            font-size: $input-font-size-lg;
+            font-size: variables.$input-font-size-lg;
         }
     }
 }
 
 .ant-picker-small {
-    padding: 0 $input-padding-x-sm 0;
+    padding: 0 variables.$input-padding-x-sm 0;
 
-    height: $date-picker-height-sm;
+    height: variables.$date-picker-height-sm;
 
     .ant-picker-input {
         > input {
-            font-size: $input-font-size-sm;
+            font-size: variables.$input-font-size-sm;
         }
     }
 }
 
 .ant-picker-focused {
-    border-color: $input-theme-color;
-    box-shadow: 0 0 0 2px rgba($input-theme-color, 0.2);
+    border-color: variables.$input-theme-color;
+    box-shadow: 0 0 0 2px rgba(variables.$input-theme-color, 0.2);
 }
 
 .ant-picker-input {
 
     > input:focus,
     > .input-focused {
-        border-color: $input-theme-color;
+        border-color: variables.$input-theme-color;
     }
 }
 
@@ -75,62 +79,62 @@
     
     th {
         color: $gray-dark;
-        font-weight: $font-weight-semibold;
+        font-weight: variables.$font-weight-semibold;
     }
 }
 
 .ant-picker-cell {
-    color: rgba($body-color, 0.25);
+    color: rgba(variables.$body-color, 0.25);
 
     &:hover {
         &:not(.ant-picker-cell-in-view) {
             
             .ant-picker-cell-inner {
-                background: $picker-calendar-hover-bg;
+                background: variables.$picker-calendar-hover-bg;
             }
         }
 
-        &:not(.ant-picker-cell-selected)
-        :not(.ant-picker-cell-range-start)
-        :not(.ant-picker-cell-range-end)
-        :not(.ant-picker-cell-range-hover-start)
-        :not(.ant-picker-cell-range-hover-end) {
+      &:not(.ant-picker-cell-selected),
+      :not(.ant-picker-cell-range-start),
+      :not(.ant-picker-cell-range-end),
+      :not(.ant-picker-cell-range-hover-start),
+      :not(.ant-picker-cell-range-hover-end) {
 
             .ant-picker-cell-inner {
-                background: $picker-calendar-hover-bg;
+                background: variables.$picker-calendar-hover-bg;
             }
         }
     }
 
     &:before {
-        height: $picker-calendar-mini-cell-size;
+        height: variables.$picker-calendar-mini-cell-size;
     }
 
     .ant-picker-cell-inner {
-        min-width: $picker-calendar-mini-cell-size;
-        height: $picker-calendar-mini-cell-size;
-        line-height: $picker-calendar-mini-cell-size + 0.1rem;
-        border-radius: $border-radius-round;
+        min-width: variables.$picker-calendar-mini-cell-size;
+        height: variables.$picker-calendar-mini-cell-size;
+        line-height: variables.$picker-calendar-mini-cell-size + 0.1rem;
+        border-radius: variables.$border-radius-round;
     }
 }
 
 .ant-picker-cell-in-view {
-    color: $body-color;
+    color: variables.$body-color;
 
     &.ant-picker-cell-today {
         .ant-picker-cell-inner {
-            color: $picker-calendar-theme-color;
+            color: variables.$picker-calendar-theme-color;
 
             &:before {
-                border: 1px solid $picker-calendar-theme-color;
-                border-radius: $border-radius-round;
+                border: 1px solid variables.$picker-calendar-theme-color;
+                border-radius: variables.$border-radius-round;
             }
         }
     }
 
     &.ant-picker-cell-in-range {
         &:before {
-            background: rgba($picker-calendar-theme-color, 0.1);
+            background: rgba(variables.$picker-calendar-theme-color, 0.1);
         }
     }
 
@@ -138,12 +142,12 @@
 
         &:not(.ant-picker-cell-range-start-single):not(.ant-picker-cell-range-end) {
             .ant-picker-cell-inner {
-                border-radius: $border-radius-round;
+                border-radius: variables.$border-radius-round;
             }
         }
 
         &:not(.ant-picker-cell-range-start-single)::before {
-            background: rgba($picker-calendar-theme-color, 0.1);
+            background: rgba(variables.$picker-calendar-theme-color, 0.1);
         }
     }
 
@@ -151,12 +155,12 @@
 
         &:not(.ant-picker-cell-range-end-single):not(.ant-picker-cell-range-start) {
             .ant-picker-cell-inner {
-                border-radius: $border-radius-round;
+                border-radius: variables.$border-radius-round;
             }
         }
 
         &:not(.ant-picker-cell-range-end-single)::before {
-            background: rgba($picker-calendar-theme-color, 0.1);
+            background: rgba(variables.$picker-calendar-theme-color, 0.1);
         }
     }
 
@@ -165,13 +169,13 @@
     &.ant-picker-cell-range-end {
         .ant-picker-cell-inner {
             color: $white;
-            background: $picker-calendar-theme-color;        
+            background: variables.$picker-calendar-theme-color;        
         }
 
         &:hover {
             .ant-picker-cell-inner {
                 color: $white;
-                background: $picker-calendar-theme-color;        
+                background: variables.$picker-calendar-theme-color;        
             }
         }
     }
@@ -184,9 +188,9 @@
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-end:not(.ant-picker-cell-in-range):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end)::after, 
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start-single::after, .ant-picker-cell-in-view.ant-picker-cell-range-hover-end.ant-picker-cell-range-end-single::after, 
 .ant-picker-cell-in-view.ant-picker-cell-range-hover:not(.ant-picker-cell-in-range)::after {
-    height: $picker-calendar-mini-cell-size;;
-    border-top: 1px dashed $picker-calendar-theme-color;
-    border-bottom: 1px dashed $picker-calendar-theme-color;
+    height: variables.$picker-calendar-mini-cell-size;;
+    border-top: 1px dashed variables.$picker-calendar-theme-color;
+    border-bottom: 1px dashed variables.$picker-calendar-theme-color;
 }
 
 .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover::before, 
@@ -196,7 +200,7 @@
 .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single).ant-picker-cell-range-hover-end::before, 
 .ant-picker-panel > :not(.ant-picker-date-panel) .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start::before, 
 .ant-picker-panel > :not(.ant-picker-date-panel) .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end::before {
-    background: rgba($picker-calendar-theme-color, 0.3); 
+    background: rgba(variables.$picker-calendar-theme-color, 0.3); 
 }
 
 .ant-picker-date-panel {
@@ -205,9 +209,9 @@
             &.ant-picker-cell-range-hover-end,
             &.ant-picker-cell-range-hover-start {
                 .ant-picker-cell-inner {
-                    color: $picker-calendar-theme-color;
-                    font-weight: $font-weight-bold;
-                    font-size: $font-size-md;
+                    color: variables.$picker-calendar-theme-color;
+                    font-weight: variables.$font-weight-bold;
+                    font-size: variables.$font-size-md;
                 }
             }
         }
@@ -228,12 +232,12 @@
 
 .ant-picker-week-panel-row-selected  {
     td {
-        background: $picker-calendar-theme-color;
+        background: variables.$picker-calendar-theme-color;
     }
 
     &:hover {
         td {
-            background: $picker-calendar-theme-color;
+            background: variables.$picker-calendar-theme-color;
         }
     }
 }
@@ -242,22 +246,22 @@ tr > .ant-picker-cell-in-view.ant-picker-cell-range-hover:first-child::after,
 tr > .ant-picker-cell-in-view.ant-picker-cell-range-hover-end:first-child::after,
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-edge-start:not(.ant-picker-cell-range-hover-edge-start-near-range)::after, 
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-start::after {
-    border-left: 1px dashed $picker-calendar-theme-color;
+    border-left: 1px dashed variables.$picker-calendar-theme-color;
 }
 
 tr > .ant-picker-cell-in-view.ant-picker-cell-range-hover:last-child::after, 
 tr > .ant-picker-cell-in-view.ant-picker-cell-range-hover-start:last-child::after, 
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-edge-end:not(.ant-picker-cell-range-hover-edge-end-near-range)::after, 
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-end::after {
-    border-right: 1px dashed $picker-calendar-theme-color;
+    border-right: 1px dashed variables.$picker-calendar-theme-color;
 }
 
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-start.ant-picker-cell-range-start-single::after {
-    border-top-left-radius: $border-radius-round;
-    border-bottom-left-radius: $border-radius-round;;
+    border-top-left-radius: variables.$border-radius-round;
+    border-bottom-left-radius: variables.$border-radius-round;;
 }
 
 .ant-picker-cell-in-view.ant-picker-cell-range-hover-end::after  {
-    border-top-right-radius: $border-radius-round;;
-    border-bottom-right-radius: $border-radius-round;;
+    border-top-right-radius: variables.$border-radius-round;;
+    border-bottom-right-radius: variables.$border-radius-round;;
 }

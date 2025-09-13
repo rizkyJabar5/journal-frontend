@@ -1,46 +1,49 @@
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-input-number {
-    border: 1px solid $input-border-color;
-    line-height: $input-line-height;
-    height: $select-height;
-    color: $body-color;
-    font-size: $font-size-base;
-    border-radius: $input-border-radius;
+    border: 1px solid variables.$input-border-color;
+    line-height: variables.$input-line-height;
+    height: variables.$select-height;
+    color: variables.$body-color;
+    font-size: variables.$font-size-base;
+    border-radius: variables.$input-border-radius;
 
     &:hover,
     &:focus {
-        border-color: $input-theme-color;
+        border-color: variables.$input-theme-color;
     }
 
     &.ant-input-number-disabled {
         &:hover,
         &:focus {
-            border-color: $input-border-color;
+            border-color: variables.$input-border-color;
         }
     }
 }
 
 .ant-input-number-input {
-    height: $select-height - 0.125rem;
+    height: variables.$select-height - 0.125rem;
 }
 
 .ant-input-number-lg {
-    height: $select-height-lg;
+    height: variables.$select-height-lg;
 
     .ant-input-number-input {
-        height: $select-height-lg - 0.125rem;
+        height: variables.$select-height-lg - 0.125rem;
     }
 }
 
 .ant-input-number-sm {
-    height: $select-height-sm;
+    height: variables.$select-height-sm;
 
     .ant-input-number-input {
-        height: $select-height-sm - 0.125rem;
+        height: variables.$select-height-sm - 0.125rem;
     }
 }
 
 .ant-input-number-handler-wrap {
-    border-left: 1px solid $input-border-color;
+    border-left: 1px solid variables.$input-border-color;
 }    
 
 .ant-input-number-handler {
@@ -48,7 +51,7 @@
     &:hover {
         .ant-input-number-handler-down-inner,
         .ant-input-number-handler-up-inner {
-            color: $input-theme-color;
+            color: variables.$input-theme-color;
         }
     }
 
@@ -58,13 +61,13 @@
 } 
 
 .ant-input-number-handler-down {
-    border-top: 1px solid $input-border-color;
+    border-top: 1px solid variables.$input-border-color;
 }
 
 .ant-input-number-focused {
-    border-color: $input-theme-color;
+    border-color: variables.$input-theme-color;
 }
 
 .ant-input-number-handler-wrap {
-    border-radius: 0 $input-border-radius $input-border-radius 0;
+    border-radius: 0 variables.$input-border-radius variables.$input-border-radius 0;
 }

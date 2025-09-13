@@ -1,116 +1,116 @@
-@import './variables/variables.scss';
-@import './mixins/mixins.scss';
+@use 'variables/variables.scss';
+@use 'mixins/mixins.scss';
 
 //*********************// 
 //**** Components ****//
 //*******************//
 
 // General
-@import './components/general/typorgraphy';
-@import './components/general/button';
+@use 'components/general/typorgraphy';
+@use 'components/general/button';
 
 // Layout
-@import './components/layout/layout';
+@use 'components/layout/layout';
 
 // Navigation
-@import './components/navigation/affix';
-@import './components/navigation/breadcrumb';
-@import './components/navigation/dropdown';
-@import './components/navigation/menu';
-@import './components/navigation/page-header';
-@import './components/navigation/pagination';
-@import './components/navigation/steps';
+@use 'components/navigation/affix';
+@use 'components/navigation/breadcrumb';
+@use 'components/navigation/dropdown';
+@use 'components/navigation/menu';
+@use 'components/navigation/page-header';
+@use 'components/navigation/pagination';
+@use 'components/navigation/steps';
 
 // Data Entry
-@import './components/data-entry/cascader';
-@import './components/data-entry/checkbox';
-@import './components/data-entry/date-picker';
-@import './components/data-entry/input';
-@import './components//data-entry/input-number';
-@import './components/data-entry/form';
-@import './components/data-entry/mention';
-@import './components/data-entry/radio';
-@import './components/data-entry/rate';
-@import './components/data-entry/select';
-@import './components/data-entry/slider';
-@import './components/data-entry/switch';
-@import './components/data-entry/tree-select';
-@import './components/data-entry/time-picker';
-@import './components/data-entry/transfer';
-@import './components/data-entry/upload';
+@use 'components/data-entry/cascader';
+@use 'components/data-entry/checkbox';
+@use 'components/data-entry/date-picker';
+@use 'components/data-entry/input';
+@use 'components/data-entry/input-number';
+@use 'components/data-entry/form';
+@use 'components/data-entry/mention';
+@use 'components/data-entry/radio';
+@use 'components/data-entry/rate';
+@use 'components/data-entry/select';
+@use 'components/data-entry/slider';
+@use 'components/data-entry/switch';
+@use 'components/data-entry/tree-select';
+@use 'components/data-entry/time-picker';
+@use 'components/data-entry/transfer';
+@use 'components/data-entry/upload';
 
 // Data Display
-@import './components/data-display/avatar';
-@import './components/data-display/badge';
-@import './components/data-display/comment';
-@import './components/data-display/collapse';
-@import './components/data-display/carousel';
-@import './components/data-display/card';
-@import './components/data-display/calendar';
-@import './components/data-display/descriptions';
-@import './components/data-display/empty';
-@import './components/data-display/list';
-@import './components/data-display/popover';
-@import './components/data-display/statistic';
-@import './components/data-display/tree';
-@import './components/data-display/tooltip';
-@import './components/data-display/timeline';
-@import './components/data-display/tag';
-@import './components/data-display/tabs';
-@import './components/data-display/table';
+@use 'components/data-display/avatar';
+@use 'components/data-display/badge';
+@use 'components/data-display/comment';
+@use 'components/data-display/collapse';
+@use 'components/data-display/carousel';
+@use 'components/data-display/card';
+@use 'components/data-display/calendar';
+@use 'components/data-display/descriptions';
+@use 'components/data-display/empty';
+@use 'components/data-display/list';
+@use 'components/data-display/popover';
+@use 'components/data-display/statistic';
+@use 'components/data-display/tree';
+@use 'components/data-display/tooltip';
+@use 'components/data-display/timeline';
+@use 'components/data-display/tag';
+@use 'components/data-display/tabs';
+@use 'components/data-display/table';
 
 // Feedback 
-@import './components/feedback/alert';
-@import './components/feedback/drawer';
-@import './components/feedback/message';
-@import './components/feedback/modal';
-@import './components/feedback/notifications';
-@import './components/feedback/progress';
-@import './components/feedback/skeleton';
-@import './components/feedback/spin';
+@use 'components/feedback/alert';
+@use 'components/feedback/drawer';
+@use 'components/feedback/message';
+@use 'components/feedback/modal';
+@use 'components/feedback/notifications';
+@use 'components/feedback/progress';
+@use 'components/feedback/skeleton';
+@use 'components/feedback/spin';
 
 // Other 
-@import './components/others/anchor';
-@import './components/others/back-to-top';
-@import './components/others/divider';
+@use 'components/others/anchor';
+@use 'components/others/back-to-top';
+@use 'components/others/divider';
 
 //****************************// 
 //**** Custom Components ****//
 //**************************//
 
-@import './custom-components/ellipsis-dropdown';
-@import './custom-components/code-box';
-@import './custom-components/api-container';
-@import './custom-components/icon-display';
+@use 'custom-components/ellipsis-dropdown';
+@use 'custom-components/code-box';
+@use 'custom-components/api-container';
+@use 'custom-components/icon-display';
 
 //****************************// 
 //********** Apps ***********//
 //**************************//
 
-@import './apps/mail';
-@import './apps/chat';
-@import './apps/calendar';
-@import './apps//scrumboard';
+@use 'apps/mail';
+@use 'apps/chat';
+@use 'apps/calendar' as calendar2;
+@use 'apps/scrumboard';
 
 //****************************// 
 //********* Vendors *********//
 //**************************//
 
-@import './vendors/apex-chart';
-@import './vendors/quill';
+@use 'vendors/apex-chart';
+@use 'vendors/quill';
 
 //****************************// 
 //******** Template *********//
 //**************************//
 
-@import './template/header';
-@import './template/side-nav';
-@import './template/top-nav';
-@import './template/logo';
-@import './template/page-header';
-@import './template/page-header-alt';
-@import './template/nav-notification';
-@import './template/nav-profile';
-@import './template/content';
-@import './template/nav-search';
-@import './template/footer';
+@use 'template/header';
+@use 'template/side-nav';
+@use 'template/top-nav';
+@use 'template/logo';
+@use 'template/page-header' as page-header2;
+@use 'template/page-header-alt';
+@use 'template/nav-notification';
+@use 'template/nav-profile';
+@use 'template/content';
+@use 'template/nav-search';
+@use 'template/footer';

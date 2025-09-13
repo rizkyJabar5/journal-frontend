@@ -1,11 +1,15 @@
+@use "sass:map";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-empty {
-    margin: 0  map-get($spacers, 2);
-    font-size: $empty-font-size;
-    line-height: $empty-line-height;
+    margin: 0  map.get(variables.$spacers, 2);
+    font-size: variables.$empty-font-size;
+    line-height: variables.$empty-line-height;
     text-align: center;
 }
 
 .ant-empty-normal {
-    margin: map-get($spacers, 4) 0;
-    color: $body-color;
+    margin: map.get(variables.$spacers, 4) 0;
+    color: variables.$body-color;
 }

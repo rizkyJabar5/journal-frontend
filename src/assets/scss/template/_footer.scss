@@ -1,12 +1,15 @@
+@use "../mixins/responsive";
+@use "../variables/variables";
+
 .footer {
-    height: $footer-height;
+    height: variables.$footer-height;
     display: flex;
-    margin: 0 $layout-content-gutter;
+    margin: 0 variables.$layout-content-gutter;
     align-items: center;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid variables.$border-color;
     justify-content: space-between;
 
-    @include screen-mobile {
+    @include responsive.screen-mobile {
         justify-content: center;
         flex-direction: column;
     }

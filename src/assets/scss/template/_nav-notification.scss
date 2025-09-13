@@ -1,9 +1,11 @@
+@use "../variables/variables";
+
 .nav-notification {
     width: 19.5rem;
     
     .nav-notification-header {
         padding: .875rem;
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid variables.$border-color;
     }
 
     .nav-notification-body {
@@ -14,7 +16,7 @@
     .nav-notification-footer {
         padding: .65rem;
         text-align: center;
-        border-top: 1px solid $border-color;
+        border-top: 1px solid variables.$border-color;
     }
 
     .empty-notification {

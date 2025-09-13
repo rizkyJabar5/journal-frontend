@@ -1,16 +1,20 @@
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 body {
-  font-family: $font-family-base;
-  background-color: $body-bg;
-  color: $body-color;
+  font-family: variables.$font-family-base;
+  background-color: variables.$body-bg;
+  color: variables.$body-color;
   overflow-x: hidden;
 }
 
 a {
-  color: $link-color;
+  color: variables.$link-color;
 
   &:active,
   &:hover {
-    color: $link-hover-color;
+    color: variables.$link-hover-color;
   }
 
   &:focus {
@@ -20,13 +24,13 @@ a {
   &.text-gray,
   &.text-muted {
     &:hover {
-      color: $link-color !important;
+      color: variables.$link-color !important;
     }
   }
 
   &.text-dark {
     &:hover {
-      color: $link-hover-color !important;
+      color: variables.$link-hover-color !important;
     }
   }
 
@@ -39,7 +43,7 @@ a {
 
 hr {
   border: 0px;
-  border-top: 1px solid $border-color;
+  border-top: 1px solid variables.$border-color;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -50,8 +54,8 @@ code {
   padding: 0.2em 0.4em;
   border-radius: 3px;
   font-size: 0.9em;
-  border: 1px solid $border-color;
-  color: $danger;
+  border: 1px solid variables.$border-color;
+  color: theme.$danger;
 }
 
 .hl-code {
@@ -66,7 +70,7 @@ code {
 }
 
 .ant-typography {
-  color: $body-color;
+  color: variables.$body-color;
 }
 
 h1,
@@ -83,38 +87,38 @@ h6,
 .h6 {
   margin-bottom: 0.5rem;
   font-family: inherit;
-  line-height: $line-height-base;
+  line-height: variables.$line-height-base;
   color: $gray-dark;
 }
 
 h1,
 .h1 {
-  font-size: $font-size-xxl;
+  font-size: variables.$font-size-xxl;
 }
 
 h2,
 .h2 {
-  font-size: $font-size-xl;
+  font-size: variables.$font-size-xl;
 }
 
 h3,
 .h3 {
-  font-size: $font-size-lg;
+  font-size: variables.$font-size-lg;
 }
 
 h4,
 .h4 {
-  font-size: $font-size-md;
+  font-size: variables.$font-size-md;
 }
 
 h5,
 .h5 {
-  font-size: $font-size-base;
+  font-size: variables.$font-size-base;
 }
 
 h6,
 .h6 {
-  font-size: $font-size-sm;
+  font-size: variables.$font-size-sm;
 }
 
 p {
@@ -125,19 +129,19 @@ p {
 .display-1 {
   font-size: 6rem;
   font-weight: 300;
-  line-height: $line-height-base;
+  line-height: variables.$line-height-base;
 }
 
 .display-2 {
   font-size: 5rem;
   font-weight: 300;
-  line-height: $line-height-base;
+  line-height: variables.$line-height-base;
 }
 
 .display-3 {
   font-size: 4rem;
   font-weight: 300;
-  line-height: $line-height-base;
+  line-height: variables.$line-height-base;
 }
 
 .display-4 {
@@ -172,29 +176,29 @@ p {
 .ant-typography h1,
 h1.ant-typography {
   color: $gray-dark;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-xxl;
+  font-weight: variables.$font-weight-semibold;
+  font-size: variables.$font-size-xxl;
 }
 
 .ant-typography h2,
 h2.ant-typography {
   color: $gray-dark;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-xl;
+  font-weight: variables.$font-weight-semibold;
+  font-size: variables.$font-size-xl;
 }
 
 .ant-typography h3,
 h3.ant-typography {
   color: $gray-dark;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  font-size: variables.$font-size-lg;
 }
 
 .ant-typography h4,
 h4.ant-typography {
   color: $gray-dark;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-md;
+  font-weight: variables.$font-weight-semibold;
+  font-size: variables.$font-size-md;
 }
 
 .ant-typography p,
@@ -204,14 +208,14 @@ p.ant-typography {
 
 .ant-typography {
   strong {
-    font-weight: $font-weight-bold;
+    font-weight: variables.$font-weight-bold;
   }
 
   &.ant-typography-warning {
-    color: $warning;
+    color: theme.$warning;
   }
 
   &.ant-typography-danger {
-    color: $danger;
+    color: theme.$danger;
   }
 }

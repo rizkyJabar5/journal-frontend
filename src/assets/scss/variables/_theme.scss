@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "default-palette" as *;
+
 @font-face {
   font-family: PlusJakartaSans;
   src: url(../../fonts/PlusJakartaSans-Regular.woff);
@@ -41,7 +44,7 @@ $state-color-loop: (
 );
 
 $theme-colors: () !default;
-$theme-colors: map-merge(
+$theme-colors: map.merge(
   (
     "primary":    $primary,
     "secondary":  $secondary,

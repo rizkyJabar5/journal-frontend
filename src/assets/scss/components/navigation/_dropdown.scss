@@ -1,15 +1,19 @@
+@use "../../mixins/transition";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-dropdown {
-    color: $dropdown-item-text;
+    color: variables.$dropdown-item-text;
     margin: 0;
     padding: 0;
     list-style: none;
-    z-index: $zindex-dropdown;
+    z-index: variables.$zindex-dropdown;
 }    
 
 .ant-dropdown-menu {
-    min-width: $dropdown-min-width;
-    box-shadow: $dropdown-shadow;
-    border-radius: $border-radius;
+    min-width: variables.$dropdown-min-width;
+    box-shadow: variables.$dropdown-shadow;
+    border-radius: variables.$border-radius;
 
     ul {
         list-style: none;
@@ -19,28 +23,28 @@
 
 .ant-dropdown-menu-item, 
 .ant-dropdown-menu-submenu-title {
-    padding: $dropdown-padding-y $dropdown-padding-x;
+    padding: variables.$dropdown-padding-y variables.$dropdown-padding-x;
     margin: 0;
-    font-size: $font-size-base;
-    font-weight: $font-weight-normal;
-    color: $dropdown-item-text;
-    line-height: $line-height-base;
+    font-size: variables.$font-size-base;
+    font-weight: variables.$font-weight-normal;
+    color: variables.$dropdown-item-text;
+    line-height: variables.$line-height-base;
 
     > a {
         display: block;
         padding: 0;
         margin: 0;
-        @include transition(all 0.3s); 
-        color: $dropdown-item-text;
+        @include transition.transition(all 0.3s); 
+        color: variables.$dropdown-item-text;
     }
 
     &:hover,
     &:focus {
-        background-color: $dropdown-bg-hover;
-        color: $dropdown-item-text-hover;
+        background-color: variables.$dropdown-bg-hover;
+        color: variables.$dropdown-item-text-hover;
 
         > a {
-            color: $dropdown-item-text-hover;
+            color: variables.$dropdown-item-text-hover;
             background-color: transparent;
         }
     }
@@ -48,11 +52,11 @@
 
 .ant-dropdown-menu-item-disabled,
 .ant-dropdown-menu-submenu-title-disabled {
-    color: rgba($dropdown-item-text,.25);
+    color: rgba(variables.$dropdown-item-text,.25);
     cursor: not-allowed;
 
     &:hover {
-        color: rgba($dropdown-item-text,.25);
+        color: rgba(variables.$dropdown-item-text,.25);
         background-color: $white;
         cursor: not-allowed;
     }
@@ -62,6 +66,6 @@
 .ant-dropdown-menu-submenu-title-selected {
     
     > a {
-        background-color: $dropdown-bg-hover;
+        background-color: variables.$dropdown-bg-hover;
     }
 }

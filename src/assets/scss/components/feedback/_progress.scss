@@ -1,39 +1,44 @@
+@use "../../mixins/transform";
+@use "../../variables/theme";
+@use "../../variables/variables";
+@use "../../variables/default-palette" as *;
+
 .ant-progress {
-    line-height: $line-height-base;
-    color: $body-color;
+    line-height: variables.$line-height-base;
+    color: variables.$body-color;
 }    
 
 .ant-progress-inner {
-    background-color: $progress-bg;
-    border-radius: $progress-border-radius;
+    background-color: variables.$progress-bg;
+    border-radius: variables.$progress-border-radius;
     vertical-align: middle;
     position: relative;
 }
 
 .ant-progress-line {
     width: 100%;
-    font-size: $font-size-base;
+    font-size: variables.$font-size-base;
     position: relative;
 }
 
 .ant-progress-bg {
-    border-radius: $progress-border-radius;
-    background-color: $progress-bar-bg;
+    border-radius: variables.$progress-border-radius;
+    background-color: variables.$progress-bar-bg;
     position: relative;
 }
 
 .ant-progress-circle-trail {
-    stroke: $progress-bg;
+    stroke: variables.$progress-bg;
 }
 
 .ant-progress-circle-path {
-    stroke: $progress-bar-bg;
+    stroke: variables.$progress-bar-bg;
 }
 
 .ant-progress-inner {
     &:not(.ant-progress-circle-gradient) {
         .ant-progress-circle-path {
-            stroke: $progress-bar-bg;
+            stroke: variables.$progress-bar-bg;
         } 
     }
 }
@@ -41,28 +46,28 @@
 .ant-progress-text {
     width: 2em;
     font-size: 1em;
-    color: $body-color;
+    color: variables.$body-color;
     line-height: 1;
 }
 
 .ant-progress-status-exception {
 
     .ant-progress-bg {
-        background-color: $danger;
+        background-color: theme.$danger;
     }
 
     .ant-progress-text {
-        color: $danger;
+        color: theme.$danger;
     }
 
     .ant-progress-circle-path {
-        stroke: $danger;
+        stroke: theme.$danger;
     }
 
     .ant-progress-inner {
         &:not(.ant-progress-circle-gradient) {
             .ant-progress-circle-path {
-                stroke: $danger;
+                stroke: theme.$danger;
             } 
         }
     }
@@ -71,28 +76,28 @@
 .ant-progress-status-success {
 
     .ant-progress-bg {
-        background-color: $success;
+        background-color: theme.$success;
     }
 
     .ant-progress-text {
-        color: $success;
+        color: theme.$success;
     }
 
     .ant-progress-circle-path {
-        stroke: $success;
+        stroke: theme.$success;
     }
 
     .ant-progress-inner {
         &:not(.ant-progress-circle-gradient) {
             .ant-progress-circle-path {
-                stroke: $success;
+                stroke: theme.$success;
             } 
         }
     }
 }
 
 .ant-progress-success-bg {
-    background-color: $success;
+    background-color: theme.$success;
 }
 
 .ant-progress-circle {
@@ -104,7 +109,7 @@
         text-align: center;
         line-height: 1;
         top: 50%;
-        @include transform(translateY(-50%));
+        @include transform.transform(translateY(-50%));
         left: 0;
         margin: 0;
         color: $gray-dark;
@@ -113,7 +118,7 @@
     &.ant-progress-status-success {
 
         .ant-progress-text {
-            color: $success
+            color: theme.$success
         }
     }
 } 
