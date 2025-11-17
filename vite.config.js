@@ -17,6 +17,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
+      // Use local shim to avoid deprecated React findDOMNode calls in rc-util
+      'rc-util/lib/Dom/findDOMNode': '/src/shims/findDOMNode.js'
     },
   },
   optimizeDeps: {

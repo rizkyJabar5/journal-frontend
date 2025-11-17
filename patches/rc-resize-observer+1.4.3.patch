@@ -1,0 +1,42 @@
+*** Begin Patch
+*** Update File: node_modules/rc-resize-observer/lib/SingleObserver/index.js
+@@
+-var _findDOMNode = _interopRequireDefault(require("rc-util/lib/Dom/findDOMNode"));
++var _findDOMNode = _interopRequireDefault(require("rc-util/lib/Dom/findDOMNode"));
+@@
+-  var getDom = function getDom() {
+-    var _elementRef$current;
+-    return (0, _findDOMNode.default)(elementRef.current) || (
+-    // Support `nativeElement` format
+-    elementRef.current && (0, _typeof2.default)(elementRef.current) === 'object' ? (0, _findDOMNode.default)((_elementRef$current = elementRef.current) === null || _elementRef$current === void 0 ? void 0 : _elementRef$current.nativeElement) : null) || (0, _findDOMNode.default)(wrapperRef.current);
+-  };
++  var getDom = function getDom() {
++    var _elementRef$current;
++    // Prefer direct access to elementRef/nativeElement/wrapperRef to avoid findDOMNode
++    try {
++      if (elementRef.current) {
++        // If it's a DOM node
++        if ((0, _typeof2.default)(elementRef.current) === 'object' && elementRef.current.nodeType === 1) {
++          return elementRef.current;
++        }
++        // Support nativeElement wrappers (e.g. native platforms)
++        if (elementRef.current.nativeElement) {
++          return elementRef.current.nativeElement;
++        }
++      }
++      if (wrapperRef.current && wrapperRef.current.nodeType === 1) {
++        return wrapperRef.current;
++      }
++    } catch (e) {
++      // fallthrough to safe fallback
++    }
++
++    // Fallback to original findDOMNode for edge cases where above checks don't work
++    try {
++      return (0, _findDOMNode.default)(elementRef.current) || (
++        elementRef.current && (0, _typeof2.default)(elementRef.current) === 'object' ? (0, _findDOMNode.default)((_elementRef$current = elementRef.current) === null || _elementRef$current === void 0 ? void 0 : _elementRef$current.nativeElement) : null) || (0, _findDOMNode.default)(wrapperRef.current);
++    } catch (err) {
++      return null;
++    }
++  };
+*** End Patch

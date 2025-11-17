@@ -7,11 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, showAuthMessage, showLoading} from '@/store/features/auth';
 
-export const LoginForm = (props) => {
+export const LoginForm = ({ showForgetPassword = true, extra,  }) => {
 	const dispatch = useDispatch();
 	const { loading, message, showMessage } = useSelector(state => state.auth);
 	const navigate = useNavigate();
-	const { showForgetPassword, extra } = props
 
 	const getUserData = async (token) => {
 		try {
@@ -111,20 +110,6 @@ export const LoginForm = (props) => {
 
 				{extra}
 			</Form>
-			{/* <div>
-				<Divider>
-					<span className="text-muted font-size-base font-weight-normal">Atau hubungkan dengan</span>
-				</Divider>
-				<div className="d-flex justify-content-center" style={{ marginBottom: "10px" }}>
-					<GoogleLogin style={{ width: "100%" }}
-						clientId={"420336364475-8nbt195eek4ja8b6vlb9onv6nu5ma0pr.apps.googleusercontent.com"}
-						buttonText="Sign In with your Google Account"
-						onSuccess={responseSuccessGoogle}
-						onFailure={responseFailureGoogle}
-						cookiePolicy={'single_host_origin'}
-					></GoogleLogin>
-				</div>
-			</div> */}
 		</>
 	)
 }
@@ -136,11 +121,6 @@ LoginForm.propTypes = {
 		PropTypes.string,
 		PropTypes.element
 	]),
-};
-
-LoginForm.defaultProps = {
-	otherSignIn: true,
-	showForgetPassword: true
 };
 
 export default LoginForm

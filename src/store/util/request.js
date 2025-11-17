@@ -1,7 +1,8 @@
+import { API_BASE_URL } from '@/config/AppConfig';
 import axios from 'axios'
 import { get } from 'lodash';
 
-const baseURL = "https://journal-florist-staging.herokuapp.com/api/v1"
+const baseURL = API_BASE_URL + "/api/v1"
 
 export const service = axios.create({
 	baseURL,

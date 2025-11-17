@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const root = createRoot(document.getElementById("root"));
-console.log('Root element:', document.getElementById('root')); // Should not be null
+console.log('Root element:', document.getElementById('root'));
 
 root.render(<App />);
 // If you want your app to work offline and load faster, you can change

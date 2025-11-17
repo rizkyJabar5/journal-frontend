@@ -1,11 +1,12 @@
 import moment from "moment-timezone";
+import { API_BASE_URL } from '@/config/AppConfig';
 
 export const strings = {
   today: moment().tz("Asia/Jakarta").format("YYYY-MM-DD"),
   tomorrow: moment().add(1, 'days').tz("Asia/Jakarta").format("YYYY-MM-DD"),
   token: localStorage.getItem('token'),
   api: {
-    host: "https://journal-florist-staging.herokuapp.com",
+    host: API_BASE_URL,
     HEADER_KEY: "mantapjiwa",
     JWT_KEY: "Aj1257Xi202",
   },
@@ -42,7 +43,7 @@ export const strings = {
       register: 'register',
       forgot_password: 'forgot-password',
       activate: 'activate',
-      resend:"resend",
+      resend: "resend",
       please: 'please',
       logout: "logout",
       dashboard: "/app/dashboard",

@@ -92,7 +92,7 @@ const SearchInput = props => {
 		<AutoComplete
 			ref={inputRef} 
 			className={`nav-search-input ${isMobile? 'is-mobile' : ''} ${mode === 'light' ? 'light' : ''}`}
-			dropdownClassName="nav-search-dropdown"
+			popup="nav-search-dropdown"
 			options={options}
 			onSelect={onSelect}
 			onSearch={onSearch}

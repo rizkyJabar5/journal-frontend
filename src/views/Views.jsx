@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import { IntlProvider } from "react-intl";
 import { ConfigProvider } from "antd";
 import PrivateRoute from "@/component/PrivateRoute";
-import AuthLayout from "@/layouts/AuthLayout";
+import AuthViews from "./auth-views/AuthViews";
 import { AppLayout } from "@/layouts/AppLayout";
 import { signOutSuccess } from "@/store/features/auth";
 import { strings } from "@/res";
@@ -48,7 +48,7 @@ export const Views = () => {
       <ConfigProvider locale={currentAppLocale.antd}>
         <Routes>
           <Route path="/" element={<Navigate to={strings.navigation.login} replace/>}/>
-          <Route path="/auth/*" element={<AuthLayout/>}/>
+          <Route path="/auth/*" element={<AuthViews />}/>
           <Route
             path="/app/*"
             element={
