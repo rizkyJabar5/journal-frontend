@@ -11,10 +11,10 @@ const {
 const initialState = {
 	...THEME_CONFIG,
 	authBackground: REACT_APP_AUTH_BACKGROUND || '/img/background.png',
-	mobileLogo: '/img/logo-colored.png',
-	companyLogo: REACT_APP_COMPANY_LOGO || '/img/logo-colored.png',
-	sidebarLogo: REACT_APP_SIDEBAR_LOGO || '/img/logo.png',
-	collapsedSidebarLogo: REACT_APP_COLLAPSED_SIDEBAR_LOGO || '/img/logo.png' 
+	mobileLogo: '/img/logo.webp',
+	companyLogo: REACT_APP_COMPANY_LOGO || '/img/logo.webp',
+	sidebarLogo: REACT_APP_SIDEBAR_LOGO || '/img/logo.webp',
+	collapsedSidebarLogo: REACT_APP_COLLAPSED_SIDEBAR_LOGO || '/img/logo.webp' 
 }
 
 export const themeSlice = createSlice({

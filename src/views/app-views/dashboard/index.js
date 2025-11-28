@@ -31,7 +31,7 @@ export const DefaultDashboard = () => {
   const getData = useCallback(async () => {
     try {
       await dispatch(fetchSumStore()).unwrap()
-      await dispatch(fetchSumLedger()).unwrap()
+      // await dispatch(fetchSumLedger()).unwrap()
     } catch (error) {
       message.error(error?.message || 'Failed to fetch data')
     }
@@ -59,14 +59,14 @@ export const DefaultDashboard = () => {
                 value={store.totalProducts}
               />
             </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={8}>
+            {/* <Col xs={24} sm={24} md={24} lg={24} xl={8}>
 
               <StatisticWidget
                 style={{ textAlign: "center" }}
                 title={'Gross Sales Today'}
                 value={formatter.format(store.grossSalesToday)}
               />
-            </Col>
+            </Col> */}
             <Col xs={24} sm={24} md={24} lg={24} xl={8}>
 
               <StatisticWidget
@@ -75,14 +75,14 @@ export const DefaultDashboard = () => {
                 value={store.totalCustomers}
               />
             </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={8}>
+            {/* <Col xs={24} sm={24} md={24} lg={24} xl={8}>
             <StatisticWidget
 											style={{ textAlign: "center" }}
 											title={'Account Receiveable'}
 											value={formatter.format(ledger.accountReceivable)}
 										/>
-            </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={8}><StatisticWidget
+            </Col> */}
+            {/* <Col xs={24} sm={24} md={24} lg={24} xl={8}><StatisticWidget
               style={{ textAlign: "center" }}
               title={'Total Expense'}
               value={formatter.format(ledger.totalExpense)}
@@ -94,7 +94,7 @@ export const DefaultDashboard = () => {
                 title={'Total Revenue'}
                 value={formatter.format(ledger.totalRevenue)}
               />
-            </Col>
+            </Col> */}
           </Row>
         </Col>
       </Row>

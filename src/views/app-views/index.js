@@ -40,14 +40,14 @@ export const AppViews = ({ match }) => {
         <PrivateRoute path={`${strings.navigation.path.expenses}`} component={EXPENSES} />
         <PrivateRoute path={`${strings.navigation.path.reports}`} component={REPORTS} />
         <PrivateRoute path={`${strings.navigation.path.customers}`} component={CUSTOMERS} />
-        <PrivateRoute path={`${strings.navigation.path.purchase}`} component={PURCHASE} />
-        <PrivateRoute path={`${strings.navigation.path.suppliers}`} component={SUPPLIERS} />
+        {/* <PrivateRoute path={`${strings.navigation.path.purchase}`} component={PURCHASE} /> */}
+        {/* <PrivateRoute path={`${strings.navigation.path.suppliers}`} component={SUPPLIERS} /> */}
         <PrivateRoute path={`${strings.navigation.path.users}`} component={USERS} />
         <PrivateRoute path={`${strings.navigation.path.settings}`} component={SETTINGS} />
 
         {/* DETAIL */}
         <PrivateRoute path={`${strings.navigation.path.detail_reports}`} component={DETAILREPORT} />
-        <PrivateRoute path={`${strings.navigation.path.detail_suppliers}`} component={DETAILSUPPLIER} />
+        {/* <PrivateRoute path={`${strings.navigation.path.detail_suppliers}`} component={DETAILSUPPLIER} /> */}
         <PrivateRoute path={`${strings.navigation.path.detail_orders}`} component={DETAILORDER} />
         <PrivateRoute path={`${strings.navigation.path.detail_products}`} component={DETAILPRODUCT} />
         <PrivateRoute path={`${strings.navigation.path.detail_customers}`} component={DETAILCUSTOMER} />

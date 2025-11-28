@@ -12,7 +12,7 @@ export const apiRequest = async ({
 }) => {
     const baseUrl = url
         ? `${url}/${apiVersion}`
-        : `https://journal-florist-staging.herokuapp.com/api/${apiVersion}`;
+        : `http://localhost:8080/api/${apiVersion}`;
     const defaultParams = {};
     const mergedParams = { ...defaultParams, ...params };
     let token = localStorage.getItem('token');

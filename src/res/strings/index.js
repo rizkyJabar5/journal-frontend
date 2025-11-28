@@ -5,14 +5,14 @@ export const strings = {
   tomorrow: moment().add(1, 'days').tz("Asia/Jakarta").format("YYYY-MM-DD"),
   token: localStorage.getItem('token'),
   api: {
-    host: "https://journal-florist-staging.herokuapp.com",
+    host: "http://localhost:8080",
     HEADER_KEY: "mantapjiwa",
     JWT_KEY: "Aj1257Xi202",
   },
   image: {
     authBackground: 'url(/img/background.png)',
-    logo: "/img/logo.png",
-    logo2: "/img/logo-colored.png",
+    logo: "/img/logo.webp",
+    logo2: "/img/logo.webp",
     favicon: "",
     primaryColor: "#1445e4",
     buttonColor: "#6e17f7",

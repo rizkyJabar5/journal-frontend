@@ -1,5 +1,5 @@
 import { strings } from 'res';
-import { CashHandoverIcon, ReportIcon, DeliveryIcon, OutletIcon, CustomerIcon, DashboardIcon, CommandCenterIcon, SettingIcon, SLAIcon, ProductIcon, OrderIcon } from "../assets/svg/icon";
+import { CommandCenterIcon, CustomerIcon, DashboardIcon, OrderIcon, OutletIcon, ProductIcon } from "../assets/svg/icon";
 
 const dashBoardNavTree = [{
   key: "Main",
@@ -49,14 +49,15 @@ const storageTree = [{
       breadcrumb: false,
       submenu: []
     },
+    // {
+    //   key: "Suppliers",
+    //   path: strings.navigation.path.suppliers,
+    //   title: "Suppliers",
+    //   icon: DeliveryIcon,
+    //   breadcrumb: false,
+    //   submenu: []
+    // }, 
     {
-      key: "Suppliers",
-      path: strings.navigation.path.suppliers,
-      title: "Suppliers",
-      icon: DeliveryIcon,
-      breadcrumb: false,
-      submenu: []
-    }, {
       key: "Categories",
       path: strings.navigation.path.categories,
       title: "Categories",
@@ -93,43 +94,43 @@ const UserManagementTree = [{
 }]
 
 
-const ledgerTree = [{
-  key: "Ledger",
-  path: strings.navigation.path.expenses,
-  title: "Ledger",
-  breadcrumb: false,
-  submenu: [
-    {
-      key: "Pengeluaran",
-      path: strings.navigation.path.expenses,
-      title: "Expenses",
-      icon: SLAIcon,
-      breadcrumb: false,
-      submenu: []
-    },
-    {
-      key: "Purchase",
-      path: strings.navigation.path.purchase,
-      title: "Purchases",
-      icon: CashHandoverIcon,
-      breadcrumb: false,
-      submenu: []
-    },
-    {
-      key: "Reports",
-      path: strings.navigation.path.reports,
-      title: "Summary",
-      icon: ReportIcon,
-      breadcrumb: false,
-      submenu: []
-    }
-  ]
-}]
+// const ledgerTree = [{
+//   key: "Ledger",
+//   path: strings.navigation.path.expenses,
+//   title: "Ledger",
+//   breadcrumb: false,
+//   submenu: [
+//     {
+//       key: "Pengeluaran",
+//       path: strings.navigation.path.expenses,
+//       title: "Expenses",
+//       icon: SLAIcon,
+//       breadcrumb: false,
+//       submenu: []
+//     },
+//     {
+//       key: "Purchase",
+//       path: strings.navigation.path.purchase,
+//       title: "Purchases",
+//       icon: CashHandoverIcon,
+//       breadcrumb: false,
+//       submenu: []
+//     },
+//     {
+//       key: "Reports",
+//       path: strings.navigation.path.reports,
+//       title: "Summary",
+//       icon: ReportIcon,
+//       breadcrumb: false,
+//       submenu: []
+//     }
+//   ]
+// }]
 
 const navigationConfig = [
   ...dashBoardNavTree,
   ...storageTree,
-  ...ledgerTree,
+  // ...ledgerTree,
   ...UserManagementTree
 ]
 

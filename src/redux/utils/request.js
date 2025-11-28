@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { get } from 'lodash';
 
-const baseURL = "https://journal-florist-staging.herokuapp.com/api/v1"
+const baseURL = "http://localhost:8080/api/v1"
 
 export const service = axios.create({
 	baseURL,
