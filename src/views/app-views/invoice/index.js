@@ -59,7 +59,7 @@ export const INVOICE = () => {
 		if (location.id) {
 			getData(location.id)
 		}
-	}, [])
+	}, [getData, location.id])
 
 	return (
 		<div className="container">

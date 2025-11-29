@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card } from 'antd';
 import PropTypes from "prop-types";
-import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 
 const StatisticWidget = ({ style,title, value, status, subtitle, prefix }) => {
 	return (

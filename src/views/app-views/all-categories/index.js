@@ -57,12 +57,12 @@ export const CATEGORIES = (props) => {
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<a style={{ width: "70%", color: 'blue' }} onClick={() => {
+					<button style={{ width: "70%", color: 'blue' }} onClick={() => {
 						history.push({
 							pathname: '/app/detail-categories',
 							id: record.categoryId,
 						})
-					}} >Detail</a>
+					}} >Detail</button>
 				</div>
 			),
 		},
@@ -71,9 +71,9 @@ export const CATEGORIES = (props) => {
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<a style={{ width: "70%", color: 'red' }} onClick={() => {
+					<button style={{ width: "70%", color: 'red' }} onClick={() => {
 						deleteData(record.categoryId)
-					}} >Delete</a>
+					}} >Delete</button>
 				</div>
 			),
 		},

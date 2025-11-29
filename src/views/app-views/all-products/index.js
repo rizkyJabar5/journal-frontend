@@ -32,17 +32,7 @@ export const PRODUCTS = (props) => {
 		clearFilters();
 		setSearchText('');
 	};
-
-	const deleteData = useCallback(async (id) => {
-		try {
-			await dispatch(deleteProduct(id)).unwrap()
-			getData()
-		} catch (error) {
-			console.log(error)
-			message.error(error?.message || 'Failed to delete data')
-		}
-	}, [dispatch, getData])
-
+	
 	const params = {
 		page: 1,
 		limit: 30
@@ -56,6 +46,16 @@ export const PRODUCTS = (props) => {
 			message.error(error?.message || 'Failed to fetch data')
 		}
 	}, [dispatch, params])
+
+	const deleteData = useCallback(async (id) => {
+		try {
+			await dispatch(deleteProduct(id)).unwrap()
+			getData()
+		} catch (error) {
+			console.log(error)
+			message.error(error?.message || 'Failed to delete data')
+		}
+	}, [dispatch, getData])
 
 	useEffect(() => {
 		getData()
@@ -206,13 +206,13 @@ export const PRODUCTS = (props) => {
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<a type="primary" style={{ width: "70%" }} onClick={() => {
+					<button type="primary" style={{ width: "70%" }} onClick={() => {
 						history.push({
 							pathname: '/app/detail-product',
 							id: record.productId,
 							isAddNew:false
 						})
-					}} >Detail</a>
+					}} >Detail</button>
 				</div>
 			),
 		},
@@ -221,9 +221,9 @@ export const PRODUCTS = (props) => {
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<a style={{ width: "70%", color: 'red' }} onClick={() => {
+					<button style={{ width: "70%", color: 'red' }} onClick={() => {
 						deleteData(record.productId)
-					}} >Delete</a>
+					}} >Delete</button>
 				</div>
 			),
 		},
