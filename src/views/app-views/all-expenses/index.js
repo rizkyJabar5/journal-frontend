@@ -79,7 +79,7 @@ export const EXPENSES = () => {
 		formData.append('amount', pengeluaran.amount);
 		formData.append('pay', selectedPay);
 
-		await axios.post("http://localhost:8080/api/v1/expenses/add-expense", 
+		await axios.post("https://inventory-isad-staging-163448ff1a8b.herokuapp.com/api/v1/expenses/add-expense", 
 		formData, 
 		config)
 		.then(doc => {

@@ -49,7 +49,7 @@ export const ORDERS = () => {
 			}
 		}
 
-		await axios.post("http://localhost:8080/api/v1/payments", dataBayar, config).then(doc => {
+		await axios.post("https://inventory-isad-staging-163448ff1a8b.herokuapp.com/api/v1/payments", dataBayar, config).then(doc => {
 			message.success(doc.data.message)
 			getData();
 			setIsOpen(false)

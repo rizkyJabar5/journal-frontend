@@ -15,7 +15,6 @@ export const DETAILPRODUCT = () => {
   const location = useLocation();
   const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const [allCategories, setAllCategories] = useState([])
   const [file, setFile] = useState()
   const [selectedCategory, setSelectedCategory] = useState({})
   const [inputs, setInputs] = useState({});
@@ -40,20 +39,6 @@ export const DETAILPRODUCT = () => {
     }
   }, [dispatch])
 
-  const getCategories = useCallback(async () => {
-    try {
-      await dispatch(fetchAllCategory()).unwrap().then(doc => {
-        setAllCategories(doc)
-      })
-    } catch (error) {
-      message.error(error?.message || 'Failed to fetch data')
-    }
-  }, [dispatch])
-
-  const handleChangeCategory = (value) => {
-    setSelectedCategory(value)
-  };
-
   const onFinish = (event) => {
     const config = {
       headers: {
@@ -68,10 +53,10 @@ export const DETAILPRODUCT = () => {
       formData.append('productName', inputs.productName);
       formData.append('categoryKey', selectedCategory);
       formData.append('description', inputs.description);
-      formData.append('costPrice', inputs.costPrice);
+      formData.append('stock', inputs.stock);
       formData.append('price', inputs.price);
       formData.append('image', file);
-      axios.post("http://localhost:8080/api/v1/products/add-product", formData, config)
+      axios.post("https://inventory-isad-staging-163448ff1a8b.herokuapp.com/api/v1/products/add-product", formData, config)
         .then(response => {
           message.success(response.data.message);
           history.push("/app/products")
@@ -88,7 +73,6 @@ export const DETAILPRODUCT = () => {
   };
 
   useEffect(() => {
-    getCategories()
     if (location.id) {
       getData(location.id)
     }
@@ -110,37 +94,11 @@ export const DETAILPRODUCT = () => {
               name="basic"
               onSubmit={onFinish}
             >
-              <Form.Item name="categoryKey">
-                <Select
-                  mode="single"
-                  style={{
-                    width: '100%',
-                    color: "#FFFFFF"
-                  }}
-                  name="categoryKey"
-                  placeholder="Select Category"
-                  onChange={handleChangeCategory}
-                  optionLabelProp="label"
-                >
-                  {allCategories?.map(doc => {
-                    return (
-                      <Option value={`${doc.categoryId}`} label={`${doc.nameCategory}`} style={{
-                        width: '100%',
-                        background: "#FFF"
-                      }}>
-                        <div className="demo-option-label-item">
-                          {`${doc.nameCategory}`}
-                        </div>
-                      </Option>
-                    )
-                  })}
-                </Select>
-              </Form.Item>
               <Form.Item name="productName">
                 <Input name="productName" onChange={handleChange} placeholder="Nama Produk" />
               </Form.Item>
-              <Form.Item name="costPrice">
-                <Input name="costPrice" onChange={handleChange} placeholder="Cost Price" />
+              <Form.Item name="stock">
+                <Input name="stock" onChange={handleChange} placeholder="Stok" />
               </Form.Item>
               <Form.Item name="price">
                 <Input name="price" onChange={handleChange} placeholder="Price" />

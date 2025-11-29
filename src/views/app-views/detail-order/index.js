@@ -164,7 +164,7 @@ export const DETAILPRODUCT = () => {
       }
     }
 
-    await axios.post("http://localhost:8080/api/v1/orders/add-order", {
+    await axios.post("https://inventory-isad-staging-163448ff1a8b.herokuapp.com/api/v1/orders/add-order", {
       "customerId": selectedCustomer,
       "detailProduct": selectedProducts,
       "paymentAmount": penerima.paymentAmount,

@@ -29,17 +29,14 @@ const Login = props => {
 							<Card>
 								<div className="my-4">
 									<div className="text-center">
-										<img style={{ maxHeight: 90, padding: "5px" }} src={companyLogo} alt=""></img>
+										<h2>PT. Putra Mahkota Plastik</h2>
+										<p>Masuk dengan akun anda</p>
 									</div>
 									<Row justify="center">
 										<Col xs={24} sm={24} md={20} lg={20}>
 											<LoginForm {...props} otherSignIn={null} redirect={strings.navigation.main} />
 										</Col>
 									</Row>
-									<p className="text-center" style={{ marginTop: "5px" }}>Dapatkan Akses Dengan Menghubungi Admin di <span style={{color:"blue"}} >082257227265</span></p>
-									{/* <p className="text-center" style={{ marginTop: "5px" }}>Tidak dapat link aktivasi?
-										<a href={`${strings.navigation.path.resend}`}> Tekan</a><br></br> <a href={strings.navigation.register}>Buat Akun Baru</a>
-									</p> */}
 								</div>
 							</Card>
 						</Col>

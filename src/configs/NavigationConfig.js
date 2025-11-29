@@ -49,22 +49,6 @@ const storageTree = [{
       breadcrumb: false,
       submenu: []
     },
-    // {
-    //   key: "Suppliers",
-    //   path: strings.navigation.path.suppliers,
-    //   title: "Suppliers",
-    //   icon: DeliveryIcon,
-    //   breadcrumb: false,
-    //   submenu: []
-    // }, 
-    {
-      key: "Categories",
-      path: strings.navigation.path.categories,
-      title: "Categories",
-      icon: OutletIcon,
-      breadcrumb: false,
-      submenu: []
-    }
   ]
 }]
 

@@ -12,7 +12,7 @@ export const apiRequest = async ({
 }) => {
     const baseUrl = url
         ? `${url}/${apiVersion}`
-        : `http://localhost:8080/api/${apiVersion}`;
+        : `https://inventory-isad-staging-163448ff1a8b.herokuapp.com/api/${apiVersion}`;
     const defaultParams = {};
     const mergedParams = { ...defaultParams, ...params };
     let token = localStorage.getItem('token');

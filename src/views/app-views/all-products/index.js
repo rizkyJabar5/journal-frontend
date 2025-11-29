@@ -56,8 +56,6 @@ export const PRODUCTS = (props) => {
 		limit: 30
 	}
 
-	
-
 	const getData = useCallback(async () => {
 		try {
 			await dispatch(fetchAllProduct(params)).unwrap()
@@ -190,6 +188,17 @@ export const PRODUCTS = (props) => {
 			...getColumnSearchProps('productName'),
 		},
 		{
+			title: 'Stok',
+			dataIndex: 'stock',
+			key: 'stock',
+			sorter: (a, b) => a.stock - b.stock,
+			render: (_, record) => (
+				<div className="text-left">
+					{record.stock || 0}
+				</div>
+			),
+		},
+		{
 			title: 'Harga',
 			dataIndex: 'price',
 			key: 'price',
@@ -199,34 +208,6 @@ export const PRODUCTS = (props) => {
 					{formatter.format(record.price)}
 				</div>
 			),
-		},
-		{
-			title: 'Category',
-			dataIndex: 'categoryName',
-			key: 'categoryName',
-			filters: [
-				{
-				  text: 'Bouquet',
-				  value: 'Bouquet',
-				},
-				{
-				  text: 'Bunga Papan',
-				  value: 'Bunga Papan',
-				},
-				{
-					text: 'Bunga Meja',
-					value: 'Bunga Meja',
-				},
-				{
-					text: 'Bunga Standing',
-					value: 'Bunga Standing',
-				},
-				{
-					text: 'Dried',
-					value: 'Dried',
-				},
-			  ],
-			  onFilter: (value, record) => record.categoryName.startsWith(value),
 		},
 		{
 			title: () => <div className="text-center">Detail</div>,

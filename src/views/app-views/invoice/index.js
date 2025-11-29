@@ -67,15 +67,13 @@ export const INVOICE = () => {
 			<Card>
 				<div className="d-md-flex justify-content-md-between">
 					<div>
-						<img style={{ width: "150px" }} src="/img/logo-colored.png" alt="" />
 						<address>
-							<h1 style={{ textAlign: "center" }}>Sekar Sari Florist</h1>
+							<h1 style={{ textAlign: "center" }}>PT. Putra Mahkota Plastik</h1>
 							<p>
-
-								<span>Pasar Bunga Kayoon Stand C-28</span><br />
-								<span>Jalan Kayoon Nomor 16</span><br />
+								<span>Cikarang</span><br />
+								<span>Jalan Kayangan</span><br />
 								<span>Phone: 031-548-1745</span><br />
-								<span>0857746097509</span>
+								<span>082212345678</span>
 							</p>
 						</address>
 					</div>

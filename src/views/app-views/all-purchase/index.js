@@ -80,7 +80,7 @@ export const PEMBELIAN = () => {
 			}
 		}
 
-		await axios.post("http://localhost:8080/api/v1/purchase/add-purchase", dataBayar, config).then(doc => {
+		await axios.post("https://inventory-isad-staging-163448ff1a8b.herokuapp.com/api/v1/purchase/add-purchase", dataBayar, config).then(doc => {
 			message.success("Pengeluaran Ditambahkan!")
 			console.log(doc)
 			getData()
