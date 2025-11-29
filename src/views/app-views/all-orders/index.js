@@ -204,10 +204,10 @@ export const ORDERS = () => {
 			key: 'pelunasan',
 			render: (_, record) => (
 				<div className="text-center">
-					<a type="primary" style={{ width: "70%" }} onClick={() => {
+					<button type="primary" style={{ width: "70%" }} onClick={() => {
 						setSelectedPaymentId(record.orderId)
 						setIsOpen(true)
-					}} >Lunasi</a>
+					}} >Lunasi</button>
 				</div>
 			),
 		},
@@ -216,12 +216,12 @@ export const ORDERS = () => {
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<a type="primary" style={{ width: "70%" }} onClick={() => {
+					<button type="primary" style={{ width: "70%" }} onClick={() => {
 						history.push({
 							pathname: '/app/invoice',
 							id: record.orderId,
 						})
-					}} >Cetak</a>
+					}} >Cetak</button>
 				</div>
 			),
 		}

@@ -1,8 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import URLS from 'redux/urls'
-import request from 'redux/utils/request'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import URLS from 'redux/urls';
 import { apiRequest } from 'redux/utils/api';
-import { message } from 'antd';
+import request from 'redux/utils/request';
 
 export const deleteCustomer = createAsyncThunk( 
 	'Customer/delete',

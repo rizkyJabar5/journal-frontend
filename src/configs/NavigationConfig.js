@@ -1,5 +1,5 @@
 import { strings } from 'res';
-import { CommandCenterIcon, CustomerIcon, DashboardIcon, OrderIcon, OutletIcon, ProductIcon } from "../assets/svg/icon";
+import { CommandCenterIcon, CustomerIcon, DashboardIcon, OrderIcon, ProductIcon } from "../assets/svg/icon";
 
 const dashBoardNavTree = [{
   key: "Main",

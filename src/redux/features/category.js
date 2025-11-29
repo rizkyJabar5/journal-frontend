@@ -1,8 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { message } from 'antd';
-import URLS from 'redux/urls'
 import { apiRequest } from 'redux/utils/api';
-import request from 'redux/utils/request'
 
 export const getCategories = async () =>
 	apiRequest({

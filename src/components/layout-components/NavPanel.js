@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { NavProfile } from './NavProfile';
 
 const NavPanel = () => {
-  const [state,setState] = useState({ visible: false, time:'' });
+  const [setState] = useState({ visible: false, time: '' });
 
   const showDrawer = () => {
     setState({

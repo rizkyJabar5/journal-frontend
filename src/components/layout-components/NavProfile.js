@@ -29,7 +29,7 @@ const menuItem = [
   // }
 ]
 
-export const NavProfile = ({ }) => {
+export const NavProfile = () => {
   const profileMenu = (
     <div className="nav-profile nav-dropdown">
       {/* <div className="nav-profile-header">

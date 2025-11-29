@@ -77,9 +77,9 @@ export const CUSTOMERS = () => {
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<a style={{ width: "70%", color: 'red' }} onClick={() => {
+					<button style={{ width: "70%", color: 'red' }} onClick={() => {
 						deleteData(record.customerId)
-					}} >Delete</a>
+					}} >Delete</button>
 				</div>
 			),
 		},
