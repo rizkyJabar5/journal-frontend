@@ -6,10 +6,10 @@ import AuthLayout from 'layouts/auth-layout';
 import AppLocale from "lang";
 import jwt_decode from 'jwt-decode'
 import { IntlProvider } from "react-intl";
-import { ConfigProvider, message } from 'antd';
+import { ConfigProvider } from 'antd';
 import { strings } from "res";
 import PrivateRoute from "components/PrivateRoute";
-import { authenticated, getUserProfile, signOutSuccess } from "redux/features/auth";
+import { signOutSuccess } from "redux/features/auth";
 
 export const Views = () => {
   const dispatch = useDispatch()

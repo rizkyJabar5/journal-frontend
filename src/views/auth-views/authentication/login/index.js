@@ -13,7 +13,7 @@ import {
 import { getAuthBackgroundStyle } from 'utils';
 
 const Login = props => {
-	const { authBackground, companyLogo } = useSelector(state => state.theme)
+	const { authBackground } = useSelector(state => state.theme)
 	const { loading } = props
 
 	if (loading) {

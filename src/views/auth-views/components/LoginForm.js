@@ -5,9 +5,7 @@ import { motion } from "framer-motion";
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-	authenticated, getUserProfile, login, showAuthMessage, showLoading, storeGoogleAccountToken
-} from 'redux/features/auth';
+import { login, showAuthMessage, showLoading} from 'redux/features/auth';
 
 export const LoginForm = (props) => {
 	const dispatch = useDispatch();
@@ -18,8 +16,6 @@ export const LoginForm = (props) => {
 	const getUserData = async (token) => {
 		try {
 			localStorage.setItem('token', token)
-			// const response = await dispatch(getUserProfile(token)).unwrap()
-			// dispatch(authenticated({ token, user: response.doc }))
 			console.log(token)
 			history.push("/app/dashboard/");
 		} catch {

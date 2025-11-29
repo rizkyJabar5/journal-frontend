@@ -4,7 +4,7 @@ import moment from 'moment';
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
-import { fetchAllOrder, deleteOrder } from 'redux/features/orders';
+import { fetchAllOrder } from 'redux/features/orders';
 import Modal from 'react-modal';
 
 const formatter = new Intl.NumberFormat('en-US', {
@@ -30,9 +30,7 @@ export const ORDERS = () => {
 	const [selectedPaymentId, setSelectedPaymentId] = useState(0)
 	const history = useHistory()
 	const dispatch = useDispatch();
-	const {
-		list,
-	} = useSelector(state => state.orders)
+	const { list } = useSelector(state => state.orders)
 
 	const bayar = async (event) => {
 		event.preventDefault()

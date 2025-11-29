@@ -1,28 +1,15 @@
 import { Col, Row, message } from 'antd';
 import React from "react";
 import { Button, Card, Form, Input } from 'antd';
-import { useEffect, useCallback } from 'react';
-import TextArea from 'antd/lib/input/TextArea';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchOnePurchase, updatePurchase, addPurchase } from "redux/features/purchase"
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { addPurchase } from "redux/features/purchase"
 
 export const DETAILPURCHASE = () => {
-
-  const location = useLocation()
-  const dispatch = useDispatch();
   const ticket = useSelector(state => state.ticket)
 
-  const getData = useCallback(async (id) => {
-    try {
-      await dispatch(fetchOnePurchase(id)).unwrap()
-    } catch (error) {
-      message.error(error?.message || 'Failed to fetch data')
-    }
-  }, [dispatch])
-
   const onFinish = async (values) => {
-    await addPurchase(values).then((res) => {
+    await addPurchase(values).then(() => {
       return message.success("Pembelian Ditambahkan!")
     })
       .catch((err) => {

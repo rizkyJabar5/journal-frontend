@@ -5,8 +5,8 @@ import { Table, Card, Form, Input, Button, Select, DatePicker } from 'antd';
 import { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, withRouter } from 'react-router-dom';
-import { fetchOneOrder, updateOrder, createOrder } from "redux/features/orders"
+import { useHistory } from 'react-router-dom';
+import { fetchOneOrder } from "redux/features/orders"
 import { fetchAllCustomer } from "redux/features/customers"
 import { fetchAllProduct } from "redux/features/products"
 import Modal from 'react-modal';

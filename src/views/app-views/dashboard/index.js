@@ -1,32 +1,18 @@
 import { Col, Row, message } from 'antd';
 import StatisticWidget from 'components/shared-components/StatisticWidget';
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PRODUCTS from '../all-products';
-import { fetchSumStore, fetchSumLedger } from 'redux/features/reports';
+import { fetchSumStore } from 'redux/features/reports';
 
 
-const formatter = new Intl.NumberFormat('en-US', {
-	style: 'currency',
-	currency: 'IDR',
-  maximumSignificantDigits:3
-});
 
 
 export const DefaultDashboard = () => {
 
   const dispatch = useDispatch();
-  const {
-    store,
-    ledger,
-    selectedRows,
-    filter: { q: searchTerm },
-    loading: {
-      query: loadingQuery,
-      mutation: loadingMutation
-    }
-  } = useSelector(state => state.reports)
+  const { store } = useSelector(state => state.reports)
 
   const getData = useCallback(async () => {
     try {

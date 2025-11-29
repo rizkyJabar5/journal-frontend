@@ -1,16 +1,15 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import { PrinterOutlined } from '@ant-design/icons';
 import { Card, Table, Button, message } from 'antd';
 import NumberFormat from 'react-number-format';
 import { fetchOneOrder } from "redux/features/orders"
 import { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 	
 const { Column } = Table;
 
 export const INVOICE = () => {
-
 	const dispatch = useDispatch()
 	const location = useLocation()
 

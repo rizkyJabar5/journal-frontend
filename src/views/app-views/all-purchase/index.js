@@ -1,7 +1,7 @@
 import { Button, Card, Col, Row, Table, message,Input,Select,Form } from 'antd';
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { fetchAllPurchase } from 'redux/features/purchase';
 import { fetchAllSupplier } from 'redux/features/suppliers';

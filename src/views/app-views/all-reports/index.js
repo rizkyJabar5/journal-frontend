@@ -6,8 +6,6 @@ import StatisticWidget from 'components/shared-components/StatisticWidget';
 import { Area, Column } from '@ant-design/plots';
 import { fetchSumStore, fetchSumLedger, fetchExpenseSuppliers, fetchSales } from 'redux/features/reports';
 import Loading from 'components/shared-components/Loading';
-import { each, groupBy } from '@antv/util';
-
   
 const formatter = new Intl.NumberFormat('en-US', {
 	style: 'currency',

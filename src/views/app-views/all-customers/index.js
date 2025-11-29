@@ -1,5 +1,5 @@
 import { Button, Card, Col, Row, Table, message } from 'antd';
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import { fetchAllCustomer, deleteCustomer } from 'redux/features/customers';
@@ -13,15 +13,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 export const CUSTOMERS = () => {
 	const history = useHistory()
 	const dispatch = useDispatch();
-	const {
-		list,
-		selectedRows,
-		filter: { q: searchTerm },
-		loading: {
-			query: loadingQuery,
-			mutation: loadingMutation
-		}
-	} = useSelector(state => state.customers)
+	const { list } = useSelector(state => state.customers)
 
 	const deleteData = useCallback(async (id) => {
 		try {

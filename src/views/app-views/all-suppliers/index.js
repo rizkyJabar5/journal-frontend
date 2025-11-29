@@ -1,9 +1,8 @@
 import { Button, Card, Col, Row, Table, message } from 'antd';
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
-import { fetchAllSupplier,deleteSupplier } from 'redux/features/suppliers';
-
+import { fetchAllSupplier } from 'redux/features/suppliers';
 
 const formatter = new Intl.NumberFormat('en-US', {
 	style: 'currency',
@@ -14,15 +13,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 export const SUPPLIERS = () => {
 	const history = useHistory()
 	const dispatch = useDispatch();
-	const {
-		list,
-		selectedRows,
-		filter: { q: searchTerm },
-		loading: {
-			query: loadingQuery,
-			mutation: loadingMutation
-		}
-	} = useSelector(state => state.suppliers)
+	const { list } = useSelector(state => state.suppliers)
 
 	// const deleteData = useCallback(async (id) => {
 	// 	try {

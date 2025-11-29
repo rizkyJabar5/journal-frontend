@@ -20,15 +20,7 @@ export const PRODUCTS = (props) => {
   
 	const history = useHistory()
 	const dispatch = useDispatch();
-	const {
-		list,
-		selectedRows,
-		filter: { q: searchTerm },
-		loading: {
-			query: loadingQuery,
-			mutation: loadingMutation
-		}
-	} = useSelector(state => state.products)
+	const { list } = useSelector(state => state.products)
 
 	const handleSearch = (selectedKeys, confirm, dataIndex) => {
 		confirm();

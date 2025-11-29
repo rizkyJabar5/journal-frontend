@@ -1,14 +1,12 @@
 import { Col, Row, message } from 'antd';
 import React, { useState } from "react";
-import { Button, Card, Form, Input, Select, Upload } from 'antd';
+import { Button, Card, Form, Input } from 'antd';
 import { useEffect, useCallback } from 'react';
-import { useHistory, withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOneProduct, createProduct } from "redux/features/products"
-import { fetchAllCategory } from "redux/features/category"
+import { fetchOneProduct } from "redux/features/products"
 import axios from 'axios';
-const { Option } = Select;
 
 export const DETAILPRODUCT = () => {
   const history = useHistory()
@@ -16,7 +14,7 @@ export const DETAILPRODUCT = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const [file, setFile] = useState()
-  const [selectedCategory, setSelectedCategory] = useState({})
+  const [selectedCategory] = useState({})
   const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
@@ -28,7 +26,7 @@ export const DETAILPRODUCT = () => {
 
   const getData = useCallback(async (id) => {
     try {
-      await dispatch(fetchOneProduct(id)).unwrap().then(data => {
+      await dispatch(fetchOneProduct(id)).unwrap().then(() => {
         form.setFieldsValue(product.list[0]);
       })
         .catch(err => {

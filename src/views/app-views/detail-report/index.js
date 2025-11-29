@@ -1,24 +1,13 @@
-import { Col, Row, message } from 'antd';
-import React from "react";
-import { Button, Card, Form, Input } from 'antd';
-import { useEffect,useCallback } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { Button, Card, Col, Form, Input, Row, message } from 'antd';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSales, updateReport } from "redux/features/reports"
+import { updateReport } from "redux/features/reports";
 
 export const DETAILPRODUCT = () => {
 
-  const location = useLocation()
   const dispatch = useDispatch();
   const ticket = useSelector(state => state.ticket)
 
-  const getData = useCallback(async (id) => {
-      try {
-          await dispatch(fetchSales(id)).unwrap()
-      } catch (error) {
-          message.error(error?.message || 'Failed to fetch data')
-      }
-  }, [dispatch])
 
   const onFinish = async (values) => {
     dispatch(updateReport({

@@ -1,9 +1,9 @@
 import { Button, Card, Col, Row, Table, message, Input, Form, Select } from 'antd';
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import { fetchAllExpense, addExpense } from 'redux/features/expenses';
+import { fetchAllExpense } from 'redux/features/expenses';
 import { fetchAllSupplier } from 'redux/features/suppliers';
 import Modal from 'react-modal';
 

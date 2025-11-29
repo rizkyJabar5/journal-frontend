@@ -1,26 +1,16 @@
 import { Col, Row, message } from 'antd';
 import React from "react";
 import { Button, Card, Form, Input, Checkbox } from 'antd';
-import { useEffect, useCallback } from 'react';
-import { useLocation, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useSelector } from 'react-redux';
 import { addUser } from 'redux/features/user';
 
 export const DETAILUSER = () => {
   const history = useHistory();
-  const location = useLocation()
-  const dispatch = useDispatch();
   const ticket = useSelector(state => state.ticket)
 
   const options = ['Superadmin', 'Owner', 'Cashier', 'User', 'Administration']
-
-  // const getData = useCallback(async (id) => {
-  //   try {
-  //     await dispatch(fetchOneSupplier(id)).unwrap()
-  //   } catch (error) {
-  //     message.error(error?.message || 'Failed to fetch data')
-  //   }
-  // }, [dispatch])
 
   const onFinish = async (values) => {
     const formData = new FormData()

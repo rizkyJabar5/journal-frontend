@@ -1,5 +1,5 @@
 import { Button, Card, Col, Row, Table, message } from 'antd';
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import { fetchAllCategory, deleteCategory } from 'redux/features/category';
@@ -8,15 +8,7 @@ import { fetchAllCategory, deleteCategory } from 'redux/features/category';
 export const CATEGORIES = (props) => {
 	const history = useHistory()
 	const dispatch = useDispatch();
-	const {
-		list,
-		selectedRows,
-		filter: { q: searchTerm },
-		loading: {
-			query: loadingQuery,
-			mutation: loadingMutation
-		}
-	} = useSelector(state => state.categories)
+	const { list } = useSelector(state => state.categories)
 
 	const getData = useCallback(async () => {
 		try {
