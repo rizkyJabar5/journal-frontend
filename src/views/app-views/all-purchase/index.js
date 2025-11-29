@@ -39,6 +39,7 @@ export const PEMBELIAN = () => {
 	const [pembelian, setPembelian] = useState({})
 	const [selectedSupplier, setSelectedSupplier] = useState("")
 	const [suppliers, setSuppliers] = useState([])
+	const dispatch = useDispatch();
 
 	const getSuppliers = useCallback(async () => {
 		try {
@@ -48,13 +49,12 @@ export const PEMBELIAN = () => {
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [])
+	}, [dispatch])
 
 	const handleSelectedSupplier = (value) => {
 		setSelectedSupplier(value)
 	}
 	
-	const dispatch = useDispatch();
 	const {
 		list
 	} = useSelector(state => state.expenses)
@@ -98,12 +98,12 @@ export const PEMBELIAN = () => {
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [dispatch])
+	}, [dispatch, params])
 
 	useEffect(() => {
 		getSuppliers()
 		getData()
-	}, [])
+	}, [getData, getSuppliers])
 
 	
 	function handleInputChange(event) {

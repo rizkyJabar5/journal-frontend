@@ -41,7 +41,7 @@ export const PRODUCTS = (props) => {
 			console.log(error)
 			message.error(error?.message || 'Failed to delete data')
 		}
-	}, [dispatch])
+	}, [dispatch, getData])
 
 	const params = {
 		page: 1,
@@ -55,11 +55,11 @@ export const PRODUCTS = (props) => {
 			console.log(error)
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [dispatch])
+	}, [dispatch, params])
 
 	useEffect(() => {
 		getData()
-	}, [])
+	}, [getData])
 
 	const getColumnSearchProps = (dataIndex) => ({
 		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (

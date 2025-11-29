@@ -28,11 +28,11 @@ export const CATEGORIES = (props) => {
 			console.log(error)
 			message.error(error?.message || 'Failed to delete data')
 		}
-	}, [dispatch])
+	}, [dispatch, getData])
 
 	useEffect(() => {
 		getData()
-	}, [])
+	}, [getData])
 
 	const tableColumns = [
 

@@ -15,16 +15,6 @@ export const CUSTOMERS = () => {
 	const dispatch = useDispatch();
 	const { list } = useSelector(state => state.customers)
 
-	const deleteData = useCallback(async (id) => {
-		try {
-			await dispatch(deleteCustomer(id)).unwrap()
-			getData()
-		} catch (error) {
-			// console.log(error)
-			message.error(error?.message || 'Failed to delete data')
-		}
-	}, [dispatch])
-
 	const getData = useCallback(async () => {
 		try {
 			await dispatch(fetchAllCustomer()).unwrap()
@@ -34,9 +24,19 @@ export const CUSTOMERS = () => {
 		}
 	}, [dispatch])
 
+	const deleteData = useCallback(async (id) => {
+		try {
+			await dispatch(deleteCustomer(id)).unwrap()
+			getData()
+		} catch (error) {
+			// console.log(error)
+			message.error(error?.message || 'Failed to delete data')
+		}
+	}, [dispatch, getData])
+
 	useEffect(() => {
 		getData()
-	}, [])
+	}, [getData])
 
 	const tableColumns = [
 		{

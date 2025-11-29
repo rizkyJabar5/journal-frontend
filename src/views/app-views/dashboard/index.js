@@ -25,7 +25,7 @@ export const DefaultDashboard = () => {
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [getData])
 
   return (
     <>

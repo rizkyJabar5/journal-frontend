@@ -25,7 +25,7 @@ export const DETAILCATEGORY = () => {
     } catch (error) {
       message.error(error?.message || 'Failed to data')
     }
-  }, [dispatch])
+  }, [dispatch, form])
 
   const onFinish = async (values) => {
     if (type === 'update') {
@@ -54,7 +54,7 @@ export const DETAILCATEGORY = () => {
     } else {
       setType('new')
     }
-  }, [])
+  }, [getData, location.id])
 
   return (
     <>

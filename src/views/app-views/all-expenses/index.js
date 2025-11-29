@@ -33,6 +33,7 @@ export const EXPENSES = () => {
 	const [suppliers, setSuppliers] = useState([])
 	const [selectedSupplier, setSelectedSupplier] = useState("")
 	const [selectedPay, setSelectedPay] = useState("")
+	const dispatch = useDispatch();
 
 	const getSuppliers = useCallback(async () => {
 		try {
@@ -42,7 +43,7 @@ export const EXPENSES = () => {
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [])
+	}, [dispatch])
 
 	const handleSelectedSupplier = (value) => {
 		setSelectedSupplier(value)
@@ -52,7 +53,6 @@ export const EXPENSES = () => {
 		setSelectedPay(value)
 	}
 
-	const dispatch = useDispatch();
 	const {
 		list
 	} = useSelector(state => state.expenses)
@@ -115,12 +115,12 @@ export const EXPENSES = () => {
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [dispatch])
+	}, [dispatch, params])
 
 	useEffect(() => {
 		getSuppliers()
 		getData()
-	}, [])
+	}, [getData, getSuppliers])
 
 	const tableColumns = [
 		{

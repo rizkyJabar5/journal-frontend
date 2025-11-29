@@ -121,7 +121,7 @@ export const DETAILPRODUCT = () => {
     } catch (error) {
       message.error(error?.message || 'Failed to data')
     }
-  }, [dispatch])
+  }, [dispatch, form, product.list])
 
   const getCustomers = useCallback(async () => {
     try {
@@ -214,7 +214,7 @@ export const DETAILPRODUCT = () => {
     if (location.id) {
       getData(location.id)
     }
-  }, [])
+  }, [getCustomers, getData, getProducts, location.id])
 
   const tableColumns = [
     {

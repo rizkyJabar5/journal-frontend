@@ -34,7 +34,7 @@ export const SUPPLIERS = () => {
 
 	useEffect(() => {
 		getData()
-	}, [])
+	}, [getData])
 
 	const tableColumns = [
 		{

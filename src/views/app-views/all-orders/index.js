@@ -82,11 +82,11 @@ export const ORDERS = () => {
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [dispatch])
+	}, [dispatch, params])
 
 	useEffect(() => {
 		getData()
-	}, [])
+	}, [getData])
 
 	const tableColumns = [
 		{

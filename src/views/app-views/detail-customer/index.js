@@ -25,7 +25,7 @@ export const DETAILCUSTOMER = () => {
     } catch (error) {
       message.error(error?.message || 'Failed to data')
     }
-  }, [dispatch])
+  }, [customer, dispatch, form])
 
   const onFinish = async (values) => {
     // if (location.isAddNew) {
@@ -64,7 +64,7 @@ export const DETAILCUSTOMER = () => {
     if (location.id) {
       getData(location.id)
     }
-  }, [])
+  }, [getData, location.id])
 
   return (
     <>
