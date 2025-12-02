@@ -53,6 +53,9 @@ export const DETAILPRODUCT = () => {
       formData.append('description', inputs.description);
       formData.append('stock', inputs.stock);
       formData.append('price', inputs.price);
+      formData.append('materialPrice', inputs.materialPrice);
+      formData.append('material', inputs.material);
+      formData.append('weight', inputs.weight);
       formData.append('image', file);
       axios.post("https://inventory-isad-staging-163448ff1a8b.herokuapp.com/api/v1/products/add-product", formData, config)
         .then(response => {
@@ -104,7 +107,15 @@ export const DETAILPRODUCT = () => {
               <Form.Item name="description">
                 <Input name="description" onChange={handleChange} placeholder="Deskripsi" />
               </Form.Item>
-
+              <Form.Item name="weight">
+                <Input name="weight" onChange={handleChange} placeholder="Berat Produk(Gram)" />
+              </Form.Item>
+              <Form.Item name="material">
+                <Input name="material" onChange={handleChange} placeholder="Material Produk" />
+              </Form.Item>
+              <Form.Item name="materialPrice">
+                <Input name="materialPrice" onChange={handleChange} placeholder="Harga Material(Rp/Kg)" />
+              </Form.Item>
               <Form.Item name="image">
                 {/* <Upload >
                   <Button icon={<UploadOutlined />}>Click to Upload</Button>

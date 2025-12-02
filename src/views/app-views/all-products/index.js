@@ -191,7 +191,40 @@ export const PRODUCTS = (props) => {
 			),
 		},
 		{
-			title: 'Harga',
+			title: 'Raw Material',
+			dataIndex: 'material',
+			key: 'material',
+			sorter: (a, b) => a.stock - b.stock,
+			render: (_, record) => (
+				<div className="text-left">
+					{record.stock || 0}
+				</div>
+			),
+		},
+		{
+			title: 'Harga Material',
+			dataIndex: 'materialPrice',
+			key: 'materialPrice',
+			sorter: (a, b) => a.stock - b.stock,
+			render: (_, record) => (
+				<div className="text-left">
+					{record.stock || 0}
+				</div>
+			),
+		},
+		{
+			title: 'Berat Produk',
+			dataIndex: 'weight',
+			key: 'weight',
+			sorter: (a, b) => a.stock - b.stock,
+			render: (_, record) => (
+				<div className="text-left">
+					{record.stock || 0}
+				</div>
+			),
+		},
+		{
+			title: 'Harga Produk',
 			dataIndex: 'price',
 			key: 'price',
 			sorter: (a, b) => a.price - b.price,
