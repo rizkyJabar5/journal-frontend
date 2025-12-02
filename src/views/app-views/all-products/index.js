@@ -167,7 +167,7 @@ export const PRODUCTS = (props) => {
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<AvatarStatus size={60} type="square" src={record.picture} name={record.productName}/>
+					<AvatarStatus size={60} type="square" src={record.picture} />
 				</div>
 			),
 		},
@@ -176,7 +176,7 @@ export const PRODUCTS = (props) => {
 			dataIndex: 'productName',
 			key: 'productName',
 			sorter: (a, b) => a.productName.length - b.productName.length,
-    		width: '26%',
+    		width: '25%',
 			...getColumnSearchProps('productName'),
 		},
 		{
