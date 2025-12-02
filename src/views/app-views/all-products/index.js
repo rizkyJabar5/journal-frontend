@@ -176,7 +176,7 @@ export const PRODUCTS = (props) => {
 			dataIndex: 'productName',
 			key: 'productName',
 			sorter: (a, b) => a.productName.length - b.productName.length,
-    		width: '40%',
+    		width: '30%',
 			...getColumnSearchProps('productName'),
 		},
 		{
@@ -194,10 +194,10 @@ export const PRODUCTS = (props) => {
 			title: 'Raw Material',
 			dataIndex: 'material',
 			key: 'material',
-			sorter: (a, b) => a.stock - b.stock,
+			sorter: (a, b) => a.material - b.material,
 			render: (_, record) => (
 				<div className="text-left">
-					{record.stock || 0}
+					{record.material || 0}
 				</div>
 			),
 		},
@@ -205,10 +205,10 @@ export const PRODUCTS = (props) => {
 			title: 'Harga Material',
 			dataIndex: 'materialPrice',
 			key: 'materialPrice',
-			sorter: (a, b) => a.stock - b.stock,
+			sorter: (a, b) => a.materialPrice - b.materialPrice,
 			render: (_, record) => (
 				<div className="text-left">
-					{record.stock || 0}
+					{record.materialPrice || 0}
 				</div>
 			),
 		},
@@ -216,10 +216,10 @@ export const PRODUCTS = (props) => {
 			title: 'Berat Produk',
 			dataIndex: 'weight',
 			key: 'weight',
-			sorter: (a, b) => a.stock - b.stock,
+			sorter: (a, b) => a.weight - b.weight,
 			render: (_, record) => (
 				<div className="text-left">
-					{record.stock || 0}
+					{record.weight || 0}
 				</div>
 			),
 		},
