@@ -176,7 +176,7 @@ export const PRODUCTS = (props) => {
 			dataIndex: 'productName',
 			key: 'productName',
 			sorter: (a, b) => a.productName.length - b.productName.length,
-    		width: '30%',
+    		width: '26%',
 			...getColumnSearchProps('productName'),
 		},
 		{
@@ -194,7 +194,8 @@ export const PRODUCTS = (props) => {
 			title: 'Raw Material',
 			dataIndex: 'material',
 			key: 'material',
-			sorter: (a, b) => a.material - b.material,
+			sorter: (a, b) => a.material.length - b.material.length,
+			width: '15%',
 			render: (_, record) => (
 				<div className="text-left">
 					{record.material || 0}
