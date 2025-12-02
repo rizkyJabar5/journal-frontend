@@ -59,7 +59,7 @@ export const PRODUCTS = (props) => {
 
 	useEffect(() => {
 		getData()
-	}, [getData])
+	})
 
 	const getColumnSearchProps = (dataIndex) => ({
 		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
