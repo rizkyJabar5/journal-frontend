@@ -108,7 +108,7 @@ export const DETAILPRODUCT = () => {
                 <Input name="description" onChange={handleChange} placeholder="Deskripsi" />
               </Form.Item>
               <Form.Item name="weight">
-                <Input name="weight" onChange={handleChange} placeholder="Berat Produk(Gram)" />
+                <Input type="number" name="weight" onChange={handleChange} placeholder="Berat Produk(Gram)" />
               </Form.Item>
               <Form.Item name="material">
                 <Input name="material" onChange={handleChange} placeholder="Material Produk" />
