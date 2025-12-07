@@ -86,7 +86,7 @@ export const ORDERS = () => {
 
 	useEffect(() => {
 		getData()
-	}, [getData])
+	}, [])
 
 	const tableColumns = [
 		{

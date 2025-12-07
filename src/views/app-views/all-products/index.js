@@ -55,7 +55,7 @@ export const PRODUCTS = (props) => {
 			console.log(error)
 			message.error(error?.message || 'Failed to delete data')
 		}
-	}, [dispatch, getData])
+	}, [dispatch])
 
 	useEffect(() => {
 		getData()
