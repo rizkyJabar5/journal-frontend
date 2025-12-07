@@ -35,24 +35,20 @@ export const DETAILCUSTOMER = () => {
     //   })).unwrap()
     //   message.success(values.data.message)
     // } else {
-      dispatch(createCustomer({
-        "customerName": values.customerName,
-        "customerPhone": values.customerPhone,
-        "companyName": values.companyName,
-        "address": {
-          "street": values.street,
-          "city": values.city,
-          // "province": values.province,
-          // "country": values.country,
-          "zip": values.zip
-        }
-      })).unwrap().then(doc=>{
-        // message.success(doc.message)
-        history.push('/app/customers')
-      }).catch(err=>{
-        console.log(err)
-        message.error(err.error || err.data.message);
-      })
+    dispatch(createCustomer({
+      "customerName": values.customerName,
+      "customerPhone": values.customerPhone,
+      "companyName": values.companyName,
+      "street": values.street,
+      "city": values.city,
+      "zip": values.zip
+    })).unwrap().then(doc => {
+      message.success(doc.message)
+      history.push('/app/customers')
+    }).catch(err => {
+      console.log(err)
+      message.error(err.error || err.data.message || err.message);
+    })
     // }
   };
 

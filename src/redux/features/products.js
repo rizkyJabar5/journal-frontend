@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import URLS from 'redux/urls'
 import request from 'redux/utils/request'
+import requestOne from 'redux/utils/requestOne'
 import { apiRequest } from 'redux/utils/api';
 import { message } from 'antd';
 
@@ -29,7 +30,7 @@ export const fetchOneProduct = createAsyncThunk(
 	'Product/fetchOneProduct',
 	async (id, { rejectWithValue }) => {
 		try {
-			const response = await request('get', `${URLS.PRODUCT}/${id}`)
+			const response = await requestOne('get', `${URLS.PRODUCT}/${id}`)
 			return response
 		} catch (error) {
 			return rejectWithValue(error)

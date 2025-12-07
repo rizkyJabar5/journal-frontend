@@ -22,7 +22,6 @@ service.interceptors.request.use((config) => {
 })
 
 service.interceptors.response.use((response) => {
-	console.log(response.data)
 	if (response.data.accessToken) { return response.data } else { return response.data.data.content }
 	// return response.data.data.content || response.data
 }, (error) => {

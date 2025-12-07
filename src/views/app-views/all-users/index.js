@@ -16,11 +16,11 @@ export const PASIEN = () => {
 		} catch (error) {
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [dispatch, list])
+	}, [dispatch])
 
 	useEffect(() => {
 		getData()
-	}, [getData])
+	}, [])
 
 	const tableColumns = [
 		{

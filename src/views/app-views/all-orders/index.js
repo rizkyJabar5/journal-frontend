@@ -1,11 +1,11 @@
-import { Button, Card, Col, Row, Table, message, Tag, Input } from 'antd';
+import { Button, Card, Col, Input, message, Row, Table, Tag } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import { fetchAllOrder } from 'redux/features/orders';
-import Modal from 'react-modal';
 
 const formatter = new Intl.NumberFormat('en-US', {
 	style: 'currency',
@@ -99,16 +99,6 @@ export const ORDERS = () => {
 			),
 		},
 		{
-			title: 'Pengirim',
-			dataIndex: 'customerName',
-			sorter: (a, b) => a.customerName.length - b.customerName.length,
-			render: (_, record) => (
-				<div className="text-left">
-					{record.customerName !== "NaN" ? record.customerName : "Anonim"}
-				</div>
-			),
-		},
-		{
 			title: 'Penerima',
 			dataIndex: 'recipientName',
 			key: 'recipientName',
@@ -147,7 +137,7 @@ export const ORDERS = () => {
 			}
 		},
 		{
-			title: 'Status',
+			title: 'Status Pembayaran',
 			dataIndex: 'paymentStatus',
 			key: 'paymentStatus',
 			filters: [
@@ -189,7 +179,7 @@ export const ORDERS = () => {
 			}
 		},
 		{
-			title: 'Under Payment',
+			title: 'Kurang Bayar',
 			dataIndex: 'underPayment',
 			key: 'underPayment',
 			sorter: (a, b) => a.underPayment - b.underPayment,
@@ -200,23 +190,11 @@ export const ORDERS = () => {
 			),
 		},
 		{
-			title: () => <div className="text-center">Pelunasan</div>,
-			key: 'pelunasan',
-			render: (_, record) => (
-				<div className="text-center">
-					<button type="primary" style={{ width: "70%" }} onClick={() => {
-						setSelectedPaymentId(record.orderId)
-						setIsOpen(true)
-					}} >Lunasi</button>
-				</div>
-			),
-		},
-		{
 			title: () => <div className="text-center">Surat Jalan</div>,
 			key: 'status',
 			render: (_, record) => (
 				<div className="text-center">
-					<button type="primary" style={{ width: "70%" }} onClick={() => {
+					<button type="primary" style={{ width: "100%" }} onClick={() => {
 						history.push({
 							pathname: '/app/invoice',
 							id: record.orderId,

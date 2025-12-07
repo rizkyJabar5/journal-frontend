@@ -16,26 +16,22 @@ export const DETAILPRODUCT = () => {
   const [file, setFile] = useState()
   const [selectedCategory] = useState({})
   const [inputs, setInputs] = useState({});
+  const [product, setProduct] = useState({})
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs(values => ({...values, [name]: value}))
+    setInputs(values => ({ ...values, [name]: value }))
   }
-  const product = useSelector(state => state.products)
 
   const getData = useCallback(async (id) => {
     try {
-      await dispatch(fetchOneProduct(id)).unwrap().then(() => {
-        form.setFieldsValue(product.list[0]);
-      })
-        .catch(err => {
-          message.error(err?.message || `Product data failed to load`);
-        })
+      const data = await dispatch(fetchOneProduct(id)).unwrap()
+      setProduct(data.data)
     } catch (error) {
-      message.error(error?.message || 'Failed to data')
+      message.error(error?.message || 'Failed to load data');
     }
-  }, [dispatch, form, product.list])
+  }, [dispatch]);
 
   const onFinish = (event) => {
     const config = {
@@ -69,21 +65,25 @@ export const DETAILPRODUCT = () => {
     } else {
       message.info("Coming Soon!")
     }
-    event.preventDefault()
-    
   };
 
   useEffect(() => {
     if (location.id) {
-      getData(location.id)
+      getData(location.id);
     }
-  }, [getData, location.id])
+  }, [location.id, getData]);
+
+  useEffect(() => {
+    if (product) {
+      form.setFieldsValue(product);
+    }
+  }, [product, form]);
 
   return (
     <>
       <Row gutter={24}>
         <Col xs={24} sm={24} md={24} lg={24}>
-          <h2>Detail Produk</h2>
+          <h2>Detail Produk {product?.productName}</h2>
           <p>Update data ini</p>
         </Col>
       </Row>
@@ -91,9 +91,11 @@ export const DETAILPRODUCT = () => {
         <Col xs={24} sm={24} md={24} lg={24}>
           <Card>
             <h2>{product?.selected?.question}</h2>
-            <form
+            <Form
+              form={form}
               name="basic"
               onSubmit={onFinish}
+              onFinish={onFinish}
             >
               <Form.Item name="productName">
                 <Input name="productName" onChange={handleChange} placeholder="Nama Produk" />
@@ -104,9 +106,6 @@ export const DETAILPRODUCT = () => {
               <Form.Item name="price">
                 <Input name="price" onChange={handleChange} placeholder="Price" />
               </Form.Item>
-              <Form.Item name="description">
-                <Input name="description" onChange={handleChange} placeholder="Deskripsi" />
-              </Form.Item>
               <Form.Item name="weight">
                 <Input name="weight" onChange={handleChange} placeholder="Berat Produk(Gram)" />
               </Form.Item>
@@ -116,32 +115,36 @@ export const DETAILPRODUCT = () => {
               <Form.Item name="materialPrice">
                 <Input name="materialPrice" onChange={handleChange} placeholder="Harga Material(Rp/Kg)" />
               </Form.Item>
+              {product?.picture ? (
+                <Col xs={24} sm={24} md={8} lg={8}>
+                  <Card>
+                    <img
+                      src={product.picture}
+                      alt="Product"
+                      style={{ width: "100%", borderRadius: 8 }}
+                    />
+                  </Card>
+                </Col>
+              ) : (
+                <div></div>
+              )}
               <Form.Item name="image">
-                {/* <Upload >
-                  <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                </Upload> */}
-                <input  name="image" type="file" onChange={(e)=>{
-                  setFile(e.target.files[0])
-                }} ></input>
+                <input
+                  name="image"
+                  placeholder="Image"
+                  type="file"
+                  onChange={(e) => {
+                    setFile(e.target.files[0])
+                  }} />
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
                   Submit
                 </Button>
               </Form.Item>
-            </form>
+            </Form>
           </Card>
         </Col>
-        {/* <Col xs={6} sm={6} md={6} lg={6}>
-          <Card>
-            <img style={{width:"100%"}} src={product.list[0]?.picture}></img>
-            <br></br>
-            <br></br>
-            <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-                  Upload Image
-                </Button>
-          </Card>
-        </Col> */}
       </Row>
     </>
   )

@@ -1,17 +1,16 @@
-import { Col, Row, message, TimePicker } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Input, message, Row, Select, Table, TimePicker } from 'antd';
 import React, { useState } from "react";
-import { Table, Card, Form, Input, Button, Select, DatePicker } from 'antd';
 
-import { useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { fetchOneOrder } from "redux/features/orders"
-import { fetchAllCustomer } from "redux/features/customers"
-import { fetchAllProduct } from "redux/features/products"
-import Modal from 'react-modal';
 import axios from 'axios';
 import moment from 'moment';
+import { useCallback, useEffect } from 'react';
+import Modal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { fetchAllCustomer } from "redux/features/customers";
+import { fetchOneOrder } from "redux/features/orders";
+import { fetchAllProduct } from "redux/features/products";
 
 const { Option } = Select;
 
@@ -34,7 +33,6 @@ const customStyles = {
 };
 
 export const DETAILPRODUCT = () => {
-
   const history = useHistory()
   const location = useLocation();
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -46,17 +44,17 @@ export const DETAILPRODUCT = () => {
   const [penerima, setPenerima] = useState({})
   const [selectedProducts, setSelectedProducts] = useState([])
   const [selectedCustomer, setSelectedCustomer] = useState([])
-	const [orderStatus, setOrderStatus] = useState("")
+  const [orderStatus, setOrderStatus] = useState("")
   const [allProducts, setAllProducts] = useState([])
 
-  const handleOrderStatus = (value)=>{
+  const handleOrderStatus = (value) => {
     setOrderStatus(value)
   }
 
   function onChangeDate(value) {
     console.log(moment(value).format('DD-MM-YYYY'))
-
-    setDate(moment(value).format('DD-MM-YYYY'))  }
+    setDate(moment(value).format('DD-MM-YYYY'))
+  }
 
   function onChangeTime(value) {
     setTime(value)
@@ -67,22 +65,52 @@ export const DETAILPRODUCT = () => {
     setTime(moment(value).format('HH:mm'))
   }
 
-  const handleChangeCustomer = (value) => {
-    setSelectedCustomer(value)
+  const handleChangeCustomer = (customerId) => {
+    const selected = allCustomers.find(c => c.customerId === customerId);
+    setSelectedCustomer(customerId);
+
+    if (selected) {
+      form.setFieldsValue({
+        alamatPenerima: selected.address?.street,
+        city: selected.address?.city,
+        zip: selected.address?.zip,
+        namaPenerima: selected.customerName,
+        // add more if you want
+      });
+
+      setPenerima(prev => ({
+        ...prev,
+        alamatPenerima: selected.address?.street,
+        city: selected.address?.city,
+        zip: selected.address?.zip,
+        namaPenerima: selected.customerName,
+      }));
+    }
   };
+
 
   function showModal() {
     setIsOpen(true);
   }
 
-  const tambahProduct = (event) => {
-    setSelectedProducts([...selectedProducts, {
-      ...selectedProduct,
-      quantity: quantity
-    }])
-    setIsOpen(false)
+  const addProduct = (event) => {
     event.preventDefault();
-  }
+
+    if (!selectedProduct?.productId || quantity <= 0) {
+      message.error("Choose product and quantity");
+      return;
+    }
+
+    const finalProduct = {
+      ...selectedProduct,
+      quantity,
+      totalPrice: selectedProduct.price * quantity
+    };
+
+    setSelectedProducts(prev => [...prev, finalProduct]);
+    setIsOpen(false);
+  };
+
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -109,39 +137,33 @@ export const DETAILPRODUCT = () => {
   const dispatch = useDispatch();
   const product = useSelector(state => state.products)
 
-  const getData = useCallback(async (id) => {
-    try {
-      await dispatch(fetchOneOrder(id)).unwrap().then(data => {
-        form.setFieldsValue(product.list[0]);
-      })
-        .catch(err => {
-          message.error(err?.message || `Product data failed to load`);
-        })
-
-    } catch (error) {
-      message.error(error?.message || 'Failed to data')
-    }
-  }, [dispatch, form, product.list])
-
   const getCustomers = useCallback(async () => {
     try {
-      await dispatch(fetchAllCustomer()).unwrap().then(doc => {
-        setAllCustomers(doc)
-      })
+      const doc = await dispatch(fetchAllCustomer()).unwrap();
+      setAllCustomers(doc);
     } catch (error) {
-      message.error(error?.message || 'Failed to fetch data')
+      message.error(error?.message || "Failed to fetch customers");
     }
-  }, [dispatch])
+  }, [dispatch]);
 
   const getProducts = useCallback(async () => {
     try {
-      await dispatch(fetchAllProduct()).unwrap().then(doc => {
-        setAllProducts(doc)
-      })
+      const doc = await dispatch(fetchAllProduct()).unwrap();
+      setAllProducts(doc);
     } catch (error) {
-      message.error(error?.message || 'Failed to fetch data')
+      message.error(error?.message || "Failed to fetch products");
     }
-  }, [dispatch])
+  }, [dispatch]);
+
+  const getData = useCallback(async (id) => {
+    try {
+      const data = await dispatch(fetchOneOrder(id)).unwrap();
+      form.setFieldsValue(data);       // <-- use returned API data, NOT product.list
+    } catch (error) {
+      message.error(error?.message || "Failed to load data");
+    }
+  }, [dispatch, form]);
+
 
   const onFinish = async (values) => {
     console.log({
@@ -155,7 +177,6 @@ export const DETAILPRODUCT = () => {
   };
 
   const createOrder = async () => {
-
     const config = {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token'),
@@ -180,21 +201,21 @@ export const DETAILPRODUCT = () => {
       "dateDelivery": date,
       "timeDelivery": time
     }, config)
-    .then(doc => {
-      message.success(doc.data.message)
-      history.push("/app/orders")
-    }).catch(err => {
-      const resp = err.response.data;
-      
-      if(resp.status === 400) {
-        message.error(resp.message || "Masukkan data dengan benar");
-        return;
-      } else if(resp.status === 500) {
-        message.error(resp.message || "Sorry, maybe server Error!");
-        return;
-      }
-      message.error(resp.message)
-    })
+      .then(doc => {
+        message.success(doc.data.message)
+        history.push("/app/orders")
+      }).catch(err => {
+        const resp = err.response.data;
+
+        if (resp.status === 400) {
+          message.error(resp.message || "Masukkan data dengan benar");
+          return;
+        } else if (resp.status === 500) {
+          message.error(resp.message || "Sorry, maybe server Error!");
+          return;
+        }
+        message.error(resp.message)
+      })
 
   }
 
@@ -214,33 +235,19 @@ export const DETAILPRODUCT = () => {
     if (location.id) {
       getData(location.id)
     }
-  }, [getCustomers, getData, getProducts, location.id])
+  }, [location.id])
+
 
   const tableColumns = [
+    { title: 'ID Produk', dataIndex: 'productId', key: 'productId' },
+    { title: 'Nama', dataIndex: 'productName', key: 'productName' },
+    { title: 'Harga', dataIndex: 'price', key: 'price' },
+    { title: 'Qty', dataIndex: 'quantity', key: 'quantity' },
     {
-      title: 'ID Produk',
-      dataIndex: 'productId',
-      key: 'productId',
-    },
-    {
-      title: 'Nama',
-      dataIndex: 'productName',
-      key: 'productName',
-    },
-    {
-      title: 'Harga',
-      dataIndex: 'price',
-      key: 'price',
-    },
-    {
-      title: 'Category',
-      dataIndex: 'categoryName',
-      key: 'categoryName',
-    },
-    {
-      title: 'Jumlah',
-      dataIndex: 'quantity',
-      key: 'quantity',
+      title: 'Total Harga',
+      dataIndex: 'totalPrice',
+      key: 'totalPrice',
+      render: (value) => value?.toLocaleString("id-ID")
     },
   ];
 
@@ -254,7 +261,7 @@ export const DETAILPRODUCT = () => {
         contentLabel="Tambah Produk"
       >
         <h2 >Halo Tambahkan Produk</h2>
-        <form onSubmit={tambahProduct}>
+        <form onSubmit={addProduct}>
           <Select
             mode="single"
             style={{
@@ -280,51 +287,14 @@ export const DETAILPRODUCT = () => {
           <br />
           <br />
           <Input name="quantity" rules={rules} style={{ width: "100%" }} onChange={handleChangeQuantity} placeholder="Jumlah" />
-          <Input type='submit' style={{ width: "100%", color: "white", marginTop: "15px", backgroundColor: "#777777" }} value="Tambah Produk" ></Input>
+          <Input type='submit' style={{ width: "100%", color: "white", marginTop: "15px", backgroundColor: "green" }} value="Tambahkan" ></Input>
         </form>
-        <Button style={{backgroundColor:"red",color:"white",border:"red",width:"100%"}} onClick={()=>{setIsOpen(false)}} >Cancel</Button>
+        <Button style={{ backgroundColor: "red", color: "white", border: "red", width: "100%" }} onClick={() => { setIsOpen(false) }} >Cancel</Button>
       </Modal>
       <Row gutter={24}>
         <Col xs={24} sm={24} md={24} lg={24}>
           <h2>Detail Orders</h2>
           <p>Update data ini</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={24} sm={24} md={24} lg={24}>
-          <Card>
-            <h2>Info Pengirim</h2>
-            <p>Pilih pengirim sesuai dengan customer kamu</p>
-            <Form
-              name="basic"
-              form={form}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              autoComplete="off"
-            >
-              <Form.Item name="namaPengirim">
-                <Select
-                  mode="single"
-                  placeholder="Pilih Customer"
-                  onChange={handleChangeCustomer}
-                  optionLabelProp="label"
-                >
-                  {allCustomers?.map(doc => {
-                    return (
-                      <Option value={doc.customerId} label={doc.customerName + " | " + doc.companyName} style={{
-                        width: '100%',
-                        background: "#FFF"
-                      }}>
-                        <div className="demo-option-label-item">
-                          {doc.customerName} | {doc.companyName}
-                        </div>
-                      </Option>
-                    )
-                  })}
-                </Select>
-              </Form.Item>
-            </Form>
-          </Card>
         </Col>
       </Row>
       <Row gutter={24}>
@@ -357,8 +327,8 @@ export const DETAILPRODUCT = () => {
       <Row>
         <Col xs={24} sm={24} md={24} lg={24}>
           <Card>
-            <h2>Info Penerima</h2>
-            <p>Masukkan data penerima paket kamu</p>
+            <h2>Info Pengiriman</h2>
+            <p>Masukkan data pengiriman</p>
             <Form
               name="basic"
               form={form}
@@ -366,7 +336,6 @@ export const DETAILPRODUCT = () => {
               autoComplete="on"
             >
               <Form.Item name="orderStatus">
-                {/* <Input onChange={changePenerima} name="orderStatus" style={{ width: "100%" }} placeholder="SENT, PENDING, TAKEN" /> */}
                 <Select
                   mode="single"
                   style={{
@@ -381,16 +350,31 @@ export const DETAILPRODUCT = () => {
                   optionLabelProp="label"
                 >
                   <Option value={'SENT'} label={'SENT'}>SENT</Option>
-                  {/* <Option value={'PENDING'} label={'PENDING'}>PENDING</Option> */}
                   <Option value={'TAKEN'} label={'TAKEN'}>TAKEN</Option>
                 </Select>
               </Form.Item>
-              <Form.Item name="namaPenerima">
-                <Input rules={rules} onChange={changePenerima} name="namaPenerima" style={{ width: "100%" }} placeholder="Nama" />
+
+              <Form.Item name="namaPengirim">
+                <Select
+                  mode="single"
+                  placeholder="Pilih Customer"
+                  onChange={handleChangeCustomer}
+                  optionLabelProp="label"
+                >
+                  {allCustomers?.map(doc => {
+                    return (
+                      <Option value={doc.customerId} label={doc.customerName + " | " + doc.companyName} style={{
+                        width: '100%',
+                        background: "#FFF"
+                      }}>
+                        <div className="demo-option-label-item">
+                          {doc.customerName} | {doc.companyName}
+                        </div>
+                      </Option>
+                    )
+                  })}
+                </Select>
               </Form.Item>
-              {/* <Form.Item name="noHpPenerima">
-                <Input onChange={changePenerima} name="noHpPenerima" style={{ width: "100%" }} placeholder="No HP" />
-              </Form.Item> */}
               <Form.Item name="alamatPenerima">
                 <Input rules={rules} onChange={changePenerima} name="alamatPenerima" style={{ width: "100%" }} placeholder="Alamat" />
               </Form.Item>
@@ -414,12 +398,12 @@ export const DETAILPRODUCT = () => {
               </Form.Item>
               <Form.Item name="jam">
                 <div>
-                  <TimePicker style={{ width: "100%" }} placeholder="Select Time" format={'HH:mm'} onChange={onChangeTime} onOk={onOk} />
+                  <TimePicker style={{ width: "100%" }} placeholder="Select Time" format={'HH:mm'} onChange={onChangeTime} onOk={onOk} onNow={onOk} />
                   <br />
                 </div>
               </Form.Item>
               <h3>Info Pembayaran</h3>
-               <p>Masukkan jumlah pembayaran</p>
+              <p>Masukkan jumlah pembayaran</p>
               <Form.Item name="Biaya">
                 <Input onChange={changePenerima} name="paymentAmount" style={{ width: "100%" }} placeholder="Biaya (IDR)" />
               </Form.Item>

@@ -10,14 +10,14 @@ import Highlighter from 'react-highlight-words';
 const formatter = new Intl.NumberFormat('en-US', {
 	style: 'currency',
 	currency: 'IDR',
-  maximumSignificantDigits:3
+	maximumSignificantDigits: 3
 });
 
 export const PRODUCTS = (props) => {
 	const [searchText, setSearchText] = useState('');
 	const [searchedColumn, setSearchedColumn] = useState('');
 	const searchInput = useRef(null);
-  
+
 	const history = useHistory()
 	const dispatch = useDispatch();
 	const { list } = useSelector(state => state.products)
@@ -26,13 +26,13 @@ export const PRODUCTS = (props) => {
 		confirm();
 		setSearchText(selectedKeys[0]);
 		setSearchedColumn(dataIndex);
-	  };
+	};
 
 	const handleReset = (clearFilters) => {
 		clearFilters();
 		setSearchText('');
 	};
-	
+
 	const params = {
 		page: 1,
 		limit: 30
@@ -45,7 +45,7 @@ export const PRODUCTS = (props) => {
 			console.log(error)
 			message.error(error?.message || 'Failed to fetch data')
 		}
-	}, [dispatch, params])
+	}, [dispatch])
 
 	const deleteData = useCallback(async (id) => {
 		try {
@@ -59,102 +59,102 @@ export const PRODUCTS = (props) => {
 
 	useEffect(() => {
 		getData()
-	})
+	}, [])
 
 	const getColumnSearchProps = (dataIndex) => ({
 		filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-		  <div
-			style={{
-			  padding: 8,
-			}}
-			onKeyDown={(e) => e.stopPropagation()}
-		  >
-			<Input
-			  ref={searchInput}
-			  placeholder={`Search ${dataIndex}`}
-			  value={selectedKeys[0]}
-			  onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-			  onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-			  style={{
-				marginBottom: 8,
-				display: 'block',
-			  }}
-			/>
-			<Space>
-			  <Button
-				type="primary"
-				onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-				icon={<SearchOutlined />}
-				size="small"
+			<div
 				style={{
-				  width: 90,
+					padding: 8,
 				}}
-			  >
-				Search
-			  </Button>
-			  <Button
-				onClick={() => clearFilters && handleReset(clearFilters)}
-				size="small"
-				style={{
-				  width: 90,
-				}}
-			  >
-				Reset
-			  </Button>
-			  <Button
-				type="link"
-				size="small"
-				onClick={() => {
-				  confirm({
-					closeDropdown: false,
-				  });
-				  setSearchText(selectedKeys[0]);
-				  setSearchedColumn(dataIndex);
-				}}
-			  >
-				Filter
-			  </Button>
-			  <Button
-				type="link"
-				size="small"
-				onClick={() => {
-				  close();
-				}}
-			  >
-				close
-			  </Button>
-			</Space>
-		  </div>
+				onKeyDown={(e) => e.stopPropagation()}
+			>
+				<Input
+					ref={searchInput}
+					placeholder={`Search ${dataIndex}`}
+					value={selectedKeys[0]}
+					onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+					onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+					style={{
+						marginBottom: 8,
+						display: 'block',
+					}}
+				/>
+				<Space>
+					<Button
+						type="primary"
+						onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+						icon={<SearchOutlined />}
+						size="small"
+						style={{
+							width: 90,
+						}}
+					>
+						Search
+					</Button>
+					<Button
+						onClick={() => clearFilters && handleReset(clearFilters)}
+						size="small"
+						style={{
+							width: 90,
+						}}
+					>
+						Reset
+					</Button>
+					<Button
+						type="link"
+						size="small"
+						onClick={() => {
+							confirm({
+								closeDropdown: false,
+							});
+							setSearchText(selectedKeys[0]);
+							setSearchedColumn(dataIndex);
+						}}
+					>
+						Filter
+					</Button>
+					<Button
+						type="link"
+						size="small"
+						onClick={() => {
+							close();
+						}}
+					>
+						close
+					</Button>
+				</Space>
+			</div>
 		),
 		filterIcon: (filtered) => (
-		  <SearchOutlined
-			style={{
-			  color: filtered ? '#1890ff' : undefined,
-			}}
-		  />
+			<SearchOutlined
+				style={{
+					color: filtered ? '#1890ff' : undefined,
+				}}
+			/>
 		),
 		onFilter: (value, record) =>
-		  record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+			record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
 		onFilterDropdownOpenChange: (visible) => {
-		  if (visible) {
-			setTimeout(() => searchInput.current?.select(), 100);
-		  }
+			if (visible) {
+				setTimeout(() => searchInput.current?.select(), 100);
+			}
 		},
 		render: (text) =>
-		  searchedColumn === dataIndex ? (
-			<Highlighter
-			  highlightStyle={{
-				backgroundColor: '#ffc069',
-				padding: 0,
-			  }}
-			  searchWords={[searchText]}
-			  autoEscape
-			  textToHighlight={text ? text.toString() : ''}
-			/>
-		  ) : (
-			text
-		  ),
-	  });
+			searchedColumn === dataIndex ? (
+				<Highlighter
+					highlightStyle={{
+						backgroundColor: '#ffc069',
+						padding: 0,
+					}}
+					searchWords={[searchText]}
+					autoEscape
+					textToHighlight={text ? text.toString() : ''}
+				/>
+			) : (
+				text
+			),
+	});
 
 	const tableColumns = [
 		// {
@@ -176,7 +176,7 @@ export const PRODUCTS = (props) => {
 			dataIndex: 'productName',
 			key: 'productName',
 			sorter: (a, b) => a.productName.length - b.productName.length,
-    		width: '25%',
+			width: '25%',
 			...getColumnSearchProps('productName'),
 		},
 		{
@@ -244,7 +244,7 @@ export const PRODUCTS = (props) => {
 						history.push({
 							pathname: '/app/detail-product',
 							id: record.productId,
-							isAddNew:false
+							isAddNew: false
 						})
 					}} >Detail</button>
 				</div>
@@ -270,13 +270,13 @@ export const PRODUCTS = (props) => {
 					<div></div>
 				) : (
 					(
-					<Col xs={24} sm={24} md={24} lg={24}>
-						<h2>Daftar Produk</h2>
-						<Row gutter={24}>
-							<Col xs={12} sm={12} md={12} lg={12}>
-								<p>Daftar semua data yang tersedia.</p>
-							</Col>
-							{/* <Col xs={12} sm={12} md={12} lg={12}>
+						<Col xs={24} sm={24} md={24} lg={24}>
+							<h2>Daftar Produk</h2>
+							<Row gutter={24}>
+								<Col xs={12} sm={12} md={12} lg={12}>
+									<p>Daftar semua data yang tersedia.</p>
+								</Col>
+								{/* <Col xs={12} sm={12} md={12} lg={12}>
 								<Search
             						placeholder="Search Product"
             						// onChange={getSearchValue}
@@ -284,8 +284,8 @@ export const PRODUCTS = (props) => {
             						enterButton
          							 />
 							</Col> */}
-						</Row>
-					</Col>
+							</Row>
+						</Col>
 					)
 				)}
 			</Row>
@@ -298,18 +298,18 @@ export const PRODUCTS = (props) => {
 							dataSource={list}
 							rowKey='productId'
 							pagination={{
-								pageSize:10
-							  }}
+								pageSize: 10
+							}}
 						/>
 					</Card>
 				</Col>
 			</Row>
 			<Row gutter={24}>
 				<Col xs={24} sm={24} md={24} lg={24}>
-				<Button type="primary" style={{width:"100%"}} onClick={()=>{
+					<Button type="primary" style={{ width: "100%" }} onClick={() => {
 						history.push({
 							pathname: '/app/detail-product',
-							isAddNew:true
+							isAddNew: true
 						})
 					}}>Tambah Produk</Button>
 				</Col>
